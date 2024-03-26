@@ -44,7 +44,7 @@ public class Modelo {
     }
     @Override
     public String toString() {
-        return "Metodo toString da classe Modelo\nMODELO: \n    id= " + id + "\n    descricao= " + descricao + "\n    marca= " + marca;
+        return "Metodo toString da classe Modelo\nMODELO: \n    id= " + id + " descricao= " + descricao + " marca= " + marca;
     }
 }
 

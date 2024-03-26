@@ -5,6 +5,7 @@ public class Cor {
     private long id;
     private String nome;
 
+    // Construtor sobrecarregado
     public Cor(){
         this.id = ++ultimoId;
     }
@@ -14,6 +15,7 @@ public class Cor {
         this.nome = nome;
     }
 
+    // Getters e Setters
     public long getUltimoId() {
         return ultimoId;
     }

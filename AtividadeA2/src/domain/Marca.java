@@ -42,7 +42,8 @@ public class Marca
     @Override
     public String toString()
     {
-        return "Marca [id=" + id + ", Nome=" + nome + "]";
+        return "Metodo toString da classe Marca\nMarca:\n" + //
+                        "    id=" + id + ", Nome=" + nome;
     }
 
 }
