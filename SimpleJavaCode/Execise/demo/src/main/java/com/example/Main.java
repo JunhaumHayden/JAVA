@@ -1,4 +1,4 @@
-package test.marven;
+package java.SimpleJavaCode.Execise.demo.src.main.java.com.example;
 
 public class Main {
     public static void main(String[] args) {
