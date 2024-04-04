@@ -1,6 +1,11 @@
 
 package domain;
 
+/**
+ * Classe de marcas.
+ * Esta classe representa uma marca de veiculos.
+ * Ela contém informações sobre a identificação e o nome da marca.
+ */
 public class Marca 
 {
     private static int ultimoId = 0; // atributo para implementar autoincremento
@@ -22,6 +27,10 @@ public class Marca
     }
 
     //Getters e Setters
+    public int getUltimoId() {
+        return ultimoId;
+    }
+
     public int getId() {
         return id;
     }
@@ -42,7 +51,7 @@ public class Marca
     @Override
     public String toString()
     {
-        return "Metodo toString da classe Marca\nMarca:\n" + //
+return "Metodo toString da classe Marca\nMarca:\n" + //
                         "    id=" + id + ", Nome=" + nome;
     }
 

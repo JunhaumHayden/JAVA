@@ -56,7 +56,7 @@ public class Main {
         Cor cor2 = new Cor("Branca");
         
         // Criando uma instância de Veiculos
-        System.out.println("\nInstanciando os Marca...\n");
+        System.out.println("\nInstanciando os Veiculos...\n");
         Veiculos veiculo1 = new Veiculos("ABC1234", "Veículo em boas condições");
         veiculo1.setCor(cor1); // Definindo a cor do veículo
         veiculo1.setModelo(modelo1); // Definindo o modelo do veículo 2

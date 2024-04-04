@@ -64,6 +64,7 @@ public class AtividadeProduto {
         Produto p = new Produto();
         System.out.print("Codigo......: ");
         p.codigo = leia.nextInt();
+            // Realizar a verificação de produto 
             if (encontrarProduto(p.codigo) != null) {
                 System.out.println("Já existe um produto com o mesmo código.");
             }
