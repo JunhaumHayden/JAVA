@@ -5,6 +5,8 @@ public class Modelo {
     private int id;
     private String descricao;
     private Marca marca; // Adicionando referência para a classe Marca
+    private Ecategoria categoria;
+    private Motor motor = new Motor(id, null); //Para configurar uma composicao precisa instanciar no momento da criacao
 
 
     // Construtor padrão
@@ -42,9 +44,27 @@ public class Modelo {
     public void setMarca(Marca marca) {
         this.marca = marca;
     }
+
+    public Ecategoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Ecategoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Motor getMotor(){
+        return motor;
+    }
+    //Para configurar uma composicao precisa instanciar no momento da criacao de maineira que nao e aceitavel realizar alteracao posterior
+   // public void setMotor(Motor motor) {
+   //     this.motor = motor;
+   // }
+
+
     @Override
     public String toString() {
-        return "Metodo toString da classe Modelo\nMODELO: \n    id= " + id + " descricao= " + descricao + " marca= " + marca;
+        return "Metodo toString da classe Modelo\nMODELO: \n    id= " + id + " descricao= " + descricao + " marca= " + marca + " Categoria= " + categoria + " motor= " + motor;
     }
 }
 
