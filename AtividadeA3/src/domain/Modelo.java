@@ -26,9 +26,10 @@ public class Modelo {
         this.marca = marca;
     }
     
-    public Modelo(String descricao, Marca marca, int potencia, EtipoCombustivel tipoCombustivel) 
+    public Modelo(String descricao, Marca marca, Ecategoria categoria, int potencia, EtipoCombustivel tipoCombustivel) 
     {
         this(descricao, marca); //Chama o construtor padrão para gerar o id
+        this.categoria = categoria;
         this.motor.setPotencia(potencia);
         this.motor.setTipoCombustivel(tipoCombustivel);
     }
@@ -70,7 +71,7 @@ public class Modelo {
     public Motor getMotor(){
         return motor;
     }
-    //Para configurar uma composicao precisa instanciar no momento da criacao de maineira que nao e aceitavel realizar alteracao posterior
+    //Para configurar uma composicao precisa instanciar no momento da criacao de maneira que nao e aceitavel realizar alteracao posterior
    // public void setMotor(Motor motor) {
    //     this.motor = motor;
    // }
@@ -78,7 +79,7 @@ public class Modelo {
 
     @Override
     public String toString() {
-        return "Metodo toString da classe Modelo\nMODELO: \n    id= " + id + " descricao= " + descricao + " marca= " + marca + " Categoria= " + categoria + " motor= " + motor;
+        return "\nMetodo toString da classe Modelo\nMODELO: \n    id= " + id + "\n    " + descricao + "\n" + marca + "\n    Categoria= " + categoria + "\n" + motor;
     }
 }
 

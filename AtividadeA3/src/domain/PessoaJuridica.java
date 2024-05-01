@@ -30,12 +30,22 @@ public class PessoaJuridica extends Cliente {
         this.inscricaoEstadual = inscricaoEstadual;
     }
 
+    @Override
+    public String addVeiculos(Veiculos veiculo) {
+        return super.addVeiculos(veiculo);
+    }
+
+    @Override
+    public void removeVeiculos(Veiculos veiculo) {
+        super.removeVeiculos(veiculo);
+    }
     // Sobrescrita do método toString para incluir os atributos adicionais
     @Override
     public String toString() {
-        return super.toString() + "\nPessoaJuridica: " + 
+        return "CLIENTE:\nPessoaJuridica: " + 
         "\ncnpj=" + cnpj + 
-        "\ninscricaoEstadual=" + inscricaoEstadual;
+        "\ninscricaoEstadual=" + inscricaoEstadual + 
+        super.toString();
     }
 }
 

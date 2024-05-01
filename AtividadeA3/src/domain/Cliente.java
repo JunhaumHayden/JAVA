@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public abstract class Cliente 
 {
@@ -11,11 +13,13 @@ public abstract class Cliente
     protected String email;
     protected Date dataCadastro;
     protected Pontuacao pontuacao = new Pontuacao(); //Para configurar uma composicao precisa instanciar no momento da criacao
+    protected List<Veiculos> listaVeiculos;
     
     //construtor padrao
     public Cliente() 
     {
         this.id = ++ultimoId; //Autoincemento do ID
+        this.listaVeiculos = new ArrayList<>();
     }
 
     //construtor sobrecarregado
@@ -27,6 +31,7 @@ public abstract class Cliente
         this.email = email;
         this.dataCadastro = dataCadastro;
         this.pontuacao = pontuacao;
+        
     }
 
     // Getters e Setters
@@ -79,17 +84,44 @@ public abstract class Cliente
         this.dataCadastro = dataCadastro;
     }
 
-    public Pontuacao getPontuacao() {
+    public Pontuacao getPontuacao() 
+    {
         return pontuacao;
     }
 
+    public String addVeiculos(Veiculos veiculo) {
+        if (veiculo.getCliente() == null) {
+            listaVeiculos.add(veiculo);
+            veiculo.setCliente(this);
+            return "Veículo adicionado ao cliente com sucesso!";
+        } else {
+            return "Este veículo já possui um cliente associado.";
+        }
+    }
+    
+
+    public void removeVeiculos(Veiculos veiculo) {
+        listaVeiculos.remove(veiculo);
+        veiculo.setCliente(null);
+    }
     //Nao é necessario criar um set para pontuacao. Será utilizado os metodos da classe pontuacao
     // public void setPontuacao(Pontuacao pontuacao) {
     //     this.pontuacao = pontuacao;
     // }
 
+    //Declaração do método para listar todos os produtos (opção 5)
+
+
+    public List<Veiculos> getVeiculos() 
+    {
+        return listaVeiculos;
+            
+    }
+    
+   
+
     @Override
     public String toString() {
-        return "Cliente:\nid=" + id + "\nnome=" + nome + "\ncelular=" + celular + "\nemail=" + email + "\ndataCadastro=" + dataCadastro + "\npontuacao=" + pontuacao.getSaldo();
+        return "\nid= " + id + "\nnome= " + nome + "\ncelular= " + celular + "\nemail= " + email + "\ndataCadastro= " + dataCadastro + "\npontuacao= " + pontuacao.getSaldo() + "\n" + getVeiculos();
     }
 }

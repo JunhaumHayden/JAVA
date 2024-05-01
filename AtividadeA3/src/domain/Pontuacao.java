@@ -22,7 +22,7 @@ public class Pontuacao {
     public void subtrairPontos(int pontos) {
         if (quantidade - pontos >=0) //verificar se ha pontos suficientes para subtrair
         {
-            this.quantidade -= quantidade;
+            this.quantidade -= pontos;
         }
     }
 

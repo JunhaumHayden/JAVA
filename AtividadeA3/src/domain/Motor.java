@@ -33,7 +33,7 @@ public class Motor {
 
     @Override
     public String toString() {
-        return "Motor [potencia=" + potencia + ", tipoCombustivel=" + tipoCombustivel + "]";
+        return "Motor:\n    potencia=" + potencia + "\n    tipoCombustivel=" + tipoCombustivel;
     }
     
 

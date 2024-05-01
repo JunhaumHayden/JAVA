@@ -30,10 +30,22 @@ public class PessoaFisica extends Cliente {
         this.dataNascimento = dataNascimento;
     }
 
+    @Override
+    public String addVeiculos(Veiculos veiculo) {
+        return super.addVeiculos(veiculo);
+    }
+
+    @Override
+    public void removeVeiculos(Veiculos veiculo) {
+        super.removeVeiculos(veiculo);
+    }
     // Sobrescrita do método toString para incluir os atributos adicionais
     @Override
     public String toString() {
-        return super.toString() + "\nPessoaFisica: "+ "\ncpf=" + getCpf() + "\ndataNascimento=" + getDataNascimento();
+        return  "CLIENTE:\nPessoaFisica: "+ 
+        "\ncpf=" + getCpf() + 
+        "\ndataNascimento=" + getDataNascimento() + 
+        super.toString();
     }
 
 }
