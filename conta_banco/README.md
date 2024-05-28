@@ -2,6 +2,7 @@
 <img src="https://hermes.dio.me/tracks/a039b34c-7aa8-4a3d-b765-07c8c837f67a.png" alt="Logo BackEnd" width="80">
 <h1>Java</h1>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCcxkA70BX5H1N1FFSkncQ-InOpqloUVZLcA&usqp=CAU" alt="Logo Bootcamp" width="220">
+</div>
 
 # #JavaCodes
 
@@ -68,7 +69,9 @@ The fields in [ ] should be changed by the information that the users insert.
 
 - Class Diagram
 - With files in PNG and ASTA format
-<img src="/Users/hayden/workspace/java/conta_banco/Diagram/ClassDiagram01.png" alt="Class Diagram" width="220">
+
+
+<img src="https://github.com/JunhaumHayden/JAVA/blob/main/conta_banco/Diagram/ClassDiagram01.png" alt="Class Diagram" width="220">
 
 #### src/domain
 
@@ -133,7 +136,8 @@ Depois de todas as informações terem sido inseridas, o sistema deverá exibir 
 #### Diagram
 - Diagrama de classe
 - Com os arquivos em formato PNG e ASTA
-<img src="/Users/hayden/workspace/java/conta_banco/Diagram/ClassDiagram01.png" alt="Diagrama de Classe" width="220">
+  
+<img src="https://github.com/JunhaumHayden/JAVA/blob/main/conta_banco/Diagram/ClassDiagram01.png" alt="Diagrama de Classe" width="220">
 
 #### src/domain
 - Arquivo: `ContaTerminal.java`
