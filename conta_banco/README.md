@@ -65,10 +65,22 @@ After all information has been entered, the system should display the following 
 The fields in [ ] should be changed by the information that the users insert.
 
 ### Directory Structure
+
 #### Diagram
 
-- Class Diagram
-- With files in PNG and ASTA format
+
+<table>
+  <tr>
+    <td>
+      <img src="https://freecomputerbooks.com/covers/UML-Process.gif" alt="UML Image" width="60">
+    </td>
+    <td>
+      <p> - Class Diagram.</p>
+      <p> - With files in PNG and ASTA format.</p>
+    </td>
+  </tr>
+</table>
+
 
 
 <img src="https://github.com/JunhaumHayden/JAVA/blob/main/conta_banco/Diagram/ClassDiagram01.png" alt="Class Diagram" width="220">

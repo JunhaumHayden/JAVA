@@ -210,7 +210,7 @@ public class MainApp {
     private static void printCResumido(Cliente cliente)
     {
         System.out.println("Nome " + cliente.getNome());
-        if (cliente instanceof PessoaFisica) // instanceof é para verificar a instancia que foi passada no argumento. caso TRUE entra no IF, FALSE entra no else
+        if (cliente instanceof PessoaFisica)
         {
             System.out.println("    CPF: "+ ((PessoaFisica)cliente).getCpf());
             if (((PessoaFisica)cliente).getVeiculos().size() == 0) 
