@@ -16,6 +16,30 @@
 <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
 </p>
 
+# Documento de Exemplo
+
+## Avisos Importantes
+
+### Usando Bloco de Citação com Emoji
+
+> 🚨 **Aviso:** Um comentário não possui a finalidade de **amenizar** um algoritmo não estruturado conforme as convenções da linguagem.
+
+### Usando HTML Embutido
+
+<div style="border: 2px solid red; padding: 10px; background-color: #f8d7da; color: #721c24;">
+    <strong>Aviso:</strong> Um comentário não possui a finalidade de <strong>amenizar</strong> um algoritmo não estruturado conforme as convenções da linguagem.
+</div>
+
+### Usando Bloco de Citação com Texto em Negrito
+
+> **Aviso:** Um comentário não possui a finalidade de **amenizar** um algoritmo não estruturado conforme as convenções da linguagem.
+
+---
+
+## Conclusão
+
+Estes são alguns métodos para destacar um aviso de perigo em Markdown, substituindo o código `{% hint style="danger" %}`.
+
 
 ## Descrição:
 
@@ -27,14 +51,15 @@ Conforme site oficial, podemos compreender e explorar todos os recursos organiza
 
 Link da documentação de uma das principais classes da linguagem Java.
 
-{% embed url="https://docs.oracle.com/javase/7/docs/api/java/lang/String.html" %}
-Documentação da classe String na versão 7 da linguagem
-{% endembed %}
+> <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Oracle_Logo.svg" alt="Logo Oracle" width="40">
+> 
+> [Documentação da classe String na versão 7 da linguagem](https://docs.oracle.com/javase/7/docs/api/java/lang/String.html)
 
 ## Tags
 
 **Quais as informações que obtemos através de classes documentadas na linguagem ?**
- *** Java Documentation *** é composto por tags que representam dados relevantes para a compreensão da proposta de uma classe e os conjunto de seus métodos e atributos conforme tabela abaixo:
+
+***Java Documentation*** é composto por tags que representam dados relevantes para a compreensão da proposta de uma classe e os conjunto de seus métodos e atributos conforme tabela abaixo:
 
 | Tag      | Descrição                                              |
 | -------- | ------------------------------------------------------ |
@@ -45,9 +70,84 @@ Documentação da classe String na versão 7 da linguagem
 | @return  | Definição do tipo de retorno de um método              |
 | @throws  | Se o método lança alguma exceção                       |
 
-A classe Calculadora é um exemplo de documentação destacando as **tags** mais utilizadas.
-
 *Código*
+
+Esses exemplos cobrem as principais tags de documentação do Java usadas para referenciar variáveis, métodos e classes. Elas ajudam a criar uma documentação clara e útil para quem vai usar ou manter o código.
+
+### 1. `@param`
+A tag `@param` é usada para descrever um parâmetro de método.
+```java
+/**
+ * Calcula a soma de dois números.
+ *
+ * @param a o primeiro número
+ * @param b o segundo número
+ * @return a soma dos dois números
+ */
+public int soma(int a, int b) {
+    return a + b;
+}
+```
+### 2. `@return`
+A tag `@return` é usada para descrever o valor de retorno de um método.
+```java
+/**
+ * Obtém a descrição do produto.
+ *
+ * @return a descrição do produto
+ */
+public String getDescricao() {
+    return descricao;
+}
+```
+### 3. `@see`
+A tag `@see` é usada para fornecer uma referência a uma variável, método, ou classe relacionada.
+```java
+/**
+ * Classe que representa um ponto no plano cartesiano.
+ *
+ * @see Ponto#x
+ * @see Ponto#y
+ */
+public class Ponto {
+    private int x;
+    private int y;
+}
+```
+### 4. `{@link}`
+A tag `{@link}` é usada para inserir um link para uma variável, método ou classe dentro do texto da documentação.
+```java
+/**
+ * Retorna a coordenada X deste ponto.
+ * A coordenada X é armazenada na variável {@link #x}.
+ *
+ * @return a coordenada X
+ */
+public int getX() {
+    return x;
+}
+
+```
+### 5. `{@value}`
+A tag `{@value}` é usada para exibir o valor de uma constante.
+```java
+/**
+ * O valor máximo permitido.
+ */
+public static final int MAX_VALOR = 100;
+
+/**
+ * Verifica se o valor está dentro do limite permitido.
+ *
+ * @param valor o valor a ser verificado
+ * @return true se o valor for menor ou igual a {@value #MAX_VALOR}, caso contrário false
+ */
+public boolean isValorValido(int valor) {
+    return valor <= MAX_VALOR;
+}
+
+```
+A classe Calculadora é um outro exemplo de documentação destacando as **tags** mais utilizadas.
 
 ```java
 /**
@@ -74,19 +174,16 @@ public class Calculadora {
 }
 
 ```
-
 *Guia*
 ![](<../.gitbook/assets/image (15) (1).png>)
 
 
 ### Tipos de comentários
 
-
 *One Line*
 ```
 // Olá, eu sou um comentário em uma única linha
 ```
-
 
 *Mult Line*
 ```
@@ -107,6 +204,9 @@ public class Calculadora {
  * Que incrível !!!
  */
 ```
+<div style="border: 2px solid red; padding: 10px; background-color: #f8d7da; color: #721c24;">
+    <strong> 🚨  Aviso:</strong> Um comentário não possui a finalidade de <strong>amenizar</strong> um algoritmo não estruturado conforme as convenções da linguagem.
+</div>
 
 
 {% hint style="danger" %}
