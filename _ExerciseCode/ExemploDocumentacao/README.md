@@ -16,31 +16,6 @@
 <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge"/>
 </p>
 
-# Documento de Exemplo
-
-## Avisos Importantes
-
-### Usando Bloco de Citação com Emoji
-
-> 🚨 **Aviso:** Um comentário não possui a finalidade de **amenizar** um algoritmo não estruturado conforme as convenções da linguagem.
-
-### Usando HTML Embutido
-
-<div style="border: 2px solid red; padding: 10px; background-color: #f8d7da; color: #721c24;">
-    <strong>Aviso:</strong> Um comentário não possui a finalidade de <strong>amenizar</strong> um algoritmo não estruturado conforme as convenções da linguagem.
-</div>
-
-### Usando Bloco de Citação com Texto em Negrito
-
-> **Aviso:** Um comentário não possui a finalidade de **amenizar** um algoritmo não estruturado conforme as convenções da linguagem.
-
----
-
-## Conclusão
-
-Estes são alguns métodos para destacar um aviso de perigo em Markdown, substituindo o código `{% hint style="danger" %}`.
-
-
 ## Descrição:
 
 # Documentação
@@ -204,14 +179,12 @@ public class Calculadora {
  * Que incrível !!!
  */
 ```
+
 <div style="border: 2px solid red; padding: 10px; background-color: #f8d7da; color: #721c24;">
     <strong> 🚨  Aviso:</strong> Um comentário não possui a finalidade de <strong>amenizar</strong> um algoritmo não estruturado conforme as convenções da linguagem.
 </div>
 
 
-{% hint style="danger" %}
-Um comentário não possui a finalidade de **amenizar** um algoritmo não estruturado conforme as convenções da linguagem.&#x20;
-{% endhint %}
 
 ```java
 /*
@@ -238,7 +211,11 @@ public int somaMultiplica (int n, int x, String m){
 
 Este sistema é o padrão de documentação de classes em Java, e muitas dos [IDEs](https://pt.wikipedia.org/wiki/Ambiente\_de\_desenvolvimento\_integrado) desta linguagem irão automaticamente gerar um Javadoc em [HTML](https://pt.wikipedia.org/wiki/HTML).
 
-{% embed url="https://pt.wikipedia.org/wiki/Javadoc" %}
+
+> <img src="https://fastcompanybrasil.com/wp-content/uploads/2022/10/Wikipedia_logo-892x1024.jpg" alt="Logo Oracle" width="40">
+> 
+> [Visite o artigo sobre JavaDoc na Wikipedia](https://pt.wikipedia.org/wiki/Javadoc)
+
 
 ### Criando nossa documentação no formato html para disponibilizar via web.
 

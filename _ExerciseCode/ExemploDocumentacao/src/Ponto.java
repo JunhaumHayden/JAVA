@@ -1,7 +1,16 @@
 package java._ExerciseCode.ExemploDocumentacao.src;
-    /**
- * Classe que representa um ponto no plano cartesiano.
- *
+/**
+* <h1>Ponto</h1>
+* Classe que representa um ponto no plano cartesiano.
+* <p>
+* <b>Note:</b> Leia atentamente a documentação desta classes
+* para desfrutar dos recursos oferecidos pelo autor
+* </p>
+*
+* @author  Junhaum Hayden
+* @version 1.0
+* @since   30/05/2024
+
  * @see Ponto#x
  * @see Ponto#y
  */
