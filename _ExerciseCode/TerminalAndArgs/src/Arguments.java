@@ -1,5 +1,5 @@
-package java._ExerciseCode.aboutMe.src;
-public class AboutMe {
+package java._ExerciseCode.TerminalAndArgs.src;
+public class Arguments {
     public static void main(String[] args) {
         String nome = args[0];
         String sobrenome = args[1];

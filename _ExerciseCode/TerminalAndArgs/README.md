@@ -18,58 +18,63 @@
 
 
 ## Descrição:
+Apresentação de métodos de entrada de dados para o programa em execução em Java.
 
-# Terminal e Argumentos
-
-Nem sempre executamos nosso programa Java pela IDE, já pensou nossos clientes tendo que instalar o Eclipse ou VsCode para rodar o sistema em sua empresa ?
+## Terminal e Argumentos
 
 Com a JVM devidamente configurada, nós podemos criar um executável do nosso programa e disponibilizar o instalador para qualquer sistema operacional.
 
-No nosso caso iremos aprender como executar um programa Java via terminal como MS - DOS ou terminal do VsCode.
+Como executar um programa Java via terminal como MS - DOS ou terminal do VsCode.
 
-Vamos criar uma classe chamada `AboutMe.java` com o código abaixo:
+Vamos criar uma classe chamada `Terminal.java` com o código abaixo:
 
 ```java
-public class AboutMe {
+public class Terminal {
     public static void main(String[] args) {
         System.out.println("Oi, fui executado pelo Terminal");
     }
 }
 ```
 
-{% hint style="info" %}
-Observe que nosso projeto Java criado por um IDE, ele terá uma pasta chamada **bin**. É nesta pasta que ficarão os arquivos **.class**, o nosso `bytecode`.
-{% endhint %}
+>❗️ Observe que nosso projeto Java criado por um IDE, ele terá uma pasta chamada **bin**. É nesta pasta que ficarão os arquivos **.class**, o nosso `bytecode`.
 
-![](<../.gitbook/assets/image (15).png>)
-
-Mesmo usando uma IDE, nós sempre precisaremos identificar aonde se encontram as classes do nosso projeto, no meu caso está em: **/java/_ExerciseCode/aboutMe.**
-
-![](<../.gitbook/assets/image (6) (1).png>)
+> ❗️ Mesmo usando uma IDE, nós sempre precisaremos identificar aonde se encontram as classes do nosso projeto, no meu caso está em: **java/_ExerciseCode/TerminalAndArgs.**
 
 ## Terminal
 
 Vamos ilustrar como executar uma classe, depois de compilada, sem precisar usar a IDE.
 
 1. Abra o MS-DOS ou Power Shell
-2. Localize o diretório do seu projeto: **`cd /java/_ExerciseCode/aboutMe`**
-3. Acesse a pasta **** _bin_: ** `cd bin`**
-4. Agora digite o comando:**`java AboutMe` ** _(nome da sua classe sem a extensão .**class**)_&#x20;
-
-![](<../.gitbook/assets/image (14).png>)
+2. Localize o diretório do seu projeto: **`cd /java/_ExerciseCode/TerminalAndArgs`**
+3. Acesse a pasta _bin_: **`cd bin`**
+4. Agora digite o comando: **`java Terminal`** _(nome da sua classe sem a extensão .**class**)_&#x20;
 
 ## Argumentos
 
-Quando executamos uma classe que contenha o método main, o mesmo permite que passemos um array `[]` de argumentos do tipo String. Logo podemos após a definição da classe a ser executada informar estes parâmetros, exemplo:
+Quando executamos uma classe que contenha o método main, o mesmo permite que passemos um array `[]` de argumentos do tipo _String_. 
+
+**Passando valores aos argumentos pelo terminal.**
+
+Após a definição da classe a ser executada informar os parâmetros:
 
 ```
 java MinhaClasse agumentoUm argumentoDois
 ```
 
-Exemplo
+Executando o programa no terminal
+
+```
+cd /java/_ExerciseCode/TerminalAndArgs
+cd bin
+
+java Arguments Carlos Hayden 28 1.88
+
+```
+**Passando valores aos argumentos pelo VsCode.**
+
 
 ```java
-public class AboutMe {
+public class Arguments {
     public static void main(String[] args) {
         //os argumentos começam com indice 0
         String nome = args [0];
@@ -85,11 +90,15 @@ public class AboutMe {
 
 ```
 
-**Passando valores aos argumentos pelo VsCode.**
+Para configurar um arquivo que contenha os argumentos a serem passados.
 
-![](<../.gitbook/assets/image (12).png>)
+<img src="../img/image12.png">
 
-![](<../.gitbook/assets/image (8).png>)
+Isso gerar um arquivo `launch.json` no diretório `.vscode` do projeto.
+<img src="../img/image08.png">
+
+Exemplo de como configurar o arquivo:
+cria-se uma nova linha `"args": ["argumento01","argumento01"]` dentro de `"configurations":`.
 
 ```json
 {
@@ -103,16 +112,6 @@ public class AboutMe {
         }
     ]
 }
-```
-
-Executando o programa agora no terminal
-
-```
-cd /java/_ExerciseCode/aboutMe
-cd bin
-
-java AboutMe Carlos Hayden 28 1.88
-
 ```
 
 ## Scanner
@@ -154,11 +153,11 @@ public class AboutMe {
 
 ```
 
-
-
-{% embed url="https://code.visualstudio.com/docs/java/java-debugging" %}
-
-{% embed url="https://linuxtut.com/pass-parameters-when-debugging-vscode-java.-note-462e0" %}
+> ⚠️ 🔭
+>  
+>[Documentação oficial do Java no VS Code](https://code.visualstudio.com/docs/java/java-debugging)
+>
+>[Pass parameters when debugging vscode java. [Note]](https://linuxtut.com/pass-parameters-when-debugging-vscode-java.-note-462e0)
 
 
 
