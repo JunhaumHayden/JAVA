@@ -160,11 +160,6 @@ Depois de todas as informações terem sido inseridas, o sistema deverá exibir 
 - Classe **Main** que realizará toda a interação do programa
 
 
-
-
-
-
-
 # Author
 
 | [<img src="https://avatars.githubusercontent.com/u/79289647?v=4" width=115><br><sub>Carlos Hayden</sub>](https://github.com/JunhaumHayden) |
