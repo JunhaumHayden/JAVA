@@ -68,7 +68,7 @@ Aqui está um diagrama UML simples para ilustrar a estrutura do nosso projeto:
 - Diagrama de classe
 - Com os arquivos em formato PNG e ASTA
   
-<img src="https://github.com/JunhaumHayden/JAVA/blob/main/conta_banco/Diagram/ClassDiagram01.png" alt="Diagrama de Classe" width="220">
+<img src="https://github.com/JunhaumHayden/JAVA/blob/main/_ExerciseCode/Desafios/POO/img/Class%20Diagram.png" alt="Diagrama de Classe" width="220">
 
 #### src/domain
 - Arquivo: `AparelhoTelefonico.java`,  `NavegadorInternet.java`,  `ReprodutorMusical.java`
