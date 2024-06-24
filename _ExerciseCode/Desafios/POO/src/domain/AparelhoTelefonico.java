@@ -1,4 +1,4 @@
-package domain;
+package java._ExerciseCode.Desafios.POO.src.domain;
 
 import java.util.Random;
 

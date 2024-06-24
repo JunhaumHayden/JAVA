@@ -1,4 +1,6 @@
-package domain;
+package java.AtividadeA3.src.domain.veiculos;
+
+import java.AtividadeA3.src.domain.clientes.Cliente;
 
 public class Veiculos {
     private static int ultimoId = 0;

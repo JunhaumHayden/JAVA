@@ -1,4 +1,4 @@
-package domain;
+package java.AtividadeA3.src.domain.clientes;
 
 import java.util.ArrayList;
 import java.util.Date;

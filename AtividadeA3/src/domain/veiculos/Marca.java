@@ -1,5 +1,5 @@
 
-package domain;
+package java.AtividadeA3.src.domain.veiculos;
 
 /**
  * Classe de marcas.

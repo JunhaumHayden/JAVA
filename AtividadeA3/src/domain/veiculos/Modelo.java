@@ -1,4 +1,4 @@
-package domain;
+package java.AtividadeA3.src.domain.veiculos;
 
 public class Modelo {
     private static int ultimoId = 0; // atributo para implementar autoincremento

@@ -1,4 +1,4 @@
-package domain;
+package java.AtividadeA3.src.domain.veiculos;
 
 public class Motor {
     private int potencia;

@@ -1,5 +1,6 @@
-package main;
-import domain.*;
+package java._ExerciseCode.Desafios.POO.src.main;
+import java.SimpleJavaCode.src.number;
+import java._ExerciseCode.Desafios.POO.src.domain.*;
 import java.util.Scanner;
 
 public class iPhone {
@@ -10,6 +11,7 @@ public class iPhone {
     public static void main(String[] args) {
         iPhone iphone = new iPhone();
         iphone.menu();
+
     }
 
     public void menu() {

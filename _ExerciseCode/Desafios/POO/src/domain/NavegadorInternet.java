@@ -1,4 +1,4 @@
-package domain;
+package java._ExerciseCode.Desafios.POO.src.domain;
 
 public class NavegadorInternet {
     public void exibirPagina(String url) {
