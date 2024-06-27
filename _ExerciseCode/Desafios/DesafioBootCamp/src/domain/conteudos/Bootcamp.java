@@ -8,7 +8,17 @@ import java.util.Set;
 
 import domain.alunos.Dev;
 
-public class Bootcamp {
+//Classe Bootcamp
+/**
+* <h1>Bootcamp</h1>
+* A Classe Bootcamp é a classe usada para instanciar os Bootcamp.
+*
+* @author  Carlos Hayden
+* @version 1.0
+* @since   30/05/2024
+*/
+public class Bootcamp 
+{
     private String nome;
     private String descricao;
     private final LocalDate dataInicial = LocalDate.now();

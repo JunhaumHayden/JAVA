@@ -1,17 +1,20 @@
 package domain.conteudos;
-
-public class Curso extends Conteudo
 //Classe Publica
 /**
-* <h1>Curso</h1>
-* A Classe Curso é a classe para instanciar os Curso.
+* <h2>Curso</h2>
+* A Classe representa os Curso.
 * <p>
-* <b>Note:</b> Esta clase herda da classe Conteudo
-* Recebe 3 parametros.</p>    
+* <b>Note:</b> Esta clase herda da classe Conteudo.</p>
+* <p>Recebe 3 parametros:<br>
+* titulo;<br>
+* descricao;<br>
+* cargaHoraria;
+* </p>     
 * @author  Carlos Hayden
 * @version 1.0
-* @since   30/05/2024
+* @since   30/06/2024
 */ 
+public class Curso extends Conteudo
 {
     private int cargaHoraria;
 

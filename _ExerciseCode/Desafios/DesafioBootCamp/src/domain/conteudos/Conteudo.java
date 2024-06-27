@@ -1,9 +1,7 @@
 package domain.conteudos;
-
-public abstract class Conteudo
 //Classe Abstrata
 /**
-* <h1>Conteudo</h1>
+* <h2>Conteudo</h2>
 * A Classe Conteudo é a classe mãe.
 * <p>
 * <b>Note:</b> Leia atentamente a documentação desta classes
@@ -13,6 +11,8 @@ public abstract class Conteudo
 * @version 1.0
 * @since   30/05/2024
 */
+public abstract class Conteudo
+
 {
     //protected modificador de acesso para que apenas classes filhas tenham acesso.
     //static modificador de classe para poder acessar fora da classe.

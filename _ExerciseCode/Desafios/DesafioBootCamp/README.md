@@ -133,6 +133,12 @@ Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de p
 🔹 2.2 Paradigma Lógico: Prolog
 </p>
 
+## Diagrama de Classes
+
+<p align="center">
+<img src="./Diagram/Class Diagram.png" alt="Class Diagram" width="100"/>
+</p>
+
 
 # Author
 

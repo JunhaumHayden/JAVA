@@ -1,19 +1,24 @@
 package domain.conteudos;
 
 import java.time.LocalDate;
-
-public class Mentoria extends Conteudo
-//Classe Publica
 /**
-* <h1>Mentoria</h1>
-* A Classe Mentoria é a classe para instanciar as mentorias.
+* <h2>Mentoria</h2>
+* Classe que representa as mentorias.
 * <p>
-* <b>Note:</b> Esta clase herda da classe Conteudo
-* Recebe 3 parametros.    
+* <b>Note:</b> Esta clase herda da classe {@code Conteudo}
+* </p>
+* <p>Recebe 3 parametros:<br>
+* titulo;<br>
+* descricao;<br>
+* date (gerado automaticamente)
+* </p>    
+*
 * @author  Carlos Hayden
 * @version 1.0
 * @since   30/05/2024
 */ 
+public class Mentoria extends Conteudo
+
 {
     private LocalDate data;
 
