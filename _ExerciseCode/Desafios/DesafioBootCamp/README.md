@@ -136,7 +136,7 @@ Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de p
 ## Diagrama de Classes
 
 <p align="center">
-<img src="./Diagram/Class Diagram.png" alt="Class Diagram" width="100"/>
+<img src="./Diagram/Class Diagram.png" alt="Class Diagram" width="400"/>
 </p>
 
 
