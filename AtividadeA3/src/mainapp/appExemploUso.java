@@ -1,17 +1,10 @@
 package mainapp;
 
 import java.util.Date;
-import domain.Cliente;
-import domain.EtipoCombustivel;
+import domain.clientes.*;
+import domain.veiculos.*;
 import domain.Ecategoria;
-import domain.Cor;
-import domain.Modelo;
-import domain.Motor;
-import domain.Marca;
-import domain.PessoaFisica;
-import domain.PessoaJuridica;
 import domain.Pontuacao;
-import domain.Veiculos;
 
 public class appExemploUso 
 {
