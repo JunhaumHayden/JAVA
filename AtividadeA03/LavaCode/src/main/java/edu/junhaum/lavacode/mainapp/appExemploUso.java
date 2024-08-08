@@ -29,11 +29,11 @@ public class appExemploUso
         // Exemplo de uso da classe PessoaFisica
         printing("Instanciando Pessoa Fisicao... \n");
 
-        PessoaFisica pessoaFisica01 = new PessoaFisica("Ana", "987654321", "ana@example.com", new Date(), new Pontuacao(), "123.456.789-10", new Date(2001 - 01 - 01));
+        PessoaFisica pessoaFisica01 = new PessoaFisica("Ana", "987654321", "ana@example.com", new Pontuacao(), "123.456.789-10", new Date(2001 - 01 - 01));
         printing("Dados da Pessoa Física 1:");
         System.out.println(pessoaFisica01);
         
-        PessoaFisica pessoaFisica02 = new PessoaFisica("Bia", "123456789", "bia@example.com", new Date(), new Pontuacao(), "123.456.789-10", new Date(2002 - 02 - 02));
+        PessoaFisica pessoaFisica02 = new PessoaFisica("Bia", "123456789", "bia@example.com", new Pontuacao(), "123.456.789-10", new Date(2002 - 02 - 02));
         printing("Dados da Pessoa Física 2:");
         System.out.println(pessoaFisica02);
 
