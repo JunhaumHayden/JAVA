@@ -4,10 +4,9 @@ import edu.junhaum.lavacode.domain.veiculos.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
+
 
 public class OrdemDeServico {
     private String numero;
@@ -34,12 +33,10 @@ public class OrdemDeServico {
 
     //construtor sobrecarregado
     /**
-     * Cria um cliente com as informaçoes obrigatorias e chama, automaticamente o construtor padrao para gerar o ID de cliente unico.
+     * Cria uma nova OS
      *
-     * @param nome Nome completo do cliente
-     * @param celular O numero do celular do cliente
-     * @param email email valido do cliente
-     * @param pontuacao Realiza uma composiçao com um objeto Pontuacao
+     * @param Desconto Pode haver um valor de desconto na OS
+     * @param veiculo veiculo vinculado a OS
      * 
      */
     public OrdemDeServico(float desconto, Veiculos veiculo) {
@@ -89,11 +86,11 @@ public class OrdemDeServico {
         return itens;
     }
 
-    public  getVeiculo() {
+    public Veiculos getVeiculo() {
         return veiculo;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
+    public void setVeiculo(Veiculos veiculo) {
         this.veiculo = veiculo;
     }
 
