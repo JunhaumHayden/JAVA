@@ -231,7 +231,7 @@ public class exemploUsoLista {
                 }
             }
         }
-        Modelo novoModelo = new Modelo(dadoEntrada);
+        Modelo novoModelo = new Modelo(dadoEntrada, new Marca(dadoEntrada));
         // Preenchendo os atributos do modelo
         System.out.print("categoria.......: ");
         flagCategoria = false;

@@ -52,13 +52,13 @@ public abstract class Cliente implements ICliente
      * @param pontuacao Realiza uma composiçao com um objeto Pontuacao
      * 
      */
-    public Cliente(String nome, String celular, String email, Pontuacao pontuacao) 
+    public Cliente(String nome, String celular, String email) 
     {
         this(); //chama o construtor padrao para gerar id
         this.nome = nome;
         this.celular = celular;
         this.email = email;
-        this.pontuacao = pontuacao;
+        //this.pontuacao = pontuacao;
         
     }
 
@@ -114,7 +114,7 @@ public abstract class Cliente implements ICliente
      * @return Uma String com uma mensagem se houve sucesso ou não 
      */
     public String addVeiculos(Veiculos veiculo) {
-        if (veiculo.getCliente() == null) {
+        if (veiculo.getCliente() == this) {
             listaVeiculos.add(veiculo);
             veiculo.setCliente(this);
             return "Veículo adicionado ao cliente com sucesso!";
@@ -172,6 +172,12 @@ public abstract class Cliente implements ICliente
 
     @Override
     public String toString() {
-        return "\nid= " + id + "\nnome= " + nome + "\ncelular= " + celular + "\nemail= " + email + "\ndataCadastro= " + dataCadastro + "\npontuacao= " + pontuacao.getSaldo() + "\n" + getVeiculos();
+        return  "\n  ID...........: " + id + 
+                "\n  Nome.........: " + nome + 
+                "\n  Celular......: " + celular + 
+                "\n  Email........: " + email + 
+                "\n  Data Cadastro: " + dataCadastro + 
+                "\n  Pontuacao....: " + pontuacao.getSaldo() + 
+                "\n  VEICULOS.....: " + getVeiculos();
     }
 }

@@ -29,22 +29,22 @@ public class appExemploUso
         // Exemplo de uso da classe PessoaFisica
         printing("Instanciando Pessoa Fisicao... \n");
 
-        PessoaFisica pessoaFisica01 = new PessoaFisica("Ana", "987654321", "ana@example.com", new Pontuacao(), "123.456.789-10", new Date(2001 - 01 - 01));
+        PessoaFisica pessoaFisica01 = new PessoaFisica("Ana", "987654321", "ana@example.com", "123.456.789-10", new Date(2001 - 01 - 01));
         printing("Dados da Pessoa Física 1:");
         System.out.println(pessoaFisica01);
         
-        PessoaFisica pessoaFisica02 = new PessoaFisica("Bia", "123456789", "bia@example.com", new Pontuacao(), "123.456.789-10", new Date(2002 - 02 - 02));
+        PessoaFisica pessoaFisica02 = new PessoaFisica("Bia", "123456789", "bia@example.com", "123.456.789-10", new Date(2002 - 02 - 02));
         printing("Dados da Pessoa Física 2:");
         System.out.println(pessoaFisica02);
 
         // Exemplo de uso da classe PessoaJuridica
         printing("Instanciando Pessoa Juridica... \n");
 
-        PessoaJuridica pessoaJuridica01 = new PessoaJuridica("Empresa X", "999999999", "empresa@example.com", new Date(), pontuacaoTeste01, "12.345.678/0001-90", "123456789");
+        PessoaJuridica pessoaJuridica01 = new PessoaJuridica("Empresa X", "999999999", "empresa@example.com", "12.345.678/0001-90", "123456789");
         printing("Dados da Pessoa Jurídica 1:");
         System.out.println(pessoaJuridica01);
 
-        PessoaJuridica pessoaJuridica02 = new PessoaJuridica("Empresa Z", "1234567890", "z@example.com", new Date(), new Pontuacao(), "12.345.678/0001-90", "123456");
+        PessoaJuridica pessoaJuridica02 = new PessoaJuridica("Empresa Z", "1234567890", "z@example.com", "12.345.678/0001-90", "123456");
         printing("Dados da Pessoa Jurídica 2:");
         System.out.println(pessoaJuridica02);
 
@@ -76,7 +76,7 @@ public class appExemploUso
         // Exemplo de uso da classe Marca
         printing("\nInstanciando os Marca...\n");
         //Usando Construtor padrão
-        Marca marca1 = new Marca();
+        Marca marca1 = new Marca("Honda");
         marca1.setNome("Marca X");
         //Usando Construtor Sobrecarregado
         Marca marca2 = new Marca("Marca Y");
@@ -88,14 +88,14 @@ public class appExemploUso
         System.out.println("\nInstanciando os Modelos...\n");
 
         //Usando Construtor padrão
-        Modelo modelo1 = new Modelo();
+        Modelo modelo1 = new Modelo("raro", marca2);
         modelo1.setDescricao("Modelo A");
         modelo1.getMotor().setPotencia(100);
         modelo1.getMotor().setTipoCombustivel(EtipoCombustivel.FLEX);
         modelo1.setCategoria(Ecategoria.MEDIO);
 
         //Usando Construtor Sobrecarregado
-        Modelo modelo2 = new Modelo("Modelo B");
+        Modelo modelo2 = new Modelo("Modelo B", marca1);
 
         // Exibindo objetos criados
         System.out.println("\nObjetos criados:\n");
@@ -133,11 +133,11 @@ public class appExemploUso
         // Criando uma instância de Veiculos
         System.out.println("\nInstanciando os Veiculos...\n");
 
-        Veiculos veiculo1 = new Veiculos("ABC1111", "Veículo em boas condições");
+        Veiculos veiculo1 = new Veiculos("ABC1111", "Veículo em boas condições", null);
         veiculo1.setCor(cor1); // Definindo a cor do veículo
         veiculo1.setModelo(modelo1); // Definindo o modelo do veículo 2
         
-        Veiculos veiculo2 = new Veiculos("BCD2222", "Veículo novo");
+        Veiculos veiculo2 = new Veiculos("BCD2222", "Veículo novo", null);
         veiculo2.setCor(cor2); // Definindo a cor do veículo 2
         veiculo2.setModelo(modelo2); // Definindo o modelo do veículo 2
         

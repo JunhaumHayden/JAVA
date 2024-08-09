@@ -1,8 +1,6 @@
 package edu.junhaum.lavacode.domain.clientes;
 
 import edu.junhaum.lavacode.domain.veiculos.*;
-import edu.junhaum.lavacode.domain.*;
-
 import java.util.Date;
 
 /**
@@ -31,8 +29,8 @@ public class PessoaFisica extends Cliente {
      * 
      * 
      */
-    public PessoaFisica(String nome, String celular, String email, Pontuacao pontuacao, String cpf, Date dataNascimento) {
-        super(nome, celular, email, pontuacao);
+    public PessoaFisica(String nome, String celular, String email, String cpf, Date dataNascimento) {
+        super(nome, celular, email);
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
     }
@@ -72,7 +70,7 @@ public class PessoaFisica extends Cliente {
      */
     @Override
     public String getDados(String observacao) {
-        return  "CLIENTE:\n"+ this.getClass() + 
+        return  "CLIENTE:\n   "+ this.getClass().getSimpleName() + 
         "\n cpf=" + getCpf() + 
         "\n dataNascimento=" + getDataNascimento() + "\n" +
         super.getDados() + "\n\nObservação: " + observacao;
@@ -81,10 +79,9 @@ public class PessoaFisica extends Cliente {
     // Sobrescrita do método toString para incluir os atributos adicionais
     @Override
     public String toString() {
-        return  "CLIENTE:\n"+ this.getClass() + 
-        "\ncpf=" + getCpf() + 
-        "\ndataNascimento=" + getDataNascimento() + 
-        super.toString();
+        return  "CLIENTE:\n   "+ this.getClass().getSimpleName() + super.toString() + 
+        "\n   CPF...............: " + getCpf() + 
+        "\n   Data de Nascimento: " + getDataNascimento() + "\n";
     }
     
 

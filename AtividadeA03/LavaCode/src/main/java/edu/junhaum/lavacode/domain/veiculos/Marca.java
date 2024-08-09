@@ -2,8 +2,7 @@
 package edu.junhaum.lavacode.domain.veiculos;
 
 /**
- * Classe de marcas.
- * Esta classe representa uma marca de veiculos.
+ * Classe que representa uma marca de veiculos.
  * Ela contém informações sobre a identificação e o nome da marca.
  */
 public class Marca 
@@ -13,13 +12,20 @@ public class Marca
     private String nome;
 
 
-    //Constructor. incrementa ultimoId e atribuímos esse valor ao atributo id.
-    public Marca() 
+    
+    /**
+     * Constructor Padrao incrementa ultimoId e atribuímos esse valor ao atributo id. 
+     */
+    private Marca() 
     {
     this.id = ++ultimoId; //Autoincremento do Id
     }
-
-    //Construtor sobregarregado chama o construtor padrão (this()) para gerar o id e, em seguida, atribuímos o nome fornecido ao atributo nome.
+    /**
+     * Construtor sobregarregado chama o construtor padrão (this()) para gerar o id e, em seguida, atribuímos o nome fornecido ao atributo nome.
+     *
+     * @param nome Nome de uma marca que será atribuida aos veículos
+     * 
+     */
     public Marca(String nome) 
     {
         this(); //Chama o construtor padrão para gerar o id
@@ -35,10 +41,6 @@ public class Marca
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -51,7 +53,9 @@ public class Marca
     @Override
     public String toString()
     {
-        return "Metodo toString da classe Marca\nMarca: " + "\n    id= " + id + ",\n    Nome= " + nome;
+        return "Marca: " + 
+                "\n    id= " + id + 
+                "\n    Nome= " + nome;
     }
 
 }

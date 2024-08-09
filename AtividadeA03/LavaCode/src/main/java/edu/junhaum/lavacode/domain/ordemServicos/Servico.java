@@ -91,12 +91,9 @@ MEDIO, GRANDE OU MOTO.
 
     @Override
     public String toString() {
-        return "Servico{" +
-                "id=" + id +
-                ", descricao='" + descricao + '\'' +
-                ", valor=" + valor +
-                ", pontos=" + pontos +
-                '}';
+        return descricao +
+               "\n       Pontos do Servico:" + pontos
+               ;
     }
 
    

@@ -11,26 +11,40 @@ public class Modelo {
     private Motor motor = new Motor(id, null); //Para configurar uma composicao precisa instanciar no momento da criacao
 
 
-    // Construtor padrão
-    public Modelo() {
-        this.id = ++ultimoId; //Autoincremento do Id
+    /**
+     * Gera automaticamente um ID unico a cada nova instancia da classe e atribui. 
+     * @param id Autoincremento do Id.
+     * 
+     * 
+     */
+    private Modelo() {
+        this.id = ++ultimoId; 
     }
-
-    // Construtor sobrecarregado
-    public Modelo(String descricao) {
-        this(); //Chama o construtor padrão para gerar o id
-        this.descricao = descricao;
-    }
-
+    /**
+     * Construtor sobregarregado chama o construtor padrão (this()) para gerar o id e, em seguida, o nome da marca e uma descricao do Modelo.
+     *
+     * @param descricao Adiciona uma descriçao do modelo do veiculo
+     * @param marca Vincula a marca.
+     * 
+     */
     public Modelo(String descricao, Marca marca) {
-        this(); //Chama o construtor padrão para gerar o id
+        this(); 
         this.descricao = descricao;
         this.marca = marca;
     }
-    
+    /**
+     * Construtor sobregarregado 2 para exercitar uma chamada a outro construtor sobrecarregado.
+     *
+     * @param marca Nome completo do cliente.
+     * @param descricao Adiciona uma descriçao caso necessário.
+     * @param categoria Selecao de categotia referenteao modelo.
+     * @param potencia Adiciona a pontencia do Moto.
+     * @param EtipoCombustivel Selecao do tipo de Combistivel.
+     * 
+     */
     public Modelo(String descricao, Marca marca, Ecategoria categoria, int potencia, EtipoCombustivel tipoCombustivel) 
     {
-        this(descricao, marca); //Chama o construtor padrão para gerar o id
+        this(descricao, marca);
         this.categoria = categoria;
         this.motor.setPotencia(potencia);
         this.motor.setTipoCombustivel(tipoCombustivel);
@@ -81,7 +95,10 @@ public class Modelo {
 
     @Override
     public String toString() {
-        return "\nMetodo toString da classe Modelo\nMODELO: \n    id= " + id + "\n    " + descricao + "\n" + marca + "\n    Categoria= " + categoria + "\n" + motor;
+        return  "\n    " + descricao + 
+                "\n" + marca.getNome() + 
+                "\n    Categoria= " + categoria + 
+                "\n" + motor;
     }
 }
 

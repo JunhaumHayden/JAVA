@@ -1,13 +1,10 @@
 package edu.junhaum.lavacode.domain.clientes;
 
 import edu.junhaum.lavacode.domain.veiculos.*;
-import edu.junhaum.lavacode.domain.*;
-
-import java.util.Date;
 
 /**
-* <h1>Pessoa Juridica</h1>
-* Classe para tratar de clientes pessoa juridica.<br>
+* 
+* Classe para tratar de clientes pessoa juridica.
 * E uma das especializações da classe Cliente e deve implementar os Métodos abstratos das superclasses. 
 * 
 *
@@ -31,8 +28,8 @@ public class PessoaJuridica extends Cliente {
      * 
      * 
      */
-    public PessoaJuridica(String nome, String celular, String email, Date dataCadastro, Pontuacao pontuacao, String cnpj, String inscricaoEstadual) {
-        super(nome, celular, email, pontuacao);
+    public PessoaJuridica(String nome, String celular, String email, String cnpj, String inscricaoEstadual) {
+        super(nome, celular, email);
         this.cnpj = cnpj;
         this.inscricaoEstadual = inscricaoEstadual;
     }
@@ -72,7 +69,7 @@ public class PessoaJuridica extends Cliente {
      */
     @Override
     public String getDados(String observacao) {
-        return  "CLIENTE:\n   "+ this.getClass() + 
+        return  "CLIENTE:\n   "+ this.getClass().getSimpleName() + 
         "\ncnpj=" + cnpj + 
         "\ninscricaoEstadual=" + inscricaoEstadual + 
         super.getDados() + ",\n\nObservação: " + observacao;
@@ -81,10 +78,10 @@ public class PessoaJuridica extends Cliente {
     // Sobrescrita do método toString para incluir os atributos adicionais
     @Override
     public String toString() {
-        return "CLIENTE:\n   "+ this.getClass() + 
-        "\ncnpj=" + cnpj + 
-        "\ninscricaoEstadual=" + inscricaoEstadual + 
-        super.toString();
+        return "CLIENTE:\n   " + this.getClass().getSimpleName() + super.toString() + 
+        "\n   CNPJ..............: " + cnpj + 
+        "\n   Inscricao Estadual: " + inscricaoEstadual + "\n"
+        ;
     }
 }
 

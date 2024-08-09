@@ -54,10 +54,6 @@ public class OrdemDeServico {
         return total;
     }
 
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
     public float getDesconto() {
         return desconto;
     }
@@ -79,6 +75,14 @@ public class OrdemDeServico {
     }
 
     public void setStatus(EStatus status) {
+        if (status == EStatus.FECHADA){
+            int totalPontos = 0;
+            for (ItemOS item : itens) {
+                totalPontos += item.getServico().getPontos();
+            }
+            this.veiculo.getCliente().getPontuacao().adicionarPontos(totalPontos);
+
+        }
         this.status = status;
     }
 
@@ -123,21 +127,27 @@ public class OrdemDeServico {
      * 
      */
     private String gerarNumeroOrdem() {
-        String dataHora = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(new Date());
+        String dataHora = new SimpleDateFormat("yyyy.MMdd-HHmmss").format(new Date());
         String numeroUnico;
         numeroUnico = String.format("%05d", random.nextInt(100000));
         return dataHora + "/" + numeroUnico;
     }
+    public void intera(){
+        for (ItemOS itemOS : itens){
+            itemOS.toString();
+        }
+    }
 
     @Override
     public String toString() {
-        return  "ORDEM DE SERVICO=" + 
-                "\nnumero=" + numero +
-                "\n   total=" + total +
-                "\n   desconto=" + desconto +
-                "\n   agenda=" + agenda +
-                "\n   status=" + status +
-                "\n   itens=" + itens +
+        return  "\nORDEM DE SERVICO:" + 
+                "\n  numero: " + numero +
+                "\n  Total da OS: R$" + total +
+                "\n     desconto:" + desconto +
+                "\n     agenda:" + agenda +
+                "\n     status:" + status +
+                "\n     ITENS:" +   getItens() 
+                +
                 "\nVeiculo=" + veiculo +
                 "\n\n";
     }
