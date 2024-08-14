@@ -11,6 +11,16 @@ import edu.junhaum.lavacode.domain.clientes.PessoaJuridica;
 import edu.junhaum.lavacode.domain.ordemServicos.Servico;
 import edu.junhaum.lavacode.domain.veiculos.*;
 
+/**
+* Classe para instanciar os objetos necessários a manipulacao das OS. Tem os metodos para que se consiga manipular as listas mais facilmente. 
+*
+* 
+* @author  Junhaum Hayden
+* @version 1.0
+* @since   07/08/2024
+* 
+*/
+
 public class DataSource {
     private static List<Veiculos> veiculos = new ArrayList<>();
     private static List<Cliente> clientes = new ArrayList<>();
