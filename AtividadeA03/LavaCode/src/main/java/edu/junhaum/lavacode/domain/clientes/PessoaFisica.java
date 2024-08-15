@@ -4,7 +4,6 @@ import edu.junhaum.lavacode.domain.veiculos.*;
 import java.util.Date;
 
 /**
-* <h1>Pessoa Fisica</h1>
 * Classe para tratar de clientes pessoa fisica.<br>
 * E uma das especializações da classe Cliente e deve implementar os Métodos abstratos das superclasses. 
 * 

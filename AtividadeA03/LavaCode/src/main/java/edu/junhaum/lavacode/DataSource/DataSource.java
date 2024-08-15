@@ -12,7 +12,7 @@ import edu.junhaum.lavacode.domain.ordemServicos.Servico;
 import edu.junhaum.lavacode.domain.veiculos.*;
 
 /**
-* Classe para instanciar os objetos necessários a manipulacao das OS. Tem os metodos para que se consiga manipular as listas mais facilmente. 
+* Classe para instanciar os objetos Mokado necessários a manipulacao das OS. Contem os metodos para que se consiga manipular as listas mais facilmente. 
 *
 * 
 * @author  Junhaum Hayden

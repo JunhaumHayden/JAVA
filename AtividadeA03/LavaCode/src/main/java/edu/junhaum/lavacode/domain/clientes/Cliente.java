@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
-* <h1>Cliente</h1>
 * Classe para garantir que todos os clientes tenham informaçoes minimmas no sistema.<br>
 * A classe Cliente é uma classe abstrata que implementa a interface ICliente. Isso significa que ela pode fornecer implementações parciais ou completas dos métodos da interface, mas como é abstrata, não precisa fornecer todas as implementações. As subclasses concretas (não abstratas) terão que completar a implementação. 
 *
@@ -31,9 +30,6 @@ public abstract class Cliente implements ICliente
     //construtor padrao
     /**
      * Gera automaticamente um ID de cliente unico a cada nova instancia da classe e atribui a data e inicializa a lista de veiculos. 
-     *
-     * 
-     * 
      */
     private Cliente() 
     {

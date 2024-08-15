@@ -19,7 +19,7 @@ public class ExemploUsoComOS
     /**
      * * Cria os dados necessários as OS e realiza as movimentaçoes de testes.
      * 
-     * @see  DataSource
+     * @see DataSource
      * @see mostraOS
      */
     public static void main(String[] args) 
@@ -102,7 +102,7 @@ public class ExemploUsoComOS
      /**
      * * Funçao que realiza as movimentacoes das OS e imprime os resultados.
      * 
-     * @param OrdemDeServico Recebe uma ordem de Serviço
+     * @param OrdemDeServico Recebe um objeto do tipo ordem de Serviço
      */
      public static void mostraOS (OrdemDeServico os)
          {

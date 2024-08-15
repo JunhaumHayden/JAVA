@@ -21,7 +21,7 @@ public class OrdemDeServico {
     //construtor padrao
     /**
      * Instancia a lista de itens que irá compor a OS e o estado para Aberta 
-     *
+     * @see gerarNumeroOrdem
      * 
      * 
      */
@@ -123,7 +123,8 @@ public class OrdemDeServico {
      * Gera a parte da data e hora no formato yyyy/MM/dd-H:mm.
      * Gera um número único de 5 dígitos usando um Random.
      * Combina a data/hora com o número único para formar o número completo da ordem de serviço.
-     * 
+     * @param null
+     * @return Retorna uma String formando um numero unico de cada OS.
      * 
      */
     private String gerarNumeroOrdem() {
@@ -132,7 +133,7 @@ public class OrdemDeServico {
         numeroUnico = String.format("%05d", random.nextInt(100000));
         return dataHora + "/" + numeroUnico;
     }
-    public void intera(){
+    public void interarSobreItensOS(){
         for (ItemOS itemOS : itens){
             itemOS.toString();
         }

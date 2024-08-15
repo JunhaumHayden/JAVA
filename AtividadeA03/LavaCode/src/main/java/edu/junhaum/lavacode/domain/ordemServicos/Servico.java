@@ -3,7 +3,6 @@ package edu.junhaum.lavacode.domain.ordemServicos;
 import edu.junhaum.lavacode.domain.Ecategoria;
 
 /**
-* <h1>Servico</h1>
 * Classe para tratar dos servicos existentes.<br>
 *  
 *
@@ -37,7 +36,7 @@ public class Servico {
      * Cria um servico com as informaçoes obrigatorias e chama, automaticamente o construtor padrao para gerar o ID unico.
      *
      * @param descricao Descreve o tipo de servico
-     * @param vslor O valor unitário do servico
+     * @param valor O valor unitário do servico
      * @param pontos A pontuacao associada ao servico
      * @param categoria Um serviço pode ter valor PADRAO, PEQUENTO,
 MEDIO, GRANDE OU MOTO.

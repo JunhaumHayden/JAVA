@@ -1,5 +1,14 @@
 package edu.junhaum.lavacode.domain.ordemServicos;
 
+/**
+* Classe para vincular um item de servico com a ordem de servico.<br>
+* 
+* @author  Junhaum Hayden
+* @version 1.0
+* @since   07/08/2024
+* 
+*/
+
 public class ItemOS {
     private String observacao;
     private Double valorServico;
@@ -7,8 +16,16 @@ public class ItemOS {
     private OrdemDeServico ordemDeServico;
 
     // Construtores
-    public ItemOS() {}
-
+    private ItemOS() {}
+    //construtor sobrecarregado
+    /**
+     * Cria um item de OS vinculando um servico a uma ordem de servico e armazena o valor do servico para ser usado na Ordem de Servico.
+     *
+     * @param observacao String com uma observacao referente ao servico.
+     * @param servico Um objeto do tipo Servico será vinculado a uma Ordem de Servico.
+     * @param ordemDeServico Um objeto do tipo Ordem de Servico será vinculado a um Servico.
+     * 
+     */
     public ItemOS(String observacao, Servico servico, OrdemDeServico ordemDeServico) {
         this.observacao = observacao;
         this.servico = servico;
