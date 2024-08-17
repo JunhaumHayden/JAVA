@@ -1,5 +1,7 @@
 package edu.junhaum.lavacode.mainapp;
 
+import java.text.SimpleDateFormat;
+
 import edu.junhaum.lavacode.DataSource.DataSource;
 import edu.junhaum.lavacode.domain.ordemServicos.*;
 
@@ -85,7 +87,9 @@ public class ExemploUsoComOS
          DataSource.getServicos(1),ordemDeServico10));
          
          
-        mostraOS(ordemDeServico40);
+        mostraOS(ordemDeServico30);
+
+        System.out.println(imprimirOS(ordemDeServico10));
 
          
 
@@ -120,5 +124,24 @@ public class ExemploUsoComOS
         System.out.println("Detalhes do Cliente: " + os.getVeiculo().getCliente());
         
         
+         }
+
+         public static String imprimirOS(OrdemDeServico os)
+         {
+            SimpleDateFormat sdfData = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
+            StringBuilder geraos = new StringBuilder();
+            geraos.append("     CUPOM FISCAL     ").append("\n");
+            geraos.append("----------------------").append("\n");
+            geraos.append(sdfData.format(os.getAgenda().getTime())).append("  ").
+                    append(sdfHora.format(os.getAgenda())).
+                    append("    COD:").append(os.getNumero()).append("\n");
+            geraos.append("----------------------").append("\n");
+            for (ItemOS item: os.getItens()) {
+                geraos.append(item.getServico().getDescricao()).append("\n");
+            }
+            geraos.append("----------------------").append("\n");
+            geraos.append("Total: ").append(os.getTotal());
+            return geraos.toString();
          }
 }

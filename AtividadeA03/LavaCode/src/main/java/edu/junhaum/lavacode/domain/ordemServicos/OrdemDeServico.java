@@ -29,6 +29,7 @@ public class OrdemDeServico {
         this.itens = new ArrayList<>();
         this.status = EStatus.ABERTA;
         this.numero = gerarNumeroOrdem();
+        this.agenda = new Date();
     }
 
     //construtor sobrecarregado

@@ -102,7 +102,7 @@ public final class Utility {
 ```
 
 ### _static_
-Descrição: Usado para definir membros de classe (variáveis e métodos) que pertencem à classe em si, e não a instâncias da classe. Não é usado para definir classes em nível superior (exceto para classes internas).
+Descrição: Usado para definir membros de classe (variáveis e métodos criados para a classe e nao para as instancias que pertencem à classe em si, e não a instâncias da classe. Não é usado para definir classes em nível superior (exceto para classes internas).
 Exemplo:
 ```java
 public class MyClass {
