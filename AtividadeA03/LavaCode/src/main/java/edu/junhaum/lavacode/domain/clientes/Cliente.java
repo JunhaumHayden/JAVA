@@ -1,9 +1,10 @@
 package edu.junhaum.lavacode.domain.clientes;
-
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
 import edu.junhaum.lavacode.domain.*;
 import edu.junhaum.lavacode.domain.veiculos.*;
+
 import java.util.ArrayList;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 *
 * 
 * @author  Junhaum Hayden
-* @version 1.0
+* @version 1.1
 * @since   07/08/2024
 * 
 */
@@ -23,7 +24,7 @@ public abstract class Cliente implements ICliente
     protected String nome;
     protected String celular;
     protected String email;
-    protected LocalDate dataCadastro;
+    protected Date dataCadastro;
     protected Pontuacao pontuacao = new Pontuacao(); //Para configurar uma composicao precisa instanciar no momento da criacao
     protected List<Veiculos> listaVeiculos;
     
@@ -35,7 +36,7 @@ public abstract class Cliente implements ICliente
     {
         this.id = ++ultimoId; //Autoincemento do ID
         this.listaVeiculos = new ArrayList<>();
-        this.dataCadastro = LocalDate.now(); // Atribui a data e hora atuais
+        this.dataCadastro = new Date(); // Atribui a data e hora atuais
     }
 
     //construtor sobrecarregado
@@ -59,10 +60,6 @@ public abstract class Cliente implements ICliente
     }
 
     // Getters e Setters
-    public static int getUltimoId() {
-        return ultimoId;
-    }
-
     public static void setUltimoId(int ultimoId) {
         Cliente.ultimoId = ultimoId;
     }
@@ -95,7 +92,7 @@ public abstract class Cliente implements ICliente
         this.email = email;
     }
 
-    public LocalDate getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
@@ -106,16 +103,19 @@ public abstract class Cliente implements ICliente
     /**
      * Vincula um veiculo ao cliente adicionando-o a uma lista.
      * Garantindo que não será adicionado um veiculo que já esteja vinculado a outro cliente e vinculando o veiculo ao cliente.
-     * @param veiculo Recebe o veiculo a ser adicionado, é um objeto do tipo Veiculo 
-     * @return Uma String com uma mensagem se houve sucesso ou não 
+     * @param veiculo Recebe o veiculo a ser adicionado, é um objeto do tipo Veiculo.
+     * @return Uma String com uma mensagem se houve sucesso ou se não lança uma excecao. 
      */
-    public String addVeiculos(Veiculos veiculo) {
+    public String addVeiculos(Veiculos veiculo) throws ExceptionLavacao {
+        if (veiculo == null) {
+            throw new ExceptionLavacao("Veículo não pode ser nulo.");
+        }
         if (veiculo.getCliente() == this) {
             listaVeiculos.add(veiculo);
             veiculo.setCliente(this);
             return "Veículo adicionado ao cliente com sucesso!";
         } else {
-            return "Este veículo já possui um cliente associado.";
+            throw new ExceptionLavacao("Este veículo já possui um cliente associado.");
         }
     }
     /**
@@ -124,9 +124,17 @@ public abstract class Cliente implements ICliente
      * @param veiculo Recebe o veiculo a ser removido, é um objeto do tipo Veiculo 
      * 
      */
-    public void removeVeiculos(Veiculos veiculo) {
-        listaVeiculos.remove(veiculo);
-        veiculo.setCliente(null);
+    public void removeVeiculos(Veiculos veiculo) throws ExceptionLavacao{
+        if (veiculo == null) {
+            throw new ExceptionLavacao("Veículo não pode ser nulo.");
+        }
+        if (veiculo.getCliente() != this) {
+            throw new ExceptionLavacao("Veículo não pertence a este cliente."); 
+        } else {
+            listaVeiculos.remove(veiculo);
+            veiculo.setCliente(null);
+        }
+        
     }
     //Nao é necessario criar um set para pontuacao. Será utilizado os metodos da classe pontuacao
     // public void setPontuacao(Pontuacao pontuacao) {
@@ -142,8 +150,7 @@ public abstract class Cliente implements ICliente
      */
     public List<Veiculos> getVeiculos() 
     {
-        return listaVeiculos;
-            
+        return listaVeiculos;      
     }
 
     // Sobrescrever metodos obrigatórios

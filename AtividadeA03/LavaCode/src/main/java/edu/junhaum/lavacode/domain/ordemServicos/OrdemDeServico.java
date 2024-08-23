@@ -1,5 +1,6 @@
 package edu.junhaum.lavacode.domain.ordemServicos;
 
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
 import edu.junhaum.lavacode.domain.veiculos.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,7 +8,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+* <h1>OrdemDeServico</h1>
+* Classe para representar uma ordem de serviço no sistema de lavação.
+* 
+* @author Junhaum Hayden
+* @version 1.0
+* @since 07/08/2024
+*/
 public class OrdemDeServico {
     private String numero;
     private Double total;
@@ -59,7 +67,10 @@ public class OrdemDeServico {
         return desconto;
     }
 
-    public void setDesconto(float desconto) {
+    public void setDesconto(float desconto) throws ExceptionLavacao {
+        if (this.status == EStatus.FECHADA) {
+            throw new ExceptionLavacao("OS Fechada não pode ser alterada.");
+        }
         this.desconto = desconto;
     }
 
@@ -67,7 +78,10 @@ public class OrdemDeServico {
         return agenda;
     }
 
-    public void setAgenda(Date agenda) {
+    public void setAgenda(Date agenda)throws ExceptionLavacao {
+        if (this.status == EStatus.FECHADA) {
+            throw new ExceptionLavacao("OS Fechada não pode ser alterada.");
+        }
         this.agenda = agenda;
     }
 
@@ -75,13 +89,21 @@ public class OrdemDeServico {
         return status;
     }
 
-    public void setStatus(EStatus status) {
+    public void setStatus(EStatus status) throws ExceptionLavacao {
+        if (this.status == EStatus.FECHADA) {
+            throw new ExceptionLavacao("OS Fechada não pode ser alterada.");
+        }
         if (status == EStatus.FECHADA){
             int totalPontos = 0;
             for (ItemOS item : itens) {
                 totalPontos += item.getServico().getPontos();
             }
             this.veiculo.getCliente().getPontuacao().adicionarPontos(totalPontos);
+            double totalServico = 0.0;
+            for (ItemOS item : itens) {
+                totalServico += item.getValorServico();
+            }
+            this.total = totalServico - (desconto);
 
         }
         this.status = status;
@@ -95,7 +117,13 @@ public class OrdemDeServico {
         return veiculo;
     }
 
-    public void setVeiculo(Veiculos veiculo) {
+    public void setVeiculo(Veiculos veiculo) throws ExceptionLavacao {
+        if (this.status == EStatus.FECHADA) {
+            throw new ExceptionLavacao("OS Fechada não pode ser alterada.");
+        }
+        if (this.veiculo != null) {
+            throw new ExceptionLavacao("OS já esta vinculada ao veiculo " + this.getVeiculo().getPlaca());
+        }
         this.veiculo = veiculo;
     }
 
@@ -105,16 +133,23 @@ public class OrdemDeServico {
         for (ItemOS item : itens) {
             totalServico += item.getValorServico();
         }
-        this.total = totalServico - (totalServico * (desconto / 100));
+        this.total = totalServico;
         return this.total;
     }
 
-    public void addItemOS(ItemOS itemOS) {
+    public void addItemOS(ItemOS itemOS) throws ExceptionLavacao {
+        if (this.status == EStatus.FECHADA) {
+            throw new ExceptionLavacao("OS Fechada não pode ser alterada.");
+        }
+        itemOS.setOrdemDeServico(this); // Vincula a ordem de serviço ao item
         this.itens.add(itemOS);
         calcularServico();
     }
 
-    public void removeItemOS(ItemOS itemOS) {
+    public void removeItemOS(ItemOS itemOS) throws ExceptionLavacao {
+        if (this.status == EStatus.FECHADA) {
+            throw new ExceptionLavacao("OS Fechada não pode ser alterada.");
+        }
         this.itens.remove(itemOS);
         calcularServico();
     }

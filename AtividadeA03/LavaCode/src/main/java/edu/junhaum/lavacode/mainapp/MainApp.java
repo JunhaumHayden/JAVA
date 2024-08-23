@@ -2,6 +2,7 @@ package edu.junhaum.lavacode.mainapp;
 
 import edu.junhaum.lavacode.domain.clientes.*;
 import edu.junhaum.lavacode.domain.veiculos.*;
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
 import edu.junhaum.lavacode.domain.Ecategoria;
 import edu.junhaum.lavacode.domain.Pontuacao;
 
@@ -17,7 +18,7 @@ public class MainApp {
          printing("\nIniciando Programa...\n");
          // Exemplo de uso da classe Pontuacao
         printing("Exemplo generico de uso da classe Pontuação: ");
-
+        try{
         Pontuacao pontuacaoTeste01 = new Pontuacao();
         System.out.println("Saldo de pontos de TESTE após criado: " + pontuacaoTeste01.getSaldo());
         pontuacaoTeste01.adicionarPontos(50); // Adicionando pontos
@@ -186,6 +187,9 @@ public class MainApp {
         printCResumido(pessoaFisica02);
         printing(" ");
         printCResumido(pessoaJuridica02);
+        } catch (ExceptionLavacao e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 

@@ -1,6 +1,7 @@
 package edu.junhaum.lavacode.domain.veiculos;
 
 import edu.junhaum.lavacode.domain.clientes.*;
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
 
 /**
 * 
@@ -39,9 +40,10 @@ public class Veiculos {
      * @param placa Placa será um identificador.
      * @param observacoes Anotacoes pertinentes.
      * @param cliente Todo veiculo deve ser atribuido a um cliente
+     * @throws ExceptionLavacao 
      * 
      */
-    public Veiculos(String placa, String observacoes, Cliente cliente) {
+    public Veiculos(String placa, String observacoes, Cliente cliente) throws ExceptionLavacao {
         this();
         this.placa = placa;
         this.observacoes = observacoes;
@@ -57,9 +59,10 @@ public class Veiculos {
      * @param cliente Todo veiculo deve ser atribuido a um cliente
      * @param Cor Selecao de cor
      * @param modelo Selecao de modelo
+     * @throws ExceptionLavacao 
      * 
      */
-    public Veiculos(String placa, String observacoes, Cliente cliente, Cor cor, Modelo modelo) {
+    public Veiculos(String placa, String observacoes, Cliente cliente, Cor cor, Modelo modelo) throws ExceptionLavacao {
         this();
         this.placa = placa;
         this.observacoes = observacoes;

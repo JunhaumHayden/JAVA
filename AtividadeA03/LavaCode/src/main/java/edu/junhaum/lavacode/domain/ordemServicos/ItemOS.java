@@ -16,20 +16,19 @@ public class ItemOS {
     private OrdemDeServico ordemDeServico;
 
     // Construtores
-    private ItemOS() {}
+    //private ItemOS() {}
     //construtor sobrecarregado
     /**
      * Cria um item de OS vinculando um servico a uma ordem de servico e armazena o valor do servico para ser usado na Ordem de Servico.
      *
-     * @param observacao String com uma observacao referente ao servico.
+     * @param observacao String com uma observacao referente a algo pertimente ao serviço.
      * @param servico Um objeto do tipo Servico será vinculado a uma Ordem de Servico.
      * @param ordemDeServico Um objeto do tipo Ordem de Servico será vinculado a um Servico.
      * 
      */
-    public ItemOS(String observacao, Servico servico, OrdemDeServico ordemDeServico) {
+    public ItemOS(String observacao, Servico servico) {
         this.observacao = observacao;
         this.servico = servico;
-        this.ordemDeServico = ordemDeServico;
         this.valorServico = servico.getValor();
     }
 
@@ -57,6 +56,10 @@ public class ItemOS {
 
     public OrdemDeServico getOrdemDeServico() {
         return ordemDeServico;
+    }
+
+    void setOrdemDeServico(OrdemDeServico ordemDeServico) {
+        this.ordemDeServico = ordemDeServico;
     }
 
     @Override

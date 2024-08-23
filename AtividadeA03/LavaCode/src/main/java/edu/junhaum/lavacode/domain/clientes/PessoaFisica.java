@@ -1,6 +1,8 @@
 package edu.junhaum.lavacode.domain.clientes;
 
 import edu.junhaum.lavacode.domain.veiculos.*;
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
+
 import java.util.Date;
 
 /**
@@ -39,7 +41,10 @@ public class PessoaFisica extends Cliente {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(String cpf)throws ExceptionLavacao {
+        if (cpf == null || cpf.isEmpty()) {
+            throw new ExceptionLavacao("O CPF não pode ser vazio.");
+        }
         this.cpf = cpf;
     }
 
@@ -52,12 +57,12 @@ public class PessoaFisica extends Cliente {
     }
 
     @Override
-    public String addVeiculos(Veiculos veiculo) {
+    public String addVeiculos(Veiculos veiculo) throws ExceptionLavacao {
         return super.addVeiculos(veiculo);
     }
 
     @Override
-    public void removeVeiculos(Veiculos veiculo) {
+    public void removeVeiculos(Veiculos veiculo) throws ExceptionLavacao {
         super.removeVeiculos(veiculo);
     }
 

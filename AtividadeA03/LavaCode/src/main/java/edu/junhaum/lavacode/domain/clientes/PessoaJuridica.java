@@ -1,6 +1,7 @@
 package edu.junhaum.lavacode.domain.clientes;
 
 import edu.junhaum.lavacode.domain.veiculos.*;
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
 
 /**
 * 
@@ -52,12 +53,12 @@ public class PessoaJuridica extends Cliente {
     }
 
     @Override
-    public String addVeiculos(Veiculos veiculo) {
+    public String addVeiculos(Veiculos veiculo) throws ExceptionLavacao {
         return super.addVeiculos(veiculo);
     }
 
     @Override
-    public void removeVeiculos(Veiculos veiculo) {
+    public void removeVeiculos(Veiculos veiculo) throws ExceptionLavacao {
         super.removeVeiculos(veiculo);
     }
 

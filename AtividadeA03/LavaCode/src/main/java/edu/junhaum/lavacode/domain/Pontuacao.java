@@ -1,5 +1,15 @@
 package edu.junhaum.lavacode.domain;
 
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
+
+/**
+* <h1>Pontuacao</h1>
+* Classe para gerenciar a pontuação de fidelidade dos clientes.
+* 
+* @author Junhaum Hayden
+* @version 1.1
+* @since 07/08/2024
+*/
 public class Pontuacao {
     private int quantidade;
 
@@ -14,16 +24,22 @@ public class Pontuacao {
     // }
 
     // Método para adicionar quantidade
-    public void adicionarPontos(int pontos) {
+    public void adicionarPontos(int pontos) throws ExceptionLavacao {
+        if (pontos < 0) {
+            throw new ExceptionLavacao("Quantidade de pontos a adicionar não pode ser negativa.");
+        }
         this.quantidade += pontos;
     }
 
     // Método para subtrair quantidade
-    public void subtrairPontos(int pontos) {
-        if (quantidade - pontos >=0) //verificar se ha pontos suficientes para subtrair
-        {
-            this.quantidade -= pontos;
+    public void subtrairPontos(int pontos) throws ExceptionLavacao {
+        if (pontos < 0) {
+            throw new ExceptionLavacao("Quantidade de pontos a subtrair não pode ser negativa.");
         }
+        if (pontos > quantidade) {
+            throw new ExceptionLavacao("Saldo de pontos insuficiente.");
+        }
+        this.quantidade -= pontos;
     }
 
     // Método para obter saldo

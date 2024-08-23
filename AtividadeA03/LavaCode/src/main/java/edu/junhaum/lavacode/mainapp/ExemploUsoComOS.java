@@ -1,9 +1,10 @@
 package edu.junhaum.lavacode.mainapp;
 
-import java.text.SimpleDateFormat;
-
 import edu.junhaum.lavacode.DataSource.DataSource;
 import edu.junhaum.lavacode.domain.ordemServicos.*;
+import edu.junhaum.lavacode.exceptions.ExceptionLavacao;
+import edu.junhaum.lavacode.report.ImpressaoOS;
+import edu.junhaum.lavacode.report.Relatorio;
 
 
 /**
@@ -27,72 +28,37 @@ public class ExemploUsoComOS
     public static void main(String[] args) 
     {
         DataSource.carregarDados();
-        //  // Exemplo de uso
-        // printing("\nIniciando Programa...\n");
-        // // Exemplo de uso da classe PessoaFisica
-        // printing("Instanciando Pessoa Fisicao... \n");
         
-        // printing("Numero de Clientes: " + DataSource.getClienteLenth());
-        // System.out.println("Listando...");
-        // for (int i = 0; i <= DataSource.getClienteLenth(); i++){
-        //     System.out.println(DataSource.getCliente(i));
-        // }
-
-        // // Exemplo de uso da classe PessoaJuridica
-        // printing("Instanciando Pessoa Juridica... \n");
-        // printing("Numero de Clientes: " + DataSource.getClienteLenth());
-        // System.out.println("Listando...");
-        // for (int i = 0; i <= DataSource.getClienteLenth(); i++){
-        //     System.out.println(DataSource.getCliente(i));
-        // }
-
-        // // Exemplo de uso da classe veiculos
-        // printing("Instanciando Veiculos... \n");
-        // printing("Numero de Veiculos: " + DataSource.getVeiculosLenth());
-        // System.out.println("Listando...");
-        // for (int i = 0; i <= DataSource.getVeiculosLenth(); i++){
-        //     System.out.println("\n  "+ (i+1) + " : " + DataSource.getVeiculo(i));
-        // }
-       
-        // // Exemplo de uso da classe servico
-        // printing("Instanciando servicos... \n");
-        // printing("Numero de Servicos: " + DataSource.getServicosLenth());
-        // System.out.println("Listando...");
-        // for (int i = 0; i <= DataSource.getServicosLenth(); i++){
-        //     System.out.println("\n  "+ (i+1) + " : " + DataSource.getServicos(i));
-        // }
         
+
 
         // Criando uma ordem de serviço
-        OrdemDeServico ordemDeServico10 = new OrdemDeServico(0, DataSource.getVeiculo(6)); // 10% de desconto
+        try{
+        OrdemDeServico ordemDeServico10 = new OrdemDeServico(10, DataSource.getVeiculo(6)); // 10% de desconto
         OrdemDeServico ordemDeServico20 = new OrdemDeServico(0, DataSource.getVeiculo(4)); 
-        OrdemDeServico ordemDeServico30 = new OrdemDeServico(20, DataSource.getVeiculo(6)); 
+        OrdemDeServico ordemDeServico30 = new OrdemDeServico(20, DataSource.getVeiculo(5)); // 20% de desconto
         OrdemDeServico ordemDeServico40 = new OrdemDeServico(0, DataSource.getVeiculo(8));
-
-        
          // Adicionando itens à ordem de serviço
-         ordemDeServico10.addItemOS(new ItemOS("Retorna as 11",
-         DataSource.getServicos(6),ordemDeServico10));
-         ordemDeServico10.addItemOS(new ItemOS("Retorna as 12",
-         DataSource.getServicos(11),ordemDeServico10));
-         ordemDeServico10.addItemOS(new ItemOS("Retorna as 13",
-         DataSource.getServicos(16),ordemDeServico10));
-         ordemDeServico10.addItemOS(new ItemOS("Retorna as 14",
-         DataSource.getServicos(21),ordemDeServico10));
-         ordemDeServico30.addItemOS(new ItemOS("Retorna as 30",
-         DataSource.getServicos(1),ordemDeServico10));
-         ordemDeServico20.addItemOS(new ItemOS("Retorna as 20",
-         DataSource.getServicos(1),ordemDeServico10));
-         ordemDeServico40.addItemOS(new ItemOS("Retorna as 40",
-         DataSource.getServicos(1),ordemDeServico10));
-         
-         
+         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 11",
+         DataSource.getServicos(6)));
+         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 12",
+         DataSource.getServicos(11)));
+         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 13",
+         DataSource.getServicos(16)));
+         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 14",
+         DataSource.getServicos(21)));
+         ordemDeServico30.addItemOS(new ItemOS("Notas de Observacao 30",
+         DataSource.getServicos(1)));
+         ordemDeServico20.addItemOS(new ItemOS("Notas de Observacao 20",
+         DataSource.getServicos(1)));
+         ordemDeServico40.addItemOS(new ItemOS("Notas de Observacao 40",
+         DataSource.getServicos(1)));
+        //Exibindo 
         mostraOS(ordemDeServico30);
-
-        System.out.println(imprimirOS(ordemDeServico10));
-
-         
-
+        mostraOS(ordemDeServico10);
+        } catch (ExceptionLavacao e) {
+            System.out.println(e.getMessage());
+        }
         
     }
      
@@ -107,41 +73,40 @@ public class ExemploUsoComOS
      * * Funçao que realiza as movimentacoes das OS e imprime os resultados.
      * 
      * @param OrdemDeServico Recebe um objeto do tipo ordem de Serviço
+     * @return void
      */
-     public static void mostraOS (OrdemDeServico os)
-         {
+     public static void mostraOS (OrdemDeServico os){
+            // Instanciando um cupom
+            ImpressaoOS cupom = new ImpressaoOS(os);
+            Relatorio relatorio = new Relatorio(os.getVeiculo().getCliente());
 
-         
-        // Calculando o total da ordem de serviço
-        os.calcularServico();
+            // Exibindo os detalhes da ordem de serviço
+            try{
+                printing("Inicando OS...\n\nDetalhes da Ordem de Serviço: ");
+                System.out.println(cupom.imprimirOS());
 
-        // Exibindo os detalhes da ordem de serviço
-        printing("\n\n\n#############################");
-        System.out.println("Detalhes da Ordem de Serviço: " + os);
+                printing("Adicionando um servico: ");
+                os.addItemOS(new ItemOS("Novo Servico solicitado pelo cliente",
+                DataSource.getServicos(23)));
+                
+                os.addItemOS(new ItemOS("  ",
+                DataSource.getServicos(13)));
+                
+                System.out.println(cupom.imprimirOS());
 
-        os.setStatus(EStatus.FECHADA);
-        System.out.println("Ordem de Serviço Fechada: \n" + os);
-        System.out.println("Detalhes do Cliente: " + os.getVeiculo().getCliente());
-        
-        
-         }
-
-         public static String imprimirOS(OrdemDeServico os)
-         {
-            SimpleDateFormat sdfData = new SimpleDateFormat("dd/MM/yyyy");
-            SimpleDateFormat sdfHora = new SimpleDateFormat("HH:mm");
-            StringBuilder geraos = new StringBuilder();
-            geraos.append("     CUPOM FISCAL     ").append("\n");
-            geraos.append("----------------------").append("\n");
-            geraos.append(sdfData.format(os.getAgenda().getTime())).append("  ").
-                    append(sdfHora.format(os.getAgenda())).
-                    append("    COD:").append(os.getNumero()).append("\n");
-            geraos.append("----------------------").append("\n");
-            for (ItemOS item: os.getItens()) {
-                geraos.append(item.getServico().getDescricao()).append("\n");
+                printing("Detalhamento dos Dados do Cliente referente a OS: ");
+                System.out.println("Detalhes do Cliente: ");
+                System.out.println(relatorio.imprimirCliente());
+                printing("Alterando Status da OS:");
+                os.setStatus(EStatus.FECHADA);
+                printing("Ordem de Serviço Fechada: ");
+                System.out.println(cupom.imprimirOS());
+                printing("Detalhamento dos Dados do Cliente após fechar a OS: ");
+                System.out.println("Detalhes do Cliente: ");
+                System.out.println(relatorio.imprimirCliente());
+            } catch (ExceptionLavacao e) {
+                System.out.println(e.getMessage());
             }
-            geraos.append("----------------------").append("\n");
-            geraos.append("Total: ").append(os.getTotal());
-            return geraos.toString();
-         }
+            
+        }
 }
