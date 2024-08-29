@@ -55,7 +55,7 @@ public class Relatorio {
             geraos.append("CPF           : "+ ((PessoaFisica)imprimirEsteCliente).getCpf()).append("\n");
             if (((PessoaFisica)imprimirEsteCliente).getVeiculos().size() == 0) 
             {
-                geraos.append("    Veiculos: Sem Veiculos Cadastrados");
+                geraos.append("    Veiculos: Sem Veiculos Cadastrados").append("\n");
             } 
             else {
                 geraos.append("-------------------------------------").append("\n");
@@ -72,7 +72,7 @@ public class Relatorio {
                 geraos.append("CNPJ       : "+ ((PessoaJuridica)imprimirEsteCliente).getCnpj()).append("\n");
                 if (((PessoaJuridica)imprimirEsteCliente).getVeiculos().size() == 0) 
                 {
-                    geraos.append("    Veiculos: Sem Veiculos Cadastrados");
+                    geraos.append("    Veiculos: Sem Veiculos Cadastrados").append("\n");
                 } 
                 else {
                     geraos.append("-------------------------------------").append("\n");
@@ -83,6 +83,7 @@ public class Relatorio {
                         geraos.append(veiculo.getModelo().getMarca().getNome()).append(" ").append(veiculo.getModelo().getDescricao()).append(" ").append(veiculo.getCor().getNome()).append("\n");
                         geraos.append(veiculo.getModelo().getCategoria().getDescricao()).append("\n");
                         geraos.append("OBSERVACOES: ").append(veiculo.getObservacoes()).append("\n\n");
+                        
                     } 
                 }
             }
