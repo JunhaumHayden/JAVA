@@ -43,7 +43,7 @@ public class MainExcepition {
             OrdemDeServico os = new OrdemDeServico(0,DataSource.getVeiculo(3));
             os.setStatus(EStatus.FECHADA);
             //os.setStatus(EStatus.ABERTA); // Vai lançar ExceptionLavacao
-            //os.addItemOS(null);  // Vai lançar ExceptionLavacao
+            os.addItemOS(null);  // Vai lançar ExceptionLavacao
 
             System.out.println(relatorio.imprimirCliente());
 
