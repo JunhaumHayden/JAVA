@@ -57,9 +57,13 @@ Este projeto tem como objetivo desenvolver um sistema de lavação de carros com
     </td>
   </tr>
 </table>
+<---------------------------------->
+
+<!-- [MermaidChart: 3c7d24e8-f066-4729-bf14-ab089cf5979a] -->
 
 
 
+<---------------------------------->
 ``` mermaid
 classDiagram
 

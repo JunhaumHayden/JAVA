@@ -34,28 +34,28 @@ public class ExemploUsoComOS
 
         // Criando uma ordem de serviço
         try{
-        OrdemDeServico ordemDeServico10 = new OrdemDeServico(10, DataSource.getVeiculo(6)); // 10% de desconto
-        OrdemDeServico ordemDeServico20 = new OrdemDeServico(0, DataSource.getVeiculo(4)); 
-        OrdemDeServico ordemDeServico30 = new OrdemDeServico(20, DataSource.getVeiculo(5)); // 20% de desconto
-        OrdemDeServico ordemDeServico40 = new OrdemDeServico(0, DataSource.getVeiculo(8));
-         // Adicionando itens à ordem de serviço
-         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 11",
-         DataSource.getServicos(6)));
-         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 12",
-         DataSource.getServicos(11)));
-         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 13",
-         DataSource.getServicos(16)));
-         ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 14",
-         DataSource.getServicos(21)));
-         ordemDeServico30.addItemOS(new ItemOS("Notas de Observacao 30",
-         DataSource.getServicos(1)));
-         ordemDeServico20.addItemOS(new ItemOS("Notas de Observacao 20",
-         DataSource.getServicos(1)));
-         ordemDeServico40.addItemOS(new ItemOS("Notas de Observacao 40",
-         DataSource.getServicos(1)));
-        //Exibindo 
-        mostraOS(ordemDeServico30);
-        mostraOS(ordemDeServico10);
+            OrdemDeServico ordemDeServico10 = new OrdemDeServico(10, DataSource.getVeiculo(6)); // 10% de desconto
+            OrdemDeServico ordemDeServico20 = new OrdemDeServico(0, DataSource.getVeiculo(4)); 
+            OrdemDeServico ordemDeServico30 = new OrdemDeServico(20, DataSource.getVeiculo(5)); // 20% de desconto
+            OrdemDeServico ordemDeServico40 = new OrdemDeServico(0, DataSource.getVeiculo(8));
+            // Adicionando itens à ordem de serviço
+            ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 11",
+            DataSource.getServicos(6)));
+            ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 12",
+            DataSource.getServicos(11)));
+            ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 13",
+            DataSource.getServicos(16)));
+            ordemDeServico10.addItemOS(new ItemOS("Notas de Observacao 14",
+            DataSource.getServicos(21)));
+            ordemDeServico30.addItemOS(new ItemOS("Notas de Observacao 30",
+            DataSource.getServicos(1)));
+            ordemDeServico20.addItemOS(new ItemOS("Notas de Observacao 20",
+            DataSource.getServicos(1)));
+            ordemDeServico40.addItemOS(new ItemOS("Notas de Observacao 40",
+            DataSource.getServicos(1)));
+            //Exibindo 
+            mostraOS(ordemDeServico30);
+            mostraOS(ordemDeServico10);
         } catch (ExceptionLavacao e) {
             System.out.println(e.getMessage());
         }
