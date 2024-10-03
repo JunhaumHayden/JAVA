@@ -1,0 +1,71 @@
+package tst.firstStep.firstStepOnRest;
+
+import java.util.Arrays;
+import java.util.HashSet;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration //Determina que será uma classe de configuracao para o Spring
+@EnableSwagger2 //Habilita a documentacao do Swagger
+
+    /*
+     * Classe para apresentar as informacoes da Documentacao no Swagger
+     */
+public class SwaggerConfig {
+    /*
+     * Metodo para apresentar as informacoes de contato do desenvolvedor
+     */
+    private Contact contato() {
+        return new Contact(
+                "Seu nome",
+                "http://www.seusite.com.br",
+                "voce@seusite.com.br");
+    }
+
+    /*
+     * Metodo para apresentar as informacoes da API
+     */
+    private ApiInfoBuilder informacoesApi() {
+
+        ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
+
+        apiInfoBuilder.title("Title - Rest API");
+        apiInfoBuilder.description("API exemplo de uso de Springboot REST API");
+        apiInfoBuilder.version("1.0");
+        apiInfoBuilder.termsOfServiceUrl("Termo de uso: Open Source");
+        apiInfoBuilder.license("Licença - Sua Empresa");
+        apiInfoBuilder.licenseUrl("http://www.seusite.com.br");
+        apiInfoBuilder.contact(this.contato()); //Reutilizando o metodo contato
+
+        return apiInfoBuilder;
+    }
+
+    @Bean //Habilita a criacao da documentacao 
+    /*
+     * Classe para criar um Docket (Documento) em forma de @bean, por se tratar de uma aplicacao Springboot
+     */
+    public Docket detalheApi() { 
+        Docket docket = new Docket(DocumentationType.SWAGGER_2);
+
+        docket //Existe um Documento
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("tst.firstStep.firstStepOnRest")) //Pacote que deverá ser monitorado pelo Swagger, evita que todos os pacotes sejam monitorados. Informar em qual pacote possui o controller no formato "pacote.comseus.controllers."
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(this.informacoesApi().build()) //Documento possui essas informacoes
+                .consumes(new HashSet<String>(Arrays.asList("application/json"))) //Configurado para consumir json
+                .produces(new HashSet<String>(Arrays.asList("application/json"))); //Configurado para produzir json
+
+        return docket;
+    }
+
+}
