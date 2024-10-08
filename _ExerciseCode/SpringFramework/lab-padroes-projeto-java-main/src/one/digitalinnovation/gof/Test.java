@@ -36,7 +36,7 @@ public class Test {
 		Comportamento defensivo = new ComportamentoDefensivo();
 		Comportamento normal = new ComportamentoNormal();
 		Comportamento agressivo = new ComportamentoAgressivo();
-		
+		//Utilizacao do polimorfismo. Tem um atributo do tipo da Interface (Comportamento)
 		Robo robo = new Robo();
 		robo.setComportamento(normal);
 		robo.mover();
