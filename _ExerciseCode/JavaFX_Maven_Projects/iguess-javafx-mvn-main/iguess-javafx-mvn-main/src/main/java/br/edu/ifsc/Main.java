@@ -15,24 +15,41 @@ import java.io.IOException;
 
 /**
  *
- * @author mpisc
+ * @author Hayden
+ * Necessario extender de Application
  */
 public class Main extends Application {
     
+    /**
+ *
+ * Necessario sobre escrever o metodo start
+ * Necessario implementar metodo start, que irá inicia a aplicaçao no javaFX
+ */
     @Override
     public void start(Stage primaryStage) {
 
         // Uso de temas CSS
         Application.setUserAgentStylesheet(new NordDark().getUserAgentStylesheet());
 
+        /**
+        *
+        * Instanciar um objeto do tipo Parent (Neste caso root).
+        * Apartir desse objeto irá carregar as configuraçoes contidas no arquivo .FXML que deve esta na view do projeto.
+        * Com getClass para usar o nome da class e getResource para capturar o caminho até onde esta o diretorio resources/view do projeto
+        * O bloco try/cat para tratar a excessao caos nao seja encontrado o arquivo .FXML
+        */
         Parent root = null;
         try {
-            //getClass para usar o nome da class e getResource para capturar o caminho até onde esta o projeto
-            root = FXMLLoader.load(getClass().getResource("/view/FXMLLabelMensagem.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/view/FXML_iguess.fxml"));
         } catch (IOException ex) {
             System.out.println("Não foi possível carregar a tela");
         }
         
+        /**
+         *
+         * Agora instanciar um objeto do tipo Scene
+         * Necessario setar o objeto com Parent criado anteriormente. 600, 400 são os paramentros de tamanho da janela
+         */
         Scene scene = new Scene(root, 600, 400);
         
         primaryStage.setTitle("Meu Primeiro JavaFX");
@@ -42,6 +59,7 @@ public class Main extends Application {
     }
 
     /**
+     * Para iniciar deve-se chamar o launch
      * @param args the command line arguments
      */
     public static void main(String[] args) {
