@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- fx:id deve estar apontado no controller -->
+<!-- onMouseClicked="#mudarFrase" parametro para indicar uma acao. E deve ser uma metodo no controller -->
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifsc.controller.FXML_iguess">
+   <AnchorPane prefHeight="371.0" prefWidth="600.0">
+      <children>
+         <Button fx:id="botton" layoutX="341.0" layoutY="256.0" mnemonicParsing="false" onAction="#actionBotton" text="Acionando" />
+         <Label fx:id="mensagem" layoutX="118.0" layoutY="304.0" prefHeight="32.0" prefWidth="341.0" text=" ------ Prepare-se, iremos calcular sua idade -----" />
+         <TextField fx:id="tf_idade" layoutX="117.0" layoutY="269.0" promptText="Digite sua idade" />
+         <TextField fx:id="tf_nome" layoutX="117.0" layoutY="230.0" promptText="Digite seu nome" />
+         <TextArea layoutX="117.0" layoutY="118.0" prefHeight="99.0" prefWidth="413.0" text="Este programa avancado de inteligengia artificial ira descobrir &#10;a sua idade apartir de poucas informacoes fornecidas.&#10;" />
+         <Label layoutX="146.0" layoutY="39.0" text="Contador de Rugas" textFill="#b94141">
+            <font>
+               <Font name="Apple SD Gothic Neo Bold" size="37.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+</VBox>
