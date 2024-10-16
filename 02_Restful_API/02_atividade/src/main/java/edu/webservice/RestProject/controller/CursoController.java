@@ -18,9 +18,9 @@ public class CursoController {
         @ResponseBody //Diz ao Spring Boot que o valor retornado pelo método deve ser o corpo da resposta HTTP. Ou seja, em vez de procurar uma página ou um template, o Spring apenas enviará o valor retornado diretamente na resposta HTTP.
 		//O método curso() recebe um parâmetro do tipo String chamado name e, em seguida, combina esse parâmetro com a palavra "curso" no return. Passando um parametro como "Amy" na solicitação, a resposta seria "curso Amy" (http://localhost:8080/curso?name=Amy).
         // o @RequestParam diz ao Spring para esperar um valor name na solicitação, mas se não estiver lá, ele usará a palavra "World" por padrão.
-		public Curso curso(@RequestParam(value = "name", defaultValue = "Curso Não Informado!") String name) 
+		public Curso curso(@RequestParam(value = "name", defaultValue = "Curso desconhecido") String name, @RequestParam(value = "ch", defaultValue = "0") int cargaHoraria) 
 		{
-			return new Curso(contador.incrementAndGet(), String.format("%s", name));
+			return new Curso(contador.incrementAndGet(), String.format("%s", name), cargaHoraria);
 		}
 
 }
