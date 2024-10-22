@@ -46,25 +46,25 @@ Para um projeto bem estruturado em Spring Boot, seguindo o padrão MVC, organizo
 `/controller`: Contém classes responsáveis por processar as requisições HTTP e interagir com a camada de serviço. Esta é a "View" no padrão MVC, pois ela fornece pontos de entrada para que o usuário possa interagir com o sistema.
 Classe: `FuncionarioController.java`
 
-/model: Contém as classes que representam entidades de domínio ou objetos de dados. Estas classes são a "Model" no padrão MVC, responsáveis por armazenar e manipular os dados do sistema.
-Classe: Funcionario.java
+`/model`: Contém as classes que representam entidades de domínio ou objetos de dados. Estas classes são a "Model" no padrão MVC, responsáveis por armazenar e manipular os dados do sistema.
+Classe: `Funcionario.java`
 
-/service: Contém classes de lógica de negócios que realizam o processamento de dados. Esta camada é responsável por implementar regras de negócio e cálculos, e serve como uma ponte entre o controlador e a camada de modelo. Em MVC, ela age como parte da lógica do sistema.
-Classe: CalculoSalarioService.java
+`/service`: Contém classes de lógica de negócios que realizam o processamento de dados. Esta camada é responsável por implementar regras de negócio e cálculos, e serve como uma ponte entre o controlador e a camada de modelo. Em MVC, ela age como parte da lógica do sistema.
+Classe: `CalculoSalarioService.java`
 
-SeuprojetoApplication.java: Ponto de entrada do projeto Spring Boot.
+`FolhaPagamentooApplication.java`: Ponto de entrada do projeto Spring Boot.
 
-/resources/application.properties: Arquivo de configuração para definir as propriedades do aplicativo. Você pode adicionar configurações específicas como a porta em que o aplicativo será executado.
+`/resources/application.properties`: Arquivo de configuração para definir as propriedades do aplicativo. Você pode adicionar configurações específicas como a porta em que o aplicativo será executado.
 
 ```bash 
 # Definir a porta do servidor
 server.port=8080
 ``` 
 ### Vantagens dessa Estrutura
-Separação de Responsabilidades: Cada camada tem uma responsabilidade clara e bem definida.
-Facilidade de Manutenção: Facilita a adição de novas funcionalidades, manutenção de código e entendimento do fluxo de dados.
-Reutilização de Código: A camada de serviço pode ser reutilizada em diferentes controladores se necessário.
-Escalabilidade: Facilita o crescimento do projeto sem bagunçar o código existente.
+_Separação de Responsabilidades_: Cada camada tem uma responsabilidade clara e bem definida.
+_Facilidade de Manutenção_: Facilita a adição de novas funcionalidades, manutenção de código e entendimento do fluxo de dados.
+_Reutilização de Código_: A camada de serviço pode ser reutilizada em diferentes controladores se necessário.
+_Escalabilidade_: Facilita o crescimento do projeto sem bagunçar o código existente.
 Com essa estrutura, seu projeto segue o padrão MVC e adere às boas práticas de desenvolvimento no Spring Framework. Isso torna seu código mais organizado, legível e fácil de manter.
 
 
