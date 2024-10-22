@@ -1,22 +1,23 @@
+# Prjeto para Calculo de Folha de Pagamento
+
 Baseado nos seguintes dados de entrada de um funcionário:
 - nome
 - salário base
 - número de dependentes
-Faça uma API Rest para retornar o salário líquido do funcionário, cuja regra de cálculo será a
-seguinte:
+Criou-se uma API Rest para retornar o salário líquido do funcionário, cuja regra de cálculo será a seguinte:
+``` bash 
 salarioLiquido = salárioBase – irpf + salarioFamilia
+``` 
 - para Calcular o irpf (Imposto de Renda de Pessoa Física)
 Será descontado 27.5% do salário base quando este for igual ou acima de 8500.00, e
 15% de para salário base igual ou acima de 5000.00. Abaixo deste valor o funcionário será isento.
 - o salarioFamilia terá a seguinte regra de cálculo:
 R$ 150,00 por dependente
 
-Por Exemplo:
-Request: localhost:8080/calcular_salario/Marcos/6000/4
-Response: 5700
-Observação: O parâmetro “calcular_salario“ se trata do recurso a ser acessado por meio de
-RequestMapping e os parâmetros “/Marcos/6000/4” correspondem respectivamente a nome,
-salárioBase e numeroDeDependentes do funcionário.
+#### Por Exemplo:
+`Request`: localhost:8080/calcular_salario/Marcos/6000/4
+`Response`: 5700
+`Observação`: O parâmetro “calcular_salario“ se trata do recurso a ser acessado por meio de RequestMapping e os parâmetros “/Marcos/6000/4” correspondem respectivamente a nome, salárioBase e numeroDeDependentes do funcionário.
 
 ### Estrutura de Pastas do Projeto
 Para um projeto bem estruturado em Spring Boot, seguindo o padrão MVC, organizou-se da seguinte forma:
