@@ -1,4 +1,4 @@
-# Prjeto para Calculo de Folha de Pagamento
+# Projeto para Calculo de Folha de Pagamento
 
 Baseado nos seguintes dados de entrada de um funcionário:
 - nome
