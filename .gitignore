@@ -3,7 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-*.zip
+
 *.DS_Store
 # User-specific files
 *.rsuser
@@ -99,6 +99,11 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+
+# Ignore arquivos .env
+.env
+
+*.zip
 
 # Chutzpah Test files
 _Chutzpah*
@@ -401,3 +406,6 @@ FodyWeavers.xsd
 
 # Diretórios
 img/
+# Diretórios
+img/
+vendor/
