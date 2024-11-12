@@ -10,9 +10,11 @@ import jakarta.persistence.Id;
 public class Categoria {
     //Amarra o valor que deve ser conparado entre a entidade e o banco de dados
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String descricao;
+
+    
     public int getId() {
         return id;
     }
@@ -25,6 +27,7 @@ public class Categoria {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    // metodos para comparar objetos da memoria com o objeto persitido.
     @Override
     public int hashCode() {
         final int prime = 31;

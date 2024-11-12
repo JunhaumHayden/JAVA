@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.ifsc</groupId>
-	<artifactId>rest_DTO_exemplo</artifactId>
+	<artifactId>TestLombok</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>rest_DTO_exemplo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>TestLombok</name>
+	<description>Demo Java FX project for Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -32,11 +32,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing-bridge-brave</artifactId>
 		</dependency>
 
 		<dependency>
@@ -60,9 +64,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependencies>
-		
-</dependencies>
 	</dependencies>
 
 	<build>
