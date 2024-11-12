@@ -18,8 +18,8 @@ public class DatabaseMySQL implements Database {
             final String URL = "jdbc:mysql://localhost:3306/db_vendas2?useTimezone=true&serverTimezone=UTC";//MySQL 8
             //String url = "jdbc:mysql://localhost:3306/db_vendas?useTimezone=true&serverTimezone=America/Sao_Paulo";
             //String url = "jdbc:mysql://localhost:3306/db_vendas";//MySQL 5
-            final String USER = "root";
-            final String PASS = "admin";
+            final String USER = "java";
+            final String PASS = "java";
             Class.forName(DRIVER);
             this.connection = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Conexão realizada com sucesso!");

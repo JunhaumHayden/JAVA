@@ -103,7 +103,7 @@ public class FXMLAnchorPaneCadastroProdutoController implements Initializable {
         observableListProdutos = FXCollections.observableArrayList(listaProdutos);
         tableView.setItems(observableListProdutos);
     }
-    
+    // metodo que atualiza o detalhamaneto de acordo com a selecao da tabela
     public void selecionarItemTableView(Produto produto) {
         DecimalFormat df = new DecimalFormat("0.00");
         if (produto != null) {
