@@ -1,14 +1,19 @@
 # API REST de Consulta de Produtos 📦
 
+![Static Badge](https://img.shields.io/badge/Powered_by-SpringBoot-green)
+
+
 Este projeto é uma API REST desenvolvida com Spring Boot e Maven, usando JPA para persistência de dados e MySQL como banco de dados. A aplicação fornece uma interface de consulta para categorias de produtos, oferecendo endpoints para listar, buscar e pesquisar produtos por descrição. Este projeto foi criado como parte dos meus estudos de APIs REST, persistência com JPA, e a integração de Spring Boot com MySQL.
 
 ## 📌 Funcionalidades
 
 A API oferece os seguintes endpoints para gerenciar as categorias de produtos:
 
->GET /categorias: Retorna uma lista de todas as categorias.
->GET /descricao/{id}: Busca uma categoria específica com base no ID.
->GET /categorias/descricao/{descricao}: Pesquisa categorias que contenham a descrição informada.
+>GET `/categorias`: Retorna uma lista de todas as categorias.
+
+>GET `/descricao/{id}`: Busca uma categoria específica com base no ID.
+
+>GET `/categorias/descricao/{descricao}`: Pesquisa categorias que contenham a descrição informada.
 
 ## 🛠 Tecnologias Utilizadas
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.ifsc.rest_DTO_exemplo.domain.Categoria;
 import edu.ifsc.rest_DTO_exemplo.domain.Produto;
+import edu.ifsc.rest_DTO_exemplo.dto.ProdutoDTO;
 import edu.ifsc.rest_DTO_exemplo.repository.CategoriaRepository;
 import edu.ifsc.rest_DTO_exemplo.repository.ProdutoRepository;
 
@@ -36,7 +37,6 @@ public class ProdutoController {
     @GetMapping
     public List<Produto> listar() {
         return produtoRepository.findAll();
-
     }
 
     /**
@@ -54,8 +54,18 @@ public class ProdutoController {
      * @return
      */
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Produto> buscarOtimizado(@PathVariable int id){
-        return produtoRepository.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()); //o metodo orElse é executado caso diferente de ok no metodo map(). Este é responsavel por alterar a mensagem de retorno de 500 para 404 na requisiçao.
+    public ResponseEntity<ProdutoDTO> buscarOtimizado(@PathVariable int id){
+        return produtoRepository.findById(id)
+            .map(produto -> {
+                var produtoDTO = new ProdutoDTO();
+                produtoDTO.setId(produto.getId());
+                produtoDTO.setNome(produto.getNome());
+                produtoDTO.setDescricaoProduto(produto.getDescricao());
+                produtoDTO.setDescricaoCategoria(produto.getCategoria().getDescricao());
+                return produtoDTO;
+            })
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build()); //o metodo orElse é executado caso diferente de ok no metodo map(). Este é responsavel por alterar a mensagem de retorno de 500 para 404 na requisiçao.
     }
 
     /**
