@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1>Java</h1>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCcxkA70BX5H1N1FFSkncQ-InOpqloUVZLcA&usqp=CAU" alt="Logo Java" width="220">
+<img src="https://avatars.githubusercontent.com/u/874086?s=200&v=4" alt="Logo Java" width="220">
 </div>
 
 
