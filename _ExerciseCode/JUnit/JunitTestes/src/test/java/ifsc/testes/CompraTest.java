@@ -23,4 +23,9 @@ public class CompraTest {
         Compra compra = new Compra();
         assertTrue(compra.freteGratis(150.0));
     }
+    @Test
+    public void naoFreteGratisTest() {
+        Compra compra = new Compra();
+        assertFalse(compra.freteGratis(100.0));
+    }
 }

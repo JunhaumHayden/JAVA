@@ -1,3 +1,3 @@
-module com.github.willyancaetano.junit {
+module com.github.hayden.junit {
     requires java.logging;
 }

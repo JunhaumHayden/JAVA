@@ -4,12 +4,12 @@
     <packaging>jar</packaging>
     <name>junit5-exemplos</name>
     <artifactId>junit5-exemplos</artifactId>
-    <groupId>one.digitalinnovation</groupId>
+    <groupId>edu.ifsc</groupId>
     <version>1.0.0-SNAPSHOT</version>
 
     <description>Repositório com exemplos utilizando JUnit 5</description>
 
-    <url>https://github.com/willyancaetano/junit5-exemplos</url>
+    <url>https://github.com/JunhaumHayden/JAVA</url>
 
     <licenses>
         <license>
@@ -20,33 +20,33 @@
     </licenses>
 
     <organization>
-        <name>Digital Innovation One</name>
-        <url>https://digitalinnovation.one</url>
+        <name>Junhaum Hayden</name>
+        <url>https://www.linkedin.com/in/carlos-hayden-junior/</url>
     </organization>
 
     <scm>
-        <url>https://github.com/willyancaetano/junit5-exemplos</url>
-        <connection>git@github.com:willyancaetano/junit5-exemplos.git</connection>
-        <developerConnection>git@github.com:willyancaetano/junit5-exemplos.git</developerConnection>
+        <url>https://github.com/JunhaumHayden</url>
+        <connection>git@github.com:JunhaumHayden</connection>
+        <developerConnection>git@github.com:JunhaumHayden</developerConnection>
     </scm>
 
     <issueManagement>
         <system>Issues</system>
-        <url>https://github.com/willyancaetano/junit5-exemplos/issues</url>
+        <url>https://github.com/JunhaumHayden/JAVA/tree/main/_ExerciseCode/JUnit</url>
     </issueManagement>
 
     <ciManagement>
         <system>Pipelines</system>
-        <url>https://github.com/willyancaetano/junit5-exemplos/pipelines</url>
+        <url>https://github.com/JunhaumHayden/JAVA/pipelines</url>
     </ciManagement>
 
     <developers>
         <developer>
-            <id>willyancaetano</id>
-            <email>willyancaetano775@gmail.com</email>
-            <name>Willyan Guimarães Caetano</name>
-            <organization>Digital Innovation One</organization>
-            <organizationUrl>https://digitalinnovation.one</organizationUrl>
+            <id>Carlos Hayden</id>
+            <email>carloshaydenjunior@gmail.com</email>
+            <name>Carlos Hayden Junior</name>
+            <organization>Hayden Corporetion</organization>
+            <organizationUrl>https://www.linkedin.com/in/carlos-hayden-junior/</organizationUrl>
             <roles>
                 <role>architect</role>
                 <role>developer</role>
@@ -57,7 +57,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class>one.digitalinnovation.junit.HelloWorld</main.class>
+        <main.class>edu.ifsc.junit.HelloWorld</main.class>
         <java.version>11</java.version>
         <junit.jupiter.version>5.8.0</junit.jupiter.version>
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
@@ -66,13 +66,16 @@
     </properties>
 
     <dependencies>
+    <!-- JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+    
 
     <build>
         <plugins>

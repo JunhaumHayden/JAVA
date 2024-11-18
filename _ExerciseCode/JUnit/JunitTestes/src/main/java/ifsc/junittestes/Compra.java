@@ -11,7 +11,11 @@ package ifsc.junittestes;
 public class Compra {
     
     public boolean freteGratis(Double valor){
-        return valor>=150;
+        if (valor>=150) {
+            return valor>=150;   
+        }else {
+            return false;
+        }
     }
     
 }

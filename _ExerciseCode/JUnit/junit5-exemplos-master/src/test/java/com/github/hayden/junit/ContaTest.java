@@ -22,41 +22,33 @@
     SOFTWARE.
  */
 
-package com.github.willyancaetano.junit;
+package com.github.hayden.junit;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
-public class AfterBeforeTeste {
-
-    @BeforeAll
-    static void configuraConexao() {
-        GerenciadorDeConexaoComBancoDeDados.iniciarConexao();
-    }
-
-    @BeforeEach
-    void insereDadosParaTeste() {
-        GerenciadorDeConexaoComBancoDeDados.insereDados(new Pessoa("João", LocalDateTime.of(2000, 1, 1, 13, 0, 0)));
-    }
-
-    @AfterEach
-    void removeDadosDoTeste() {
-        GerenciadorDeConexaoComBancoDeDados.removeDados(new Pessoa("João", LocalDateTime.of(2000, 1, 1, 13, 0, 0)));
-    }
+/**
+ * Classe apresentando mais detalhes das asserções
+ */
+public class ContaTest {
 
     @Test
-    void validarDadosDeRetorno() {
-        Assertions.assertTrue(true);
+    void validaSaldo() {
+        Conta conta = new Conta("123456", 100);
+        Assertions.assertNotNull(conta);
+
+        conta.lancaCredito(50);
+
+        Assertions.assertEquals(150, conta.getSaldo());
+
+        conta.lancaDebito(50);
+
+        Assertions.assertEquals(100, conta.getSaldo());
+
+        Assertions.assertNotEquals(101, conta.getSaldo());
+
+        conta = null;
+        Assertions.assertNull(conta);
     }
 
-    @Test
-    void validarDadosDeRetorno2() {
-        Assertions.assertNull(null);
-    }
-
-    @AfterAll
-    static void finalizarConexao() {
-        GerenciadorDeConexaoComBancoDeDados.finalizarConexao();
-    }
 }
