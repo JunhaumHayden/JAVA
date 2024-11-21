@@ -7,6 +7,9 @@ package br.edu.ifsc.fln.model.domain;
 /**
  *
  * @author mpisc
+ *
+ *
+ * @
  */
 public class Categoria {
     private int id;

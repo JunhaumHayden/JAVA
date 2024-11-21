@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class EstoqueDAO{
+public class EstoqueDAO {
 
     private Connection connection;
 
@@ -32,7 +32,7 @@ public class EstoqueDAO{
             stmt.setInt(1, estoque.getQuantidade());
             stmt.setInt(2, estoque.getQtdMinima());
             stmt.setInt(3, estoque.getQtdMaxima());
-            stmt.setString(4, estoque.getSituacao().name());
+            stmt.setString(4, estoque.getSituacao().name()); //Para estrair o nome do objeto que veio do javafx
             stmt.setInt(5, estoque.getProduto().getId());
             stmt.execute();
             return true;
@@ -57,7 +57,7 @@ public class EstoqueDAO{
         }
         return retorno;
     }
-    
+
     public List<Produto> listarPorEstoque(Estoque estoque) {
         String sql = "SELECT * FROM estoque e INNER JOIN produto p ON p.id = e.id_produto WHERE e.id_produto = ?";
         List<Produto> retorno = new ArrayList<>();
@@ -87,8 +87,8 @@ public class EstoqueDAO{
         produto.getEstoque().setQtdMaxima(rs.getInt("qtd_maxima"));
         produto.getEstoque().setQtdMinima(rs.getInt("qtd_minima"));
         produto.getEstoque().setSituacao(Enum.valueOf(ESituacao.class, rs.getString("situacao")));
-        return produto;
-    }   
-    
+        return produto; //para trazer o valor do enum
 
+
+    }
 }

@@ -8,15 +8,18 @@ package br.edu.ifsc.fln.controller;
 import br.edu.ifsc.fln.model.dao.EstoqueDAO;
 import br.edu.ifsc.fln.model.database.Database;
 import br.edu.ifsc.fln.model.database.DatabaseFactory;
-import br.edu.ifsc.fln.model.domain.Produto;
+import br.edu.ifsc.fln.model.domain.Modelo;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import br.edu.ifsc.fln.model.domain.veiculos.Modelo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -36,53 +39,52 @@ import javafx.stage.Stage;
  *
  * @author mpisching
  */
-public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
+public class FXMLAnchorPaneCadastroMotorController implements Initializable {
 
     @FXML
-    private Button btRepor;
+    private Button btAlterar;
 
     @FXML
-    private Button btRetirar;
+    private Button btExcluir;
 
     @FXML
-    private Button btAtualizar;
+    private Button btInserir;
 
     @FXML
-    private Label lbProdutoDescricao;
+    private Label lbModeloDescricao;
 
     @FXML
-    private Label lbProdutoId;
+    private Label lbModeloId;
 
     @FXML
-    private Label lbProdutoNome;
+    private Label lbMotorId;
 
     @FXML
-    private Label lbProdutoPreco;
+    private Label lbMotorPotencia;
 
     @FXML
-    private Label lbProdutoQtdMaxima;
+    private TableColumn<Modelo, String> tableColumnModeloDescricao;
 
     @FXML
-    private Label lbProdutoQtdMinima;
+    private TableView<Modelo> tableViewModelos;
 
     @FXML
-    private Label lbProdutoQuantidade;
+    void handleBtAlterar(ActionEvent event) {
+
+    }
 
     @FXML
-    private Label lbProdutoSituacao;
+    void handleBtExcluir(ActionEvent event) {
+
+    }
 
     @FXML
-    private TableColumn<Produto, String> tableColumnNome;
+    void handleBtInserir(ActionEvent event) {
 
-    @FXML
-    private TableColumn<Produto, Produto> tableColumnQuantidade;
-
-    @FXML
-    private TableView<Produto> tableView;
-
-
-    private List<Produto> listaProdutos;
-    private ObservableList<Produto> observableListProdutos;
+    }
+    
+    private List<Modelo> listaModelos;
+    private ObservableList<Modelo> observableListModelos;
 
     //acesso ao banco de dados
     private final Database database = DatabaseFactory.getDatabase("mysql");
@@ -107,39 +109,39 @@ public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
         tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnQuantidade.setCellValueFactory(new PropertyValueFactory<>("estoque"));
         
-        listaProdutos = estoqueDAO.listar();
+        listaModelos = estoqueDAO.listar();
         
-        observableListProdutos = FXCollections.observableArrayList(listaProdutos);
-        tableView.setItems(observableListProdutos);
+        observableListModelos = FXCollections.observableArrayList(listaModelos);
+        tableView.setItems(observableListModelos);
     }
     
-    public void selecionarItemTableView(Produto produto) {
+    public void selecionarItemTableView(Modelo produto) {
         DecimalFormat df = new DecimalFormat("0.00");
         if (produto != null) {
-            lbProdutoId.setText(Integer.toString(produto.getId()));
-            lbProdutoNome.setText(produto.getNome());
-            lbProdutoDescricao.setText(produto.getDescricao());
-            lbProdutoPreco.setText(df.format(produto.getPreco().doubleValue()));
-            lbProdutoQuantidade.setText(Integer.toString(produto.getEstoque().getQuantidade()));
-            lbProdutoQtdMinima.setText(Integer.toString(produto.getEstoque().getQtdMinima()));
-            lbProdutoQtdMaxima.setText(Integer.toString(produto.getEstoque().getQtdMaxima()));
-            lbProdutoSituacao.setText(produto.getEstoque().getSituacao().getDescricao());
+            lbModeloId.setText(Integer.toString(produto.getId()));
+            lbModeloNome.setText(produto.getNome());
+            lbModeloDescricao.setText(produto.getDescricao());
+            lbModeloPreco.setText(df.format(produto.getPreco().doubleValue()));
+            lbModeloQuantidade.setText(Integer.toString(produto.getEstoque().getQuantidade()));
+            lbModeloQtdMinima.setText(Integer.toString(produto.getEstoque().getQtdMinima()));
+            lbModeloQtdMaxima.setText(Integer.toString(produto.getEstoque().getQtdMaxima()));
+            lbModeloSituacao.setText(produto.getEstoque().getSituacao().getDescricao());
         } else {
-            lbProdutoId.setText("");
-            lbProdutoNome.setText("");
-            lbProdutoDescricao.setText("");
-            lbProdutoPreco.setText("");
-            lbProdutoQuantidade.setText("");
-            lbProdutoQtdMinima.setText("");
-            lbProdutoQtdMaxima.setText("");
-            lbProdutoSituacao.setText("");
+            lbModeloId.setText("");
+            lbModeloNome.setText("");
+            lbModeloDescricao.setText("");
+            lbModeloPreco.setText("");
+            lbModeloQuantidade.setText("");
+            lbModeloQtdMinima.setText("");
+            lbModeloQtdMaxima.setText("");
+            lbModeloSituacao.setText("");
         }
     }
     
 
     @FXML
     public void handleBtRepor() throws IOException {
-        Produto produto = tableView.getSelectionModel().getSelectedItem();
+        Modelo produto = tableView.getSelectionModel().getSelectedItem();
         if (produto != null) {
             boolean buttonConfirmarClicked = showFXMLAnchorPaneProcessoEstoqueMovimentacaoDialog(produto, "Repor");
             if (buttonConfirmarClicked) {
@@ -155,7 +157,7 @@ public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
     
     @FXML
     public void handleBtRetirar() throws IOException {
-        Produto produto = tableView.getSelectionModel().getSelectedItem();
+        Modelo produto = tableView.getSelectionModel().getSelectedItem();
         if (produto != null) {
             boolean buttonConfirmarClicked = showFXMLAnchorPaneProcessoEstoqueMovimentacaoDialog(produto, "Retirar");
             if (buttonConfirmarClicked) {
@@ -171,7 +173,7 @@ public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
     
     @FXML
     public void handleBtAtualizar() throws IOException {
-        Produto produto = tableView.getSelectionModel().getSelectedItem();
+        Modelo produto = tableView.getSelectionModel().getSelectedItem();
         if (produto != null) {
             boolean buttonConfirmarClicked = showFXMLAnchorPaneProcessoEstoqueAtualizacaoDialog(produto);
             if (buttonConfirmarClicked) {
@@ -185,10 +187,10 @@ public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
         }    
     }
     
-    public boolean showFXMLAnchorPaneProcessoEstoqueAtualizacaoDialog(Produto produto) throws IOException {
+    public boolean showFXMLAnchorPaneProcessoEstoqueAtualizacaoDialog(Modelo produto) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(FXMLAnchorPaneCadastroProdutoDialogController.class.getResource( 
-            "/view/FXMLAnchorPaneProcessoEstoqueAtualizacaoDialog.fxml"));
+        loader.setLocation(FXMLAnchorPaneCadastroModeloDialogController.class.getResource(
+                "/view/FXMLAnchorPaneCadastroEstoqueDialog.fxml"));
         AnchorPane page = (AnchorPane)loader.load();
         
         //criando um estágio de diálogo  (Stage Dialog)
@@ -207,10 +209,10 @@ public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
         return controller.isButtonConfirmarClicked();
     }
 
-    public boolean showFXMLAnchorPaneProcessoEstoqueMovimentacaoDialog(Produto produto, String tipoMovimento) throws IOException {
+    public boolean showFXMLAnchorPaneProcessoEstoqueMovimentacaoDialog(Modelo produto, String tipoMovimento) throws IOException {
         
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(FXMLAnchorPaneProcessoEstoqueMovimentoDialogController.class.getResource( 
+        loader.setLocation(FXMLAnchorPaneCadastroMotorDialogController.class.getResource(
             "/view/FXMLAnchorPaneProcessoEstoqueMovimentoDialog.fxml"));
         AnchorPane page = (AnchorPane)loader.load();
         
@@ -225,7 +227,7 @@ public class FXMLAnchorPaneProcessoEstoqueController implements Initializable {
         dialogStage.setScene(scene);
         
         //Setando o produto ao controller
-        FXMLAnchorPaneProcessoEstoqueMovimentoDialogController controller = loader.getController();
+        FXMLAnchorPaneCadastroMotorDialogController controller = loader.getController();
         controller.setTipoMovimento(tipoMovimento);
         controller.setDialogStage(dialogStage);
         controller.setEstoque(produto.getEstoque());
