@@ -4,23 +4,23 @@
  */
 package br.edu.ifsc.fln.controller;
 
-import br.edu.ifsc.fln.model.domain.Estoque;
-import java.net.URL;
-import java.util.ResourceBundle;
+import br.edu.ifsc.fln.model.domain.veiculos.Cor;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
  *
  * @author mpisc
  */
-public class FXMLAnchorPaneProcessoEstoqueMovimentoDialogController implements Initializable {
+public class FXMLAnchorPaneCadastroCorDialogController implements Initializable {
 
     @FXML
     private Button btCancelar;
@@ -29,23 +29,18 @@ public class FXMLAnchorPaneProcessoEstoqueMovimentoDialogController implements I
     private Button btConfirmar;
 
     @FXML
-    private TextField tfQuantidade;
-    
-    @FXML
-    private Label lbQuantidadeAtual;
+    private TextField tfNome;
     
     private Stage dialogStage;
     private boolean btConfirmarClicked = false;
-    private Estoque estoque;
-    
-    private String tipoMovimento;
+    private Cor cor;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        // TODO
     }       
 
     public boolean isBtConfirmarClicked() {
@@ -62,38 +57,25 @@ public class FXMLAnchorPaneProcessoEstoqueMovimentoDialogController implements I
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
-        btConfirmar.setText(tipoMovimento);
     }
 
-    public Estoque getEstoque() {
-        return estoque;
+    public Cor getCor() {
+        return cor;
     }
 
-    public void setEstoque(Estoque estoque) {
-        this.estoque = estoque;
-        this.lbQuantidadeAtual.setText(Integer.toString(estoque.getQuantidade()));
+    public void setCor(Cor cor) {
+        this.cor = cor;
+        this.tfNome.setText(cor.getNome());
     }
     
-    public void setTipoMovimento(String tipoMovimento) {
-        this.tipoMovimento = tipoMovimento;
-    }
-    
+
     @FXML
     public void handleBtConfirmar() {
-        try {
-            if (tipoMovimento.equalsIgnoreCase("Repor")) {
-                estoque.repor(Integer.parseInt(tfQuantidade.getText()));
-            } else {
-                estoque.retirar(Integer.parseInt(tfQuantidade.getText()));
-            }
+        if (validarEntradaDeDados()) {
+            cor.setNome(tfNome.getText());
+
             btConfirmarClicked = true;
             dialogStage.close();
-        } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erro na movimentação");
-            alert.setHeaderText("Corrija a quantidade ou cancele a operação!");
-            alert.setContentText(ex.getMessage());
-            alert.show();
         }
     }
     
@@ -102,5 +84,24 @@ public class FXMLAnchorPaneProcessoEstoqueMovimentoDialogController implements I
         dialogStage.close();
     }
     
+    //método para validar a entrada de dados
+    private boolean validarEntradaDeDados() {
+        String errorMessage = "";
+        if (this.tfNome.getText() == null || this.tfNome.getText().length() == 0) {
+            errorMessage += "Descrição inválida.\n";
+        }
+        
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            //exibindo uma mensagem de erro
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro no cadastro");
+            alert.setHeaderText("Corrija os campos inválidos!");
+            alert.setContentText(errorMessage);
+            alert.show();
+            return false;
+        }
+    }
     
 }
