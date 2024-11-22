@@ -15,7 +15,7 @@ public class DatabaseMySQL implements Database {
         try {
             final String DRIVER = "com.mysql.cj.jdbc.Driver";//MySQL 8
             //String driver = "com.mysql.jdbc.Driver"; //MySQL 5
-            final String URL = "jdbc:mysql://localhost:3306/carwash?useTimezone=true&serverTimezone=UTC";//MySQL 8
+            final String URL = "jdbc:mysql://localhost:3306/db_lava_jato?useTimezone=true&serverTimezone=UTC";//MySQL 8
             //String url = "jdbc:mysql://localhost:3306/db_vendas?useTimezone=true&serverTimezone=America/Sao_Paulo";
             //String url = "jdbc:mysql://localhost:3306/db_vendas";//MySQL 5
             final String USER = "java"; //"root"

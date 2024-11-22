@@ -1,6 +1,6 @@
 package br.edu.ifsc.fln.model.domain;
 // É um tipo especial de classe onde os objetos são previamente criados, imutaveis e disponiveis por toda aplicacao
-public enum Ecategoria 
+public enum ECategoria
 {
     //Declarando o conjunto de objetos pre-definidos
     PEQUENO("Pequeno"),
@@ -13,7 +13,7 @@ public enum Ecategoria
     private String descricao;
 
     //Declarando o metodo construtor - PRIVADO pq não é permitido que seja criado novos objetos pela aplicaçao
-    private Ecategoria (String descricao) {
+    private ECategoria(String descricao) {
      this.descricao = descricao;
     }
 

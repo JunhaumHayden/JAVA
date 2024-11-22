@@ -1,34 +1,22 @@
 package br.edu.ifsc.fln.model.domain.veiculos;
 
 public class Cor {
-    private long ultimoId = 0;
-    private long id;
+    private int id;
     private String nome;
 
-    // Construtor sobrecarregado
+    // Construtor
     public Cor(){
-        this.id = ++ultimoId;
     }
-
-    public Cor(String nome) {
-        this();
+    public Cor(int id, String nome) {
+        this.id = id;
         this.nome = nome;
     }
-
     // Getters e Setters
-    public long getUltimoId() {
-        return ultimoId;
-    }
-
-    public void setUltimoId(long ultimoId) {
-        this.ultimoId = ultimoId;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -46,7 +34,4 @@ public class Cor {
     {
         return nome;
     }
-    
-
-    
 }

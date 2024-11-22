@@ -1,15 +1,17 @@
 package br.edu.ifsc.fln.model.domain.veiculos;
 
 public class Motor {
+    private int id;
     private int potencia;
-    private EtipoCombustivel tipoCombustivel;
+    private ETipoCombustivel tipoCombustivel;
 
     // Construtor padrão
     public Motor() {
     }
 
     // Construtor
-    public Motor(int potencia, EtipoCombustivel tipoCombustivel) {
+    public Motor(int id, int potencia, ETipoCombustivel tipoCombustivel) {
+        this.id = id;
         this.potencia = potencia;
         this.tipoCombustivel = tipoCombustivel;
     }
@@ -23,19 +25,19 @@ public class Motor {
         this.potencia = potencia;
     }
 
-    public EtipoCombustivel getTipoCombustivel() {
+    public ETipoCombustivel getTipoCombustivel() {
         return tipoCombustivel;
     }
 
-    public void setTipoCombustivel(EtipoCombustivel tipoCombustivel) {
-        this.tipoCombustivel = tipoCombustivel;
+    public void setTipoCombustivel(ETipoCombustivel tipoCombustivel) {
+       this.tipoCombustivel = tipoCombustivel;
     }
 
-    @Override
-    public String toString() {
-        return "Motor:\n    potencia=" + potencia + "\n    tipoCombustivel=" + tipoCombustivel;
+    public int getId() {
+        return id;
     }
-    
 
-   
+    public void setId(int id) {
+        this.id = id;
+    }
 }
