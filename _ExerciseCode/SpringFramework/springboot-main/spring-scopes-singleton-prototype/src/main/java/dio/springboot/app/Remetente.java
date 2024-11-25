@@ -1,5 +1,9 @@
 package dio.springboot.app;
 
+/**
+ * Classe que representa um email
+ */
+
 public class Remetente {
     private String nome;
     private String email;

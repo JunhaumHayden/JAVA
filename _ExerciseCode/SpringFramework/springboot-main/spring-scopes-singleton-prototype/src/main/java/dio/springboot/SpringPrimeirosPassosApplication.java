@@ -6,6 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * programa de mensageria - Exemplo de aplicacao de Sigleton ou Prototype
+ * Contexto: programa que envia mensagem de boas vindas em dois contextos
+ * 1 - Ao se cadastrar - deve ser emviado pelo email noreplay
+ * 2 - Ao confirmar o cadastro - deve ser enviado pelo email tecteam
+ */
 @SpringBootApplication
 public class SpringPrimeirosPassosApplication {
 
