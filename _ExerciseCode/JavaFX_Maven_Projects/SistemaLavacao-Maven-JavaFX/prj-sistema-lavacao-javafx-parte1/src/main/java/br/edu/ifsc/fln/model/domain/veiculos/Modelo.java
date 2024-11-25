@@ -19,6 +19,10 @@ public class Modelo {
      * @param descricao Adiciona uma descriçao do modelo do veiculo
      * @param marca     Vincula a marca.
      */
+    public Modelo(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
     public Modelo(int id, String descricao, Marca marca) {
         this.id = id;
         this.descricao = descricao;
@@ -89,6 +93,9 @@ public class Modelo {
    //     this.motor = motor;
    // }
 
+    public String getNomeMarca() {
+        return marca != null ? marca.getNome() : "";
+    }
 
     @Override
     public String toString() {

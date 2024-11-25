@@ -126,7 +126,7 @@ public class FXMLAnchorPaneCadastroMarcaController implements Initializable {
     public void handleBtExcluir() throws IOException {
         Marca marca = tableViewMarcas.getSelectionModel().getSelectedItem();
         if (marca != null) {
-            marcaDAO.remover(marca);
+            marcaDAO.remover(marca.getId());
             carregarTableViewMarca();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -1,6 +1,7 @@
 package br.edu.ifsc.fln.model.dao.veiculos;
 
 import br.edu.ifsc.fln.model.domain.veiculos.Marca;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,18 +10,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
- * Classe responsável por interagir com o banco de dados, ele vai realizar as operações de inserção, consulta, atualização e remoção (CRUD) dos dados no banco de dados.
- * Possui um atributo que é um objeto do tipo Connection que usa o padrão Factory para obter a conexão com o banco de dados permitindo que a implementação de diferentes bancos de dados (como MySQL, PostgreSQL, etc.) seja alterada facilmente, sem modificar o código do DAO.
+ * Classe responsável por interagir com o banco de dados, realizando operações CRUD para a entidade Marca.
+ * Possui um atributo de conexão que utiliza o padrão Factory, permitindo a troca fácil de implementações de banco de dados.
  *
  * @author  Carlos Hayden
- * @version 1.0
+ * @version 1.1
  * @since   16/11/2024
- *
  */
 public class MarcaDAO {
 
+    private static final Logger LOGGER = Logger.getLogger(MarcaDAO.class.getName());
+
     private Connection connection;
+
+    // Construtor padrão
+    public MarcaDAO() {}
+
+    // Construtor com injeção de conexão
+    public MarcaDAO(Connection connection) {
+        this.connection = connection;
+    }
+
     // Getters e Setters
     public Connection getConnection() {
         return connection;
@@ -30,27 +42,33 @@ public class MarcaDAO {
         this.connection = connection;
     }
 
-    // Crud - Metodo para inserir uma nova marca no banco de dados
-
+    /**
+     * Insere uma nova marca no banco de dados.
+     * @param marca Marca a ser inserida.
+     * @return true se a operação for bem-sucedida, false caso contrário.
+     */
     public boolean inserir(Marca marca) {
-        String sql = "INSERT INTO marcas (nome) VALUES(?)";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
+        String sql = "INSERT INTO marcas (nome) VALUES (?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, marca.getNome());
-            stmt.execute();
-            return true;
+            return stmt.executeUpdate() > 0;
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, "Erro ao inserir marca: " + marca.getNome(), ex);
             return false;
         }
+
     }
-    // cRud - Metodo para buscar todas as marcas no banco de dados
+
+    /**
+     * Lista todas as marcas no banco de dados.
+     * @return Lista de marcas.
+     */
     public List<Marca> listar() {
         String sql = "SELECT * FROM marcas";
         List<Marca> retorno = new ArrayList<>();
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            ResultSet resultado = stmt.executeQuery();
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet resultado = stmt.executeQuery()) {
+
             while (resultado.next()) {
                 Marca marca = new Marca();
                 marca.setId(resultado.getInt("id"));
@@ -58,53 +76,82 @@ public class MarcaDAO {
                 retorno.add(marca);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, "Erro ao listar marcas", ex);
         }
         return retorno;
-    }
-    // Metodo para buscar marca
-    public Marca buscar(Marca marca) {
-        String sql = "SELECT * FROM marcas WHERE id=?";
-        Marca retorno = new Marca();
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, marca.getId());
-            ResultSet resultado = stmt.executeQuery();
-            if (resultado.next()) {
-                marca.setNome(resultado.getString("nome"));
-                retorno = marca;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return retorno;
-    }
-    // crUd- Metodo para alterar dados de uma marca no banco de dados
-    public boolean alterar(Marca marca) {
-        String sql = "UPDATE marcas SET nome=? WHERE id=?";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, marca.getNome());
-            stmt.setInt(2, marca.getId());
-            stmt.execute();
-            return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
     }
 
-    // cruD - Metodo para excluir uma marca
-    public boolean remover(Marca marca) {
-        String sql = "DELETE FROM marcas WHERE id=?";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, marca.getId());
-            stmt.execute();
-            return true;
+    /**
+     * Busca uma marca pelo ID.
+     * @param id ID da marca a ser buscada.
+     * @return Objeto Marca se encontrado, null caso contrário.
+     */
+    public Marca buscar(int id) {
+        String sql = "SELECT * FROM marcas WHERE id=?";
+        Marca marca = new Marca();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet resultado = stmt.executeQuery()) {
+                if (resultado.next()) {
+                    marca.setId(resultado.getInt("id"));
+                    marca.setNome(resultado.getString("nome"));
+                    return marca;
+                }
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(MarcaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+            LOGGER.log(Level.SEVERE, "Erro ao buscar marca com ID: " + id, ex);
         }
+        return marca;
+    }
+
+    public Marca buscarMarca(Marca marca) {
+        String sql = "SELECT * FROM marcas WHERE id=?";
+        Marca retorno = new Marca();
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, marca.getId());
+            try (ResultSet resultado = stmt.executeQuery()) {
+                if (resultado.next()) {
+                    retorno.setId(resultado.getInt("id"));
+                    retorno.setNome(resultado.getString("nome"));
+                    return retorno;
+                }
+            }
+        } catch (SQLException ex) {
+            LOGGER.log(Level.SEVERE, "Erro ao buscar marca: ", ex);
+        }
+        return retorno;
+    }
+
+    /**
+     * Atualiza os dados de uma marca no banco de dados.
+     * @param marca Marca com dados atualizados.
+     * @return true se a operação for bem-sucedida, false caso contrário.
+     */
+    public boolean alterar(Marca marca) {
+        String sql = "UPDATE marcas SET nome=? WHERE id=?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, marca.getNome());
+            stmt.setInt(2, marca.getId());
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            LOGGER.log(Level.SEVERE, "Erro ao atualizar marca com ID: " + marca.getId(), ex);
+        }
+        return false;
+    }
+
+    /**
+     * Remove uma marca do banco de dados.
+     * @param id ID da marca a ser removida.
+     * @return true se a operação for bem-sucedida, false caso contrário.
+     */
+    public boolean remover(int id) {
+        String sql = "DELETE FROM marcas WHERE id=?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            LOGGER.log(Level.SEVERE, "Erro ao remover marca com ID: " + id, ex);
+        }
+        return false;
     }
 }

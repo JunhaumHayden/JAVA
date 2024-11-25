@@ -8,5 +8,6 @@ module Main {
     opens br.edu.ifsc.fln.model.domain to javafx.base;
     opens br.edu.ifsc.fln.model.domain.veiculos to javafx.base;
     opens br.edu.ifsc.fln.model.domain.clientes to javafx.base;
+    opens br.edu.ifsc.fln.model.dao.veiculos to javafx.base;
     exports br.edu.ifsc.fln;
 }
