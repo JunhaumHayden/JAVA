@@ -1,0 +1,4 @@
+### GET request to example server
+PUT http://localhost:8080/livros/reajustar/14
+
+###
