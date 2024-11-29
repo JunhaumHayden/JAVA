@@ -3,6 +3,8 @@ package edu.ifsc.rest_DTO_exemplo.controller;
 import java.util.List;
 import java.util.Optional;
 
+import edu.ifsc.rest_DTO_exemplo.domain.Fornecedor;
+import edu.ifsc.rest_DTO_exemplo.repository.FornecedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,8 @@ public class ProdutoController {
     private ProdutoRepository produtoRepository;
     @Autowired
     private CategoriaRepository categoriaRepository;
+    @Autowired
+    private FornecedorRepository fornecedorRepository;
     
     @GetMapping
     public List<Produto> listar() {
@@ -80,6 +84,8 @@ public class ProdutoController {
         produto = produtoRepository.save(produto);
         Optional<Categoria> categoria = categoriaRepository.findById(produto.getCategoria().getId());
         produto.setCategoria(categoria.get());
+        Optional<Fornecedor> fornecedor = fornecedorRepository.findById(produto.getFornecedor().getId());
+        produto.setFornecedor(fornecedor.get());
         return produto;
     }
 

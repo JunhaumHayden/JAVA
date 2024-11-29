@@ -3,6 +3,9 @@
 ![Static Badge](https://img.shields.io/badge/Powered_by-SpringBoot-green)
 
 
+
+
+
 Este projeto é uma API REST desenvolvida com Spring Boot e Maven, usando JPA para persistência de dados e MySQL como banco de dados. A aplicação fornece uma interface de consulta para categorias de produtos, oferecendo endpoints para listar, buscar e pesquisar produtos por descrição. Este projeto foi criado como parte dos meus estudos de APIs REST, persistência com JPA, e a integração de Spring Boot com MySQL.
 
 ## 📌 Funcionalidades
