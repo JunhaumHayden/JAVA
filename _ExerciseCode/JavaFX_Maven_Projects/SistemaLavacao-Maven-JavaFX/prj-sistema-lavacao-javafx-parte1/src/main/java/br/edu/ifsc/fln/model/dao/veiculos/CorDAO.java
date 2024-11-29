@@ -23,6 +23,14 @@ import java.util.logging.Logger;
 public class CorDAO {
 
     private Connection connection;
+
+    // Construtor padrão
+    public CorDAO() {}
+    // Construtor com injeção de conexão
+    public CorDAO(Connection connection) {
+        this.connection = connection;
+    }
+
     // Getters e Setters
     public Connection getConnection() {
         return connection;
@@ -32,9 +40,8 @@ public class CorDAO {
     }
 
     // Crud - Metodo para inserir uma nova cor no banco de dados
-
     public boolean inserir(Cor cor) {
-        String sql = "INSERT INTO cores (nome) VALUES(?)";
+        String sql = "INSERT INTO cor (nome) VALUES(?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cor.getNome());
@@ -47,7 +54,7 @@ public class CorDAO {
     }
     // cRud - Metodo para buscar todas as cors no banco de dados
     public List<Cor> listar() {
-        String sql = "SELECT * FROM cores";
+        String sql = "SELECT * FROM cor";
         List<Cor> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -65,7 +72,7 @@ public class CorDAO {
     }
     // Metodo para buscar cor
     public Cor buscar(Cor cor) {
-        String sql = "SELECT * FROM cores WHERE id=?";
+        String sql = "SELECT * FROM cor WHERE id=?";
         Cor retorno = new Cor();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
@@ -82,7 +89,7 @@ public class CorDAO {
     }
     // crUd- Metodo para alterar dados de uma cor no banco de dados
     public boolean alterar(Cor cor) {
-        String sql = "UPDATE cores SET nome=? WHERE id=?";
+        String sql = "UPDATE cor SET nome=? WHERE id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, cor.getNome());
@@ -97,7 +104,7 @@ public class CorDAO {
 
     // cruD - Metodo para excluir uma cor
     public boolean remover(Cor cor) {
-        String sql = "DELETE FROM cores WHERE id=?";
+        String sql = "DELETE FROM cor WHERE id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, cor.getId());

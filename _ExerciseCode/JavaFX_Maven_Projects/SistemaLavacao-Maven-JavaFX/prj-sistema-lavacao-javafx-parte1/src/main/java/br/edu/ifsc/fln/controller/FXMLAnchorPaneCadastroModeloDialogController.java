@@ -144,7 +144,6 @@ public class FXMLAnchorPaneCadastroModeloDialogController implements Initializab
         tfModeloDescricao.focusedProperty().addListener((ov, oldV, newV) -> {
             if (!newV) { // focus lost
                 if (tfModeloDescricao.getText() == null || tfModeloDescricao.getText().isEmpty()) {
-                    //System.out.println("teste focus lost");
                     tfModeloDescricao.requestFocus();
                 }
             }

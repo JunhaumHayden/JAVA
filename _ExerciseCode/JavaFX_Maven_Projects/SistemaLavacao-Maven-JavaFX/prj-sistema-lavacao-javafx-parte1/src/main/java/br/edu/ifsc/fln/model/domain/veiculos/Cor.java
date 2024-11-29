@@ -7,10 +7,20 @@ public class Cor {
     // Construtor
     public Cor(){
     }
+
     public Cor(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
+
+    public Cor(int id) {
+        this.id = id;
+    }
+
+    public Cor(String nome) {
+        this.nome = nome;
+    }
+
     // Getters e Setters
     public int getId() {
         return id;

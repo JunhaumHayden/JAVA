@@ -8,6 +8,7 @@ public enum ETipoCombustivel
         FLEX,
         DIESEL,
         GNV,
+        ELETRICO,
         OUTRO
 
 }

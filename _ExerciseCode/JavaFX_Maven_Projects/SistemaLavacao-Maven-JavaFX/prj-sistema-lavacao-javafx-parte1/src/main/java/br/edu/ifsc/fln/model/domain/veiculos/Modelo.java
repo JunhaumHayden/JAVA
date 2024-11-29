@@ -12,6 +12,10 @@ public class Modelo {
     // Construtor padrão
     public Modelo() {
     }
+
+    public Modelo(int id) {
+        this.id = id;
+    }
     /**
      * Construtor sobre carregado chama o construtor padrão (this()) para gerar o id e, em seguida, o nome da marca e uma descricao do Modelo.
      *

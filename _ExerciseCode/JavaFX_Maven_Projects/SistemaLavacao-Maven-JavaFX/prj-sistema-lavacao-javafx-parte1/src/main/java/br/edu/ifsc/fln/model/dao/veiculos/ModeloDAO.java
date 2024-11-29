@@ -1,10 +1,7 @@
 package br.edu.ifsc.fln.model.dao.veiculos;
 
 import br.edu.ifsc.fln.model.domain.ECategoria;
-import br.edu.ifsc.fln.model.domain.veiculos.ETipoCombustivel;
-import br.edu.ifsc.fln.model.domain.veiculos.Marca;
-import br.edu.ifsc.fln.model.domain.veiculos.Modelo;
-import br.edu.ifsc.fln.model.domain.veiculos.Motor;
+import br.edu.ifsc.fln.model.domain.veiculos.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -55,7 +52,7 @@ public class ModeloDAO {
      * @return O objeto Modelo com o ID gerado preenchido, ou null em caso de falha.
      */
     public boolean inserir(Modelo modelo) {
-        String sqlModelo = "INSERT INTO modelos (descricao, id_marca, id_motor, categoria) VALUES (?, ?, ?, ?)";
+        String sqlModelo = "INSERT INTO modelo (descricao, id_marca, id_motor, categoria) VALUES (?, ?, ?, ?)";
         // Insere o motor
         try {
             // Inserir motor associado primeiro
@@ -82,17 +79,17 @@ public class ModeloDAO {
         }
     }
     /**
-     * Lista todos os modelos no banco de dados.
+     * Lista todos os modelo no banco de dados.
      * @return Uma lista de objetos Modelo.
      */
     public List<Modelo> listar() {
-        String sql = "SELECT * FROM modelos";
+        String sql = "SELECT * FROM modelo";
         List<Modelo> retorno = new ArrayList<>();
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             ResultSet resultado = stmt.executeQuery();
             while (resultado.next()) {
-                retorno.add(construirModelo(resultado));
+                retorno.add(construirModelo(resultado, new Modelo()));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,14 +102,14 @@ public class ModeloDAO {
      * @return O objeto Motor encontrado, ou null se não existir.
      */
     public Modelo buscar(Modelo modelo) {
-        String sql = "SELECT * FROM modelos WHERE id = ?";
+        String sql = "SELECT * FROM modelo WHERE id = ?";
         Modelo retorno = new Modelo(); // Inicializa um objeto vazio
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, modelo.getId());
             try (ResultSet resultado = stmt.executeQuery()){
                 if (resultado.next()) {
-                    retorno = construirModelo(resultado); // Popula o objeto se houver resultado
+                    retorno = construirModelo(resultado, retorno); // Popula o objeto se houver resultado
                 }
             }
         } catch (SQLException ex) {
@@ -126,7 +123,7 @@ public class ModeloDAO {
      * @return True se a operação foi bem-sucedida, false caso contrário.
      */
     public boolean alterar(Modelo modelo) {
-        String sql = "UPDATE modelos SET descricao = ?, id_marca = ?, id_motor = ?, categoria = ? WHERE id = ?";
+        String sql = "UPDATE modelo SET descricao = ?, id_marca = ?, id_motor = ?, categoria = ? WHERE id = ?";
         try {
             // Atualizar motor associado primeiro
             motorDAO.alterar(modelo.getMotor());
@@ -150,7 +147,7 @@ public class ModeloDAO {
      * @return True se a operação foi bem-sucedida, false caso contrário.
      */
     public boolean remover(Modelo modelo) {
-        String sql = "DELETE FROM modelos WHERE id=?";
+        String sql = "DELETE FROM modelo WHERE id=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, modelo.getId());
@@ -166,9 +163,7 @@ public class ModeloDAO {
      * @param resultado Um objeto do tipo Resultset com os dados para a construçao do objeto.
      * @return Um objeto do tipo Modelo
      */
-    private Modelo construirModelo(ResultSet resultado) throws SQLException {
-        Modelo modelo = new Modelo();
-
+    private Modelo construirModelo(ResultSet resultado, Modelo modelo) throws SQLException {
         modelo.setId(resultado.getInt("id"));
         modelo.setDescricao(resultado.getString("descricao"));
         modelo.setCategoria(ECategoria.valueOf(resultado.getString("categoria")));

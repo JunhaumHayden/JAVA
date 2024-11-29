@@ -5,8 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.edu.ifsc.fln</groupId>
-    <artifactId>prj-sistema-vendas-javafx-parte1</artifactId>
-    <version>1.0.0</version>
+    <artifactId>prj-sistema-lavacao-javafx-parte1</artifactId>
+    <version>0.2.2-SNAPSHOT</version>
+    <name>sistema-lavacao-javafx</name>
+    <description>Sistema de lavação de carros com funcionalidades abrangentes para o gerenciamento do mesmo.</description>
+    <url>https://github.com/JunhaumHayden/JAVA</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -14,6 +17,25 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.0</junit.version>
     </properties>
+    <developers>
+        <developer>
+            <id>Carlos Hayden</id>
+            <email>carloshaydenjunior@gmail.com</email>
+            <name>Carlos Hayden Junior</name>
+            <organization>Hayden Corporation</organization>
+            <organizationUrl>https://www.linkedin.com/in/carlos-hayden-junior/</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Sao_Paulo</timezone>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://github.com/JunhaumHayden</url>
+        <connection>git@github.com:JunhaumHayden</connection>
+        <developerConnection>git@github.com:JunhaumHayden</developerConnection>
+    </scm>
 
     <dependencies>
     
@@ -103,5 +125,4 @@
             </plugin>
         </plugins>
     </build>
-    <name>prj-sistema-vendas-javafx-parte1</name>
 </project>

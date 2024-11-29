@@ -3,7 +3,6 @@ package br.edu.ifsc.fln.model.dao.veiculos;
 import br.edu.ifsc.fln.model.domain.ECategoria;
 import br.edu.ifsc.fln.model.domain.veiculos.Marca;
 import br.edu.ifsc.fln.model.domain.veiculos.Modelo;
-import br.edu.ifsc.fln.model.domain.veiculos.Motor;
 import br.edu.ifsc.fln.model.domain.veiculos.ETipoCombustivel;
 import org.junit.jupiter.api.*;
 
@@ -15,6 +14,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Classe de teste para VeiculoDAO.
+ *
+ * @author
+ * @version 1.0
+ * @since 27/11/2024
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ModeloDAOTest {
@@ -22,43 +28,39 @@ public class ModeloDAOTest {
     private Connection connection;
     private ModeloDAO modeloDAO;
     private MarcaDAO marcaDAO;
-    private MotorDAO motorDAO;
 
     @BeforeAll
-    void setupDatabase() throws SQLException {
+    void setup() throws SQLException {
         // Conexão com o banco de dados de teste
-        connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/testdb", "java", "java"
-        );
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "java", "java");
         connection.setAutoCommit(false);
 
         // Criação das tabelas para testes
         try (Statement stmt = connection.createStatement()) {
-            stmt.execute("CREATE TABLE IF NOT EXISTS marcas (" +
+            stmt.execute("CREATE TABLE IF NOT EXISTS marca (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY," +
-                    "nome VARCHAR(50) NOT NULL" +
+                    "nome VARCHAR(50) NOT NULL UNIQUE" +
                     ")ENGINE=InnoDB");
             stmt.execute("CREATE TABLE IF NOT EXISTS motor (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY," +
-                    "potencia DOUBLE NOT NULL," +
-                    "tipo_combustivel ENUM('GASOLINA', 'DIESEL', 'ELETRICO') NOT NULL" +
+                    "potencia INT NOT NULL," +
+                    "tipo_combustivel ENUM('GASOLINA', 'ETANOL', 'FLEX', 'DIESEL', 'GNV', 'ELETRICO', 'OUTRO') NOT NULL" +
                     ")ENGINE=InnoDB");
-            stmt.execute("CREATE TABLE IF NOT EXISTS modelos (" +
+            stmt.execute("CREATE TABLE IF NOT EXISTS modelo (" +
                     "id INT AUTO_INCREMENT PRIMARY KEY," +
-                    "descricao VARCHAR(50) NOT NULL," +
+                    "descricao VARCHAR(50) NOT NULL UNIQUE," +
                     "id_marca INT NOT NULL," +
                     "id_motor INT NOT NULL," +
                     "categoria ENUM('PEQUENO', 'MEDIO', 'GRANDE', 'MOTO', 'PADRAO') NOT NULL," +
                     "FOREIGN KEY (id_marca) REFERENCES marcas(id)," +
                     "FOREIGN KEY (id_motor) REFERENCES motor(id) ON DELETE CASCADE" +
                     ")ENGINE=InnoDB");
-            stmt.execute("INSERT INTO marcas (nome) VALUES ('Toyota')");
-            stmt.execute("INSERT INTO marcas (nome) VALUES ('Hyundai')");
+            stmt.execute("INSERT INTO marca (nome) VALUES ('Toyota')");
+            stmt.execute("INSERT INTO marca (nome) VALUES ('Hyundai')");
         }
 
         modeloDAO = new ModeloDAO(connection);
         marcaDAO = new MarcaDAO(connection);
-        motorDAO = new MotorDAO(connection);
     }
 
 
@@ -87,7 +89,7 @@ public class ModeloDAOTest {
         Marca marca = marcaDAO.buscar(1); // Marca previamente inserida
 
         Modelo modelo = new Modelo();
-        modelo.setDescricao("Corolla");
+        modelo.setDescricao("Corolla test");
         modelo.setMarca(marca);
         modelo.getMotor().setPotencia(100);
         modelo.getMotor().setTipoCombustivel(ETipoCombustivel.GASOLINA);

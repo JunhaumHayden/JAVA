@@ -27,7 +27,6 @@ public class MarcaDAO {
 
     // Construtor padrão
     public MarcaDAO() {}
-
     // Construtor com injeção de conexão
     public MarcaDAO(Connection connection) {
         this.connection = connection;
@@ -37,7 +36,6 @@ public class MarcaDAO {
     public Connection getConnection() {
         return connection;
     }
-
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
@@ -48,7 +46,7 @@ public class MarcaDAO {
      * @return true se a operação for bem-sucedida, false caso contrário.
      */
     public boolean inserir(Marca marca) {
-        String sql = "INSERT INTO marcas (nome) VALUES (?)";
+        String sql = "INSERT INTO marca (nome) VALUES (?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, marca.getNome());
             return stmt.executeUpdate() > 0;
@@ -60,11 +58,11 @@ public class MarcaDAO {
     }
 
     /**
-     * Lista todas as marcas no banco de dados.
-     * @return Lista de marcas.
+     * Lista todas as marca no banco de dados.
+     * @return Lista de marca.
      */
     public List<Marca> listar() {
-        String sql = "SELECT * FROM marcas";
+        String sql = "SELECT * FROM marca";
         List<Marca> retorno = new ArrayList<>();
         try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet resultado = stmt.executeQuery()) {
@@ -76,7 +74,7 @@ public class MarcaDAO {
                 retorno.add(marca);
             }
         } catch (SQLException ex) {
-            LOGGER.log(Level.SEVERE, "Erro ao listar marcas", ex);
+            LOGGER.log(Level.SEVERE, "Erro ao listar marca", ex);
         }
         return retorno;
     }
@@ -87,7 +85,7 @@ public class MarcaDAO {
      * @return Objeto Marca se encontrado, null caso contrário.
      */
     public Marca buscar(int id) {
-        String sql = "SELECT * FROM marcas WHERE id=?";
+        String sql = "SELECT * FROM marca WHERE id=?";
         Marca marca = new Marca();
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -105,7 +103,7 @@ public class MarcaDAO {
     }
 
     public Marca buscarMarca(Marca marca) {
-        String sql = "SELECT * FROM marcas WHERE id=?";
+        String sql = "SELECT * FROM marca WHERE id=?";
         Marca retorno = new Marca();
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, marca.getId());
@@ -128,7 +126,7 @@ public class MarcaDAO {
      * @return true se a operação for bem-sucedida, false caso contrário.
      */
     public boolean alterar(Marca marca) {
-        String sql = "UPDATE marcas SET nome=? WHERE id=?";
+        String sql = "UPDATE marca SET nome=? WHERE id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, marca.getNome());
             stmt.setInt(2, marca.getId());
@@ -145,7 +143,7 @@ public class MarcaDAO {
      * @return true se a operação for bem-sucedida, false caso contrário.
      */
     public boolean remover(int id) {
-        String sql = "DELETE FROM marcas WHERE id=?";
+        String sql = "DELETE FROM marca WHERE id=?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             return stmt.executeUpdate() > 0;

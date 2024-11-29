@@ -1,4 +1,4 @@
-package br.edu.ifsc.fln.model.domain.clientes;
+package edu.ifsc.lavacao_api.model.clientes;
 
 /**
 * Esta é uma Interface de Cliente.<br>

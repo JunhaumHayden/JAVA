@@ -1,7 +1,7 @@
-package br.edu.ifsc.fln.model.domain.veiculos;
+package edu.ifsc.lavacao_api.model.veiculos;
 
-import br.edu.ifsc.fln.exceptions.ExceptionLavacao;
-import br.edu.ifsc.fln.model.domain.clientes.Cliente;
+import edu.ifsc.lavacao_api.exceptions.ExceptionLavacao;
+import edu.ifsc.lavacao_api.model.clientes.Cliente;
 
 /**
 * 

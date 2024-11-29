@@ -1,7 +1,5 @@
 package br.edu.ifsc.fln.model.dao.veiculos;
 
-import br.edu.ifsc.fln.model.database.Database;
-import br.edu.ifsc.fln.model.database.DatabaseFactory;
 import br.edu.ifsc.fln.model.domain.veiculos.ETipoCombustivel;
 import br.edu.ifsc.fln.model.domain.veiculos.Motor;
 import org.junit.jupiter.api.*;

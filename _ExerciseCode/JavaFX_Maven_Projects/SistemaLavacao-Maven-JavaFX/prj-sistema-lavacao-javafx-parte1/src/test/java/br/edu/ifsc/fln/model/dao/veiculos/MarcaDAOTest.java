@@ -21,20 +21,16 @@ class MarcaDAOTest {
 
     @BeforeAll
     void setUp() throws SQLException {
-        // Conexão com banco de dados local para testes
+        // Conexão com banco de dados de teste
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "java", "java");
         marcaDAO = new MarcaDAO(connection);
 
         // Criação da tabela para testes
-        connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS marcas (" +
+        connection.createStatement().executeUpdate("CREATE TABLE IF NOT EXISTS marca (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
-                "nome VARCHAR(255) NOT NULL)");
+                "nome VARCHAR(255) NOT NULL UNIQUE) ENGINE=InnoDB");
     }
 
-    @BeforeEach
-    void cleanUpTable() throws SQLException {
-        connection.createStatement().executeUpdate("DELETE FROM marcas");
-    }
 
     @AfterAll
     void tearDownClass() throws SQLException {
@@ -50,7 +46,7 @@ class MarcaDAOTest {
     @Test
     void testInserirMarca() {
         Marca marca = new Marca();
-        marca.setNome("Toyota");
+        marca.setNome("Toyota test");
 
         boolean resultado = marcaDAO.inserir(marca);
 
