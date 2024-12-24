@@ -46,11 +46,11 @@ public class FornecedorDAO {
             //armazena os dados da subclasse
             if (fornecedor instanceof Nacional) {
                 stmt = connection.prepareStatement(sqlFN);
-                stmt.setString(1, ((Nacional)fornecedor).getCnpj());
+                stmt.setString(1, ((Nacional)fornecedor).getCnpj()); //fazendo cast
                 stmt.execute();
             } else {
                 stmt = connection.prepareStatement(sqlFI);
-                stmt.setString(1, ((Internacional)fornecedor).getNif());
+                stmt.setString(1, ((Internacional)fornecedor).getNif()); //fazendo cast
                 stmt.setString(2, ((Internacional)fornecedor).getPais());
                 stmt.execute();
             }
