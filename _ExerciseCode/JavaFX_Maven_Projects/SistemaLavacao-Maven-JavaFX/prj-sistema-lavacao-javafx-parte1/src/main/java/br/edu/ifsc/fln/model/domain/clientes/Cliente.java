@@ -1,45 +1,68 @@
 package br.edu.ifsc.fln.model.domain.clientes;
+
+import br.edu.ifsc.fln.exceptions.ExceptionLavacao;
+import br.edu.ifsc.fln.model.domain.*;
 import br.edu.ifsc.fln.model.domain.veiculos.Veiculo;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Classe para representar um cliente criada apenas para teste.
- *
- * @author
- * @version 0.2
- * @since 27/11/2024
- */
-public class Cliente {
-    private int id;
-    private String nome;
-    private final List<Veiculo> listaVeiculos; // Lista encapsulada
-
-    // Construtores
-    public Cliente() {
+* Classe para garantir que todos os clientes tenham informaçoes minimmas no sistema.<br>
+* A classe Cliente é uma classe abstrata que implementa a interface ICliente. Isso significa que ela pode fornecer implementações parciais ou completas dos métodos da interface, mas como é abstrata, não precisa fornecer todas as implementações. As subclasses concretas (não abstratas) terão que completar a implementação.
+* @author  Junhaum Hayden
+* @version 1.2
+* @since   07/08/2024
+*/
+public abstract class Cliente implements ICliente
+{
+    private static int ultimoId = 0;
+    protected int id;
+    protected String nome;
+    protected String celular;
+    protected String email;
+    protected Date dataCadastro;
+    protected Pontuacao pontuacao = new Pontuacao(); //Para configurar uma composicao precisa instanciar no momento da criacao
+    protected List<Veiculo> listaVeiculos;
+    
+    //construtor padrao
+    /**
+     * Gera automaticamente um ID de cliente unico a cada nova instancia da classe e atribui a data e inicializa a lista de veiculos. 
+     */
+    private Cliente() 
+    {
         this.listaVeiculos = new ArrayList<>();
+        this.dataCadastro = new Date(); // Atribui a data e hora atuais
     }
 
-    public Cliente(int id) {
-        this.id = id;
-        this.listaVeiculos = new ArrayList<>();
-    }
-
-    public Cliente(String nome) {
+    //construtor sobrecarregado
+    /**
+     * Cria um cliente com as informaçoes obrigatorias e chama, automaticamente o construtor padrao para gerar o ID de cliente unico.
+     *
+     * @param nome Nome completo do cliente
+     * @param celular O numero do celular do cliente
+     * @param email email valido do cliente
+     * @param pontuacao Realiza uma composiçao com um objeto Pontuacao
+     * 
+     */
+    public Cliente(String nome, String celular, String email) 
+    {
+        this(); //chama o construtor padrao para gerar id
         this.nome = nome;
-        this.listaVeiculos = new ArrayList<>();
+        this.celular = celular;
+        this.email = email;
+        
     }
-
-    public Cliente(int id, String nome) {
-        this.id = id;
-        this.nome = nome;
-        this.listaVeiculos = new ArrayList<>();
-    }
-
 
     // Getters e Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -49,52 +72,114 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public int getId() {
-        return id;
+    public String getCelular() {
+        return celular;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCelular(String celular) {
+        this.celular = celular;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public Pontuacao getPontuacao() 
+    {
+        return pontuacao;
+    }
     /**
-     * Adiciona um veículo à lista de veículos do cliente.
-     *
-     * @param veiculo Veículo a ser adicionado.
-     * @throws IllegalArgumentException Se o veículo já está associado ao cliente.
+     * Vincula um veiculo ao cliente adicionando-o a uma lista.
+     * Garantindo que não será adicionado um veiculo que já esteja vinculado a outro cliente e vinculando o veiculo ao cliente.
+     * @param veiculo Recebe o veiculo a ser adicionado, é um objeto do tipo Veiculo.
+     * @return Uma String com uma mensagem se houve sucesso ou se não lança uma excecao. 
      */
-    public void addVeiculos(Veiculo veiculo) {
-        if (listaVeiculos.contains(veiculo)) {
-            throw new IllegalArgumentException("Não é permitido associar o veiculo. O veículo já está associado a esse cliente.");
+    public String addVeiculos(Veiculo veiculo) throws ExceptionLavacao {
+        if (veiculo == null) {
+            throw new ExceptionLavacao("Veículo não pode ser nulo.");
         }
-        listaVeiculos.add(veiculo);
-    }
-
-    /**
-     * Remove um veículo da lista de veículos do cliente.
-     *
-     * @param veiculo Veículo a ser removido.
-     * @throws IllegalArgumentException Se o veículo não está associado ao cliente.
-     */
-    public void removeVeiculos(Veiculo veiculo) {
-        if (!listaVeiculos.contains(veiculo)) {
-            throw new IllegalArgumentException("O veículo não está associado ao cliente.");
+        if (veiculo.getCliente() == this) {
+            listaVeiculos.add(veiculo);
+            veiculo.setCliente(this);
+            return "Veículo adicionado ao cliente com sucesso!";
+        } else {
+            throw new ExceptionLavacao("Este veículo já possui um cliente associado.");
         }
-        listaVeiculos.remove(veiculo);
     }
+    /**
+     * Desvincula um veiculo de um cliente, retirando-o da lista.
+     * Desvincula o cliente do veiculo também.
+     * @param veiculo Recebe o veiculo a ser removido, é um objeto do tipo Veiculo 
+     * 
+     */
+    public void removeVeiculos(Veiculo veiculo) throws ExceptionLavacao{
+        if (veiculo == null) {
+            throw new ExceptionLavacao("Veículo não pode ser nulo.");
+        }
+        if (veiculo.getCliente() != this) {
+            throw new ExceptionLavacao("Veículo não pertence a este cliente."); 
+        } else {
+            listaVeiculos.remove(veiculo);
+            veiculo.setCliente(null);
+        }
+    }
+
+    //Declaração do método para listar todos os produtos (opção 5)
 
     /**
-     * Retorna uma cópia não modificável da lista de veículos.
-     *
-     * @return Lista de veículos do cliente.
+     * Retorna a lista de veiculos do cliente.
+     *  
+     * @return A lista com os veiculos. É uma lista de Objetos 
      */
-    public List<Veiculo> getListaVeiculos() {
-        return Collections.unmodifiableList(listaVeiculos);
+    public List<Veiculo> getVeiculos()
+    {
+        return listaVeiculos;
     }
 
+    // Sobrescrever metodos obrigatórios
+    /**
+     * Implementação parcial do método getDados
+     *
+     * @return As informaçoes referentes ao cliente.
+     * 
+     */
     @Override
-    public String toString() {
-        return nome;
+    public String getDados() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Dados do Cliente: \n");
+        sb.append("Nome...........: ").append(nome).append("\n");
+        sb.append("Celular........: ").append(celular).append("\n");
+        sb.append("Email..........: ").append(email).append("\n");
+        sb.append("Data Cadastro..: ").append(dataCadastro).append("\n");
+        sb.append("Pontuação......: ").append(pontuacao).append("\n");
+        sb.append("Veiculo........: ").append(this.getVeiculos());
+        return sb.toString();
+    }
+    /**
+     * Método abstrato que deve ser implementado pelas subclasses
+     *
+     * @param Observacao A Observacao que se dejesa inserir no retorno dos dados
+     * 
+     */
+    @Override
+    public abstract String getDados(String observacao);{
+        StringBuilder sb = new StringBuilder();
+        sb.append("Dados do Cliente: \n");
+        sb.append("Nome...........: ").append(nome).append("\n");
+        sb.append("Celular........: ").append(celular).append("\n");
+        sb.append("Email..........: ").append(email).append("\n");
+        sb.append("Data Cadastro..: ").append(dataCadastro).append("\n");
+        sb.append("Pontuação......: ").append(pontuacao).append("\n");
+        sb.append("Veiculo........: ").append(this.getVeiculos()).append("\n");
+        sb.append("Observação.....:").append(observacao);
+        return sb.toString();
     }
 }
-

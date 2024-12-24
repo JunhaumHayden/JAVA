@@ -106,7 +106,6 @@ public class FXMLAnchorPaneCadastroModeloController implements Initializable {
     }
     // metodo que atualiza o detalhamaneto de acordo com a selecao da tabela
     public void selecionarItemTableView(Modelo modelo) {
-        DecimalFormat df = new DecimalFormat("0.00");
         if (modelo != null) {
             lbModeloId.setText(Integer.toString(modelo.getId()));
             lbModeloDescricao.setText(modelo.getDescricao());

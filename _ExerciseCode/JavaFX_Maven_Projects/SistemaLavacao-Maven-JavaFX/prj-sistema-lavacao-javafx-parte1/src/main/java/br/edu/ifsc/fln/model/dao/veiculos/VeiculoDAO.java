@@ -3,7 +3,7 @@ package br.edu.ifsc.fln.model.dao.veiculos;
 import br.edu.ifsc.fln.exceptions.ExceptionLavacao;
 import br.edu.ifsc.fln.model.dao.clientes.ClienteDAO;
 import br.edu.ifsc.fln.model.domain.veiculos.*;
-import br.edu.ifsc.fln.model.domain.clientes.Cliente;
+import br.edu.ifsc.fln.model.domain.cliente.Cliente;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -71,7 +71,7 @@ public class VeiculoDAO {
         }
     }
 
-    public boolean removerVeiculo(Veiculo veiculo) {
+    public boolean remover(Veiculo veiculo) {
         String sql = "DELETE FROM veiculo WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, veiculo.getId());
@@ -82,7 +82,7 @@ public class VeiculoDAO {
         return false;
     }
 
-    public List<Veiculo> listarVeiculo() {
+    public List<Veiculo> listar() {
         List<Veiculo> veiculos = new ArrayList<>();
         String sql = "SELECT * FROM veiculo";
 
@@ -97,10 +97,26 @@ public class VeiculoDAO {
         return veiculos;
     }
 
-    public Veiculo buscarVeiculo(int id) {
+    public Veiculo buscarPorId(int id) {
         String sql = "SELECT * FROM veiculo WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return construirVeiculo(rs);
+                }
+            }
+        } catch (SQLException | ExceptionLavacao ex) {
+            Logger.getLogger(VeiculoDAO.class.getName()).log(Level.SEVERE, "Erro ao buscar Veículo.", ex);
+        }
+        return null;
+    }
+
+    public Veiculo buscar(Veiculo veiculo) {
+        String sql = "SELECT * FROM veiculo WHERE id = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, veiculo.getId());
 
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {

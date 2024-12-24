@@ -32,7 +32,7 @@ public class FXMLAnchorPaneCadastroMarcaDialogController implements Initializabl
     
     private Stage dialogStage;
     private boolean btConfirmarClicked = false;
-    private Marca carca;
+    private Marca marca;
     
     /**
      * Initializes the controller class.
@@ -59,29 +59,30 @@ public class FXMLAnchorPaneCadastroMarcaDialogController implements Initializabl
     }
 
     public Marca getMarca() {
-        return carca;
+        return marca;
     }
 
-    public void setMarca(Marca carca) {
-        this.carca = carca;
-        this.tfNome.setText(carca.getNome());
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+        this.tfNome.setText(marca.getNome());
     }
-    
+
+    @FXML
+    public void handleBtCancelar() {
+        dialogStage.close();
+    }
 
     @FXML
     public void handleBtConfirmar() {
         if (validarEntradaDeDados()) {
-            carca.setNome(tfNome.getText());
+            marca.setNome(tfNome.getText());
 
             btConfirmarClicked = true;
             dialogStage.close();
         }
     }
     
-    @FXML
-    public void handleBtCancelar() {
-        dialogStage.close();
-    }
+
     
     //método para validar a entrada de dados
     private boolean validarEntradaDeDados() {

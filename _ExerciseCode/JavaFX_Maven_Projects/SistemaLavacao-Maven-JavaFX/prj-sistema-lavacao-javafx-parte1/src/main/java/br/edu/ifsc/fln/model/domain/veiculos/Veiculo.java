@@ -1,5 +1,5 @@
 package br.edu.ifsc.fln.model.domain.veiculos;
-import br.edu.ifsc.fln.model.domain.clientes.Cliente;
+import br.edu.ifsc.fln.model.domain.cliente.Cliente;
 
 import br.edu.ifsc.fln.exceptions.ExceptionLavacao;
 
@@ -68,7 +68,7 @@ public class Veiculo {
      */
     private void validarCliente(Cliente cliente) throws ExceptionLavacao {
         if (cliente == null) {
-            throw new ExceptionLavacao("O veículo deve estar vinculado a um cliente.");
+            throw new ExceptionLavacao("O veículo deve estar vinculado a um cliente Valido.");
         }
     }
 
@@ -124,6 +124,10 @@ public class Veiculo {
         cliente.addVeiculos(this); // Atualiza a relação no cliente
     }
 
+    public String getNomeMarca() {
+        return modelo.getMarca() != null ? modelo.getNomeMarca() : "";
+    }
+
     @Override
     public String toString() {
         return placa;
@@ -134,12 +138,12 @@ public class Veiculo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Veiculo veiculo = (Veiculo) o;
-        return placa.equals(veiculo.placa);
+        return id == veiculo.id; // Comparando apenas pelo ID
     }
 
     @Override
     public int hashCode() {
-        return placa.hashCode();
+        return Integer.hashCode(id);
     }
 
 

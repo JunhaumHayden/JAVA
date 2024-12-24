@@ -2,7 +2,7 @@ package br.edu.ifsc.fln.model.dao.veiculos;
 
 import br.edu.ifsc.fln.exceptions.ExceptionLavacao;
 import br.edu.ifsc.fln.model.dao.clientes.ClienteDAO;
-import br.edu.ifsc.fln.model.domain.clientes.Cliente;
+import br.edu.ifsc.fln.model.domain.cliente.Cliente;
 import br.edu.ifsc.fln.model.domain.veiculos.Cor;
 import br.edu.ifsc.fln.model.domain.veiculos.Modelo;
 import br.edu.ifsc.fln.model.domain.veiculos.Veiculo;

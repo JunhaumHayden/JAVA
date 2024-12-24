@@ -2,7 +2,7 @@ package br.edu.ifsc.fln.model.dao.clientes;
 
 import br.edu.ifsc.fln.model.dao.veiculos.CorDAO;
 import br.edu.ifsc.fln.model.dao.veiculos.ModeloDAO;
-import br.edu.ifsc.fln.model.domain.clientes.Cliente;
+import br.edu.ifsc.fln.model.domain.cliente.Cliente;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -108,7 +108,7 @@ public class ClienteDAO {
     }
 
     // Método para listar todos os clientes
-    public List<Cliente> listarTodos() throws SQLException {
+    public List<Cliente> listar() throws SQLException {
         List<Cliente> retorno = new ArrayList<>();
         String sql = "SELECT * FROM Cliente";
 

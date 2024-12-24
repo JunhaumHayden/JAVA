@@ -103,10 +103,7 @@ public class Modelo {
 
     @Override
     public String toString() {
-        return  "\n    " + descricao + 
-                "\n" + marca.getNome() + 
-                "\n    Categoria= " + categoria + 
-                "\n" + motor;
+        return  descricao;
     }
 }
 

@@ -1,7 +1,6 @@
 package br.edu.ifsc.fln.controller;
 
 import br.edu.ifsc.fln.model.dao.veiculos.MarcaDAO;
-import br.edu.ifsc.fln.model.dao.veiculos.ModeloDAO;
 import br.edu.ifsc.fln.model.database.Database;
 import br.edu.ifsc.fln.model.database.DatabaseFactory;
 import br.edu.ifsc.fln.model.domain.ECategoria;
@@ -25,33 +24,28 @@ public class FXMLAnchorPaneCadastroModeloDialogController implements Initializab
 
     @FXML
     private ChoiceBox<ECategoria> cbECategoria;
-
     @FXML
     private ChoiceBox<ETipoCombustivel> cbETipoCombustivel;
-
     @FXML
     private ComboBox<Marca> cbMarca;
+    @FXML
+    private Button btCancelar;
+    @FXML
+    private Button btConfirmar;
 
     @FXML
     private TextField tfModeloDescricao;
-
     @FXML
     private TextField tfPotencia;
 
-    @FXML
-    private Button btCancelar;
 
-    @FXML
-    private Button btConfirmar;
 
     private List<Marca> listaMarcas;
     private ObservableList<Marca> observableListMarcas;
     //acesso ao banco de dados
     private final Database database = DatabaseFactory.getDatabase("mysql");
     private final Connection connection = database.conectar();
-    private final ModeloDAO modeloDAO = new ModeloDAO();
     private final MarcaDAO marcaDAO = new MarcaDAO();
-
 
     private Stage dialogStage;
     private boolean buttonConfirmarClicked = false;

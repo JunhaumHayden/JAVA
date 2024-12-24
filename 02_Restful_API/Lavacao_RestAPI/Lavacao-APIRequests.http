@@ -1,0 +1,40 @@
+### Listar todos as marcas
+GET http://localhost:8080/marcas
+
+### Listar por ID
+GET http://localhost:8080/marcas/3
+
+### Adicionar uma nova marca
+POST http://localhost:8080/marcas
+Content-Type: application/json
+
+{"nome": "Toyota"}
+
+### Atualiza uma marca por id
+PUT http://localhost:8080/marcas/atualizar/{id}
+
+### Exclui uma marca por id
+DELETE http://localhost:8080/marcas/excluir/{id}
+
+### Listar todos as modelo e a marca
+GET http://localhost:8080/modelo
+
+### Listar por ID
+GET http://localhost:8080/modelos/1
+
+### Adicionar um novo modelo
+POST http://localhost:8080/modelos
+Content-Type: application/json
+
+{"id":7,"descricao":"JAC 5","marca":{"id":3,"nome":"JAC MOTOR"},"motor":null,"categoria":"GRANDE"}
+
+### Atualiza uma modelo por id
+PUT http://localhost:8080/modelos/7
+Content-Type: application/json
+
+{"id":1,"descricao":"FRONTIER MT","marca":{"id":3,"nome":"Nissan"},"motor":null,"categoria":"GRANDE"}
+
+### Exclui uma marca por id
+DELETE http://localhost:8080/modelos/7
+
+
