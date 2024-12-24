@@ -1,0 +1,33 @@
+### Listar todos os livros - getAll()
+GET http://localhost:8080/livros
+
+### Adicionar um novo livro - adicionar(Livro livro)
+POST http://localhost:8080/livros
+Content-Type: application/json
+
+{"id":5,"isbn":5555,"titulo":"Estrelas","autor":"Ema Esteves","editora":"Editora E","preco":55.90}
+
+### Buscar um livro por ISBN - getPorIsbn(int isbn)
+GET http://localhost:8080/livros/isbn/2222
+
+### Buscar livros de um autor específico - getPorAutor(String autor)
+GET http://localhost:8080/livros/autor/Dani Duarte
+
+### Buscar um livro por título - getPorTitulo(String titulo)
+GET http://localhost:8080/livros/titulo/Barito
+
+### Buscar um livro por ISBN como DTO - getPorIsbnDTO(int isbn)
+GET http://localhost:8080/livros/isbn/3333/dto
+
+
+### Listar todos os livros como DTO - getAllDTO()
+GET http://localhost:8080/livros/dto
+
+
+
+### Reajustar o preço de um livro pelo ID - reajustarPrecoPorId(int id, int taxa)
+PUT http://localhost:8080/livros/4/reajustar/10
+
+
+### Reajustar o preço de todos os livros - reajustarPreco(int taxa)
+PUT http://localhost:8080/livros/reajustar/10

@@ -1,7 +1,0 @@
-### PUT request to example server
-POST http://localhost:8080/livros
-Content-Type: application/json
-
-{"id":5,"isbn":5555,"titulo":"Estrelas","autor":"Ema Esteves","editora":"Editora E","preco":55.90}
-
-###
