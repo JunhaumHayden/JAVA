@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS usuario (
     numeroEndereco VARCHAR(10),
     complementoEndereco VARCHAR(100),
     CONSTRAINT pk_usuario PRIMARY KEY(id)
-    ) engine=InnoDB;
+    );
 
 -- Tabela Cliente
 CREATE TABLE IF NOT EXISTS cliente (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS cliente (
     CONSTRAINT fk_usuario_cliente FOREIGN KEY (id_usuario) REFERENCES usuario(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-    ) engine=InnoDB;
+    );
 
 -- Tabela Profissional
 CREATE TABLE IF NOT EXISTS profissional (
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS profissional (
     CONSTRAINT fk_usuario_profissional FOREIGN KEY (id_usuario) REFERENCES usuario(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-    ) engine=InnoDB;
+    );
 
 -- Tabela Servico
 CREATE TABLE IF NOT EXISTS servico (
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS servico (
     CONSTRAINT fk_servico_profissional FOREIGN KEY (profissional_id) REFERENCES profissional(id_usuario)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-    ) engine=InnoDB;
+    );
 
 -- Tabela Imagem
 CREATE TABLE IF NOT EXISTS imagem (
@@ -58,4 +58,4 @@ CREATE TABLE IF NOT EXISTS imagem (
     CONSTRAINT fk_imagem_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
-    ) engine=InnoDB;
+    );
