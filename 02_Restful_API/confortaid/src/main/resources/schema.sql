@@ -42,3 +42,18 @@ CREATE TABLE IF NOT EXISTS servico (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+-- Tabela Agendamento
+CREATE TABLE IF NOT EXISTS agendamento (
+    id INT AUTO_INCREMENT,
+    cliente_id INT NOT NULL,
+    servico_id INT NOT NULL,
+    data_hora TIMESTAMP NOT NULL,
+    CONSTRAINT pk_agendamento PRIMARY KEY (id),
+    CONSTRAINT fk_agendamento_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    CONSTRAINT fk_agendamento_servico FOREIGN KEY (servico_id) REFERENCES servico(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );

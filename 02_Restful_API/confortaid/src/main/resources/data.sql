@@ -18,3 +18,11 @@ VALUES
     ('Massagem Terapêutica', 'Sessão terapêutica para tratar dores específicas', 150.00, 90, 'INATIVO', 1, '2024-01-12'),
     ('Parto Humanizado', 'Acompanhamento do parto com respeito e cuidado', 2000.00, 180, 'ATIVO', 2, '2024-02-22'),
     ('Massagem Relaxante', 'Sessão de massagem para aliviar o estresse e tensões', 120.00, 60, 'ATIVO', 1,'2025-01-12');
+
+-- Inserir dados na tabela Agendamento
+INSERT INTO agendamento (cliente_id, servico_id, data_hora)
+VALUES
+    (1, 1, '2024-01-12 10:00:00'),
+    (2, 2, '2024-01-13 14:00:00'),
+    (1, 3, '2024-01-14 09:00:00'),
+    (2, 1, '2024-01-15 11:00:00');
