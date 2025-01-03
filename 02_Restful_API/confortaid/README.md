@@ -123,3 +123,15 @@ POST http://localhost:8080/api/clientes
         "cpf": "98765432333"
     }
 ```
+POST http://localhost:8080/api/agendamentos
+``` json
+{
+    "cliente": {
+        "id": 1
+    },
+    "servico": {
+        "id": 1
+    },
+    "dataHora": "2024-01-12T10:00:00"
+}
+```
