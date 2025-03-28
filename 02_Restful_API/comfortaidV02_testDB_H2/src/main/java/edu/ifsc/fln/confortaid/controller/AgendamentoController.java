@@ -1,5 +1,6 @@
 package edu.ifsc.fln.confortaid.controller;
 
+import edu.ifsc.fln.confortaid.exception.HorarioOcupadoException;
 import edu.ifsc.fln.confortaid.model.Agendamento;
 import edu.ifsc.fln.confortaid.model.Cliente;
 import edu.ifsc.fln.confortaid.model.Servico;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/agendamentos")
+@RequestMapping("/agendamentos")
 public class AgendamentoController {
 
     @Autowired
@@ -63,19 +64,20 @@ public class AgendamentoController {
     public ResponseEntity<Agendamento> criar(@RequestBody Agendamento agendamento) {
         Cliente cliente = clienteRepository.findById(agendamento.getCliente().getId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        agendamento.setCliente(cliente);
         Servico servico = servicoRepository.findById(agendamento.getServico().getId())
                 .orElseThrow(() -> new RuntimeException("Servico não encontrado"));
+        agendamento.setServico(servico);
 
-
-        Agendamento novoAgendamento = agendamentoService.agendar(cliente, servico, agendamento.getDataHora().toString());
+        Agendamento novoAgendamento = agendamentoService.agendar(agendamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoAgendamento);
     }
 
-    @PutMapping("/{id}/reagendar")
-    public ResponseEntity<Agendamento> reagendar(@PathVariable Integer id, @RequestBody String novoHorario) {
+    @PutMapping("/reagendar/{id}")
+    public ResponseEntity<Agendamento> reagendar(@PathVariable Integer id, @RequestBody Agendamento agendamentoDetails) {
         return agendamentoRepository.findById(id)
                 .map(agendamento -> {
-                    Agendamento agendamentoReagendado = agendamentoService.reagendar(agendamento, novoHorario);
+                    Agendamento agendamentoReagendado = agendamentoService.reagendar(agendamentoDetails);
                     return ResponseEntity.ok(agendamentoReagendado);
                 })
                 .orElse(ResponseEntity.notFound().build());
@@ -85,19 +87,24 @@ public class AgendamentoController {
     public ResponseEntity<Object> cancelar(@PathVariable Integer id) {
         return agendamentoRepository.findById(id)
                 .map(agendamento -> {
-                    agendamentoService.cancelarAgendamento(agendamento);
+                    agendamentoService.alterarStatus(agendamento, Agendamento.Status.CANCELADO);
                     return ResponseEntity.noContent().build();
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}/status")
-    public ResponseEntity<Agendamento> alterarStatus(@PathVariable Integer id, @RequestBody Agendamento.Status novoStatus) {
+    @PutMapping("/status/{id}")
+    public ResponseEntity<Agendamento> alterarStatus(@PathVariable Integer id, @RequestBody Agendamento agendamentoDetails) {
         return agendamentoRepository.findById(id)
                 .map(agendamento -> {
-                    agendamentoService.alterarStatus(agendamento, novoStatus);
+                    agendamentoService.alterarStatus(agendamento, agendamentoDetails.getStatus());
                     return ResponseEntity.ok(agendamento);
                 })
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @ExceptionHandler(HorarioOcupadoException.class)
+    public ResponseEntity<String> handleHorarioOcupadoException(HorarioOcupadoException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
 }

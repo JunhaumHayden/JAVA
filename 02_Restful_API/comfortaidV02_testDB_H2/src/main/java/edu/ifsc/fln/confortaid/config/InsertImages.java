@@ -12,48 +12,75 @@ public class InsertImages {
         String user = "sa";
         String password = "";
 
-        String sqlCliente = "INSERT INTO foto_cliente (cliente_id, foto) VALUES (?, ?)";
-        String sqlProfissional = "INSERT INTO foto_profissional (profissional_id, foto) VALUES (?, ?)";
+        String sqlUsuario = "INSERT INTO foto_usuario (usuario_id, foto) VALUES (?, ?)";
+        String sqlServico = "INSERT INTO foto_servico (servico_id, foto) VALUES (?, ?)";
 
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
-            // Create tables if they do not exist
-                try (PreparedStatement createTableStmt = conn.prepareStatement(
-                        "CREATE TABLE IF NOT EXISTS foto_cliente (cliente_id INT PRIMARY KEY, foto BLOB)")) {
-                    createTableStmt.execute();
-                }
-                try (PreparedStatement createTableStmt = conn.prepareStatement(
-                        "CREATE TABLE IF NOT EXISTS foto_profissional (profissional_id INT PRIMARY KEY, foto BLOB)")) {
-                    createTableStmt.execute();
-                }
-                // Insert images into foto_cliente
-                try (PreparedStatement pstmt = conn.prepareStatement(sqlCliente)) {
-                    try (InputStream inputStream = new FileInputStream("src/main/resources/img/camera.png")) {
-                        pstmt.setInt(1, 1);
-                        pstmt.setBlob(2, inputStream);
-                        pstmt.executeUpdate();
-                    }
 
-                    try (InputStream inputStream = new FileInputStream("src/main/resources/img/camera.png")) {
-                        pstmt.setInt(1, 2);
-                        pstmt.setBlob(2, inputStream);
-                        pstmt.executeUpdate();
-                    }
+            // Insert images into
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlUsuario)) {
+                // Insert images into foto_cliente
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/01ana.jpg")) {
+                    pstmt.setInt(1, 1);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/01bia.jpg")) {
+                    pstmt.setInt(1, 2);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
                 }
 
                 // Insert images into foto_profissional
-                try (PreparedStatement pstmt = conn.prepareStatement(sqlProfissional)) {
-                    try (InputStream inputStream = new FileInputStream("src/main/resources/img/camera.png")) {
-                        pstmt.setInt(1, 1);
-                        pstmt.setBlob(2, inputStream);
-                        pstmt.executeUpdate();
-                    }
-
-                    try (InputStream inputStream = new FileInputStream("src/main/resources/img/camera.png")) {
-                        pstmt.setInt(1, 2);
-                        pstmt.setBlob(2, inputStream);
-                        pstmt.executeUpdate();
-                    }
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/01dany.jpg")) {
+                    pstmt.setInt(1, 3);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
                 }
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/01emy.jpg")) {
+                    pstmt.setInt(1, 4);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+            }
+
+
+            try (PreparedStatement pstmt = conn.prepareStatement(sqlServico)) {
+
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/04dany.jpg")) {
+                    pstmt.setInt(1, 1);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/03dany.jpg")) {
+                    pstmt.setInt(1, 2);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/02emy.jpg")) {
+                    pstmt.setInt(1, 3);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/03emy.jpg")) {
+                    pstmt.setInt(1, 4);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+
+                try (InputStream inputStream = new FileInputStream("src/main/resources/img/02dany.jpg")) {
+                    pstmt.setInt(1, 5);
+                    pstmt.setBlob(2, inputStream);
+                    pstmt.executeUpdate();
+                }
+
+            }
 
             } catch (Exception e) {
                 e.printStackTrace();

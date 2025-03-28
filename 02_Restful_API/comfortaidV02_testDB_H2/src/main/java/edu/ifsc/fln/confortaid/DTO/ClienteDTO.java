@@ -1,4 +1,4 @@
-package edu.ifsc.fln.confortaid.model;
+package edu.ifsc.fln.confortaid.DTO;
 
     import lombok.*;
 

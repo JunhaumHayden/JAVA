@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS agendamento (
     cliente_id INT NOT NULL,
     servico_id INT NOT NULL,
     data_hora TIMESTAMP NOT NULL,
-    status ENUM('CONFIRMADO', 'PENDENTE', 'CANCELADO') NOT NULL DEFAULT 'PENDENTE',
+    status ENUM('CONFIRMADO', 'PENDENTE', 'CANCELADO', 'ATENDIDO') NOT NULL DEFAULT 'PENDENTE',
     CONSTRAINT pk_agendamento PRIMARY KEY (id),
     CONSTRAINT fk_agendamento_cliente FOREIGN KEY (cliente_id) REFERENCES cliente(id_usuario)
     ON DELETE CASCADE
@@ -81,12 +81,23 @@ CREATE TABLE IF NOT EXISTS avaliacao (
     );
 
 -- Tabela Foto
-CREATE TABLE IF NOT EXISTS foto (
+CREATE TABLE IF NOT EXISTS foto_usuario (
     id INT AUTO_INCREMENT,
     usuario_id INT NOT NULL,
     foto BLOB NOT NULL,
-    CONSTRAINT pk_foto PRIMARY KEY (id),
-    CONSTRAINT fk_foto_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+    CONSTRAINT pk_foto_usuario PRIMARY KEY (id),
+    CONSTRAINT fk_foto_usuario_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+    );
+
+-- Tabela Foto
+CREATE TABLE IF NOT EXISTS foto_servico (
+    id INT AUTO_INCREMENT,
+    servico_id INT NOT NULL,
+    foto BLOB NOT NULL,
+    CONSTRAINT pk_foto_servico PRIMARY KEY (id),
+    CONSTRAINT fk_foto_servico_servico FOREIGN KEY (servico_id) REFERENCES servico(id)
     ON DELETE CASCADE
     ON UPDATE CASCADE
     );

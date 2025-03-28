@@ -299,7 +299,7 @@ public class VendaDAO {
     }
 
     public Map<Integer, ArrayList> listarQuantidadeVendasPorMes() {
-        String sql = "select count(id) as count, extract(year from data) as ano, "
+       String sql = "select count(id) as count, extract(year from data) as ano, "
                 + " extract(month from data) as mes from venda group by ano, "
                 + "mes order by ano, mes";
         Map<Integer, ArrayList> retorno = new HashMap();
@@ -316,7 +316,7 @@ public class VendaDAO {
                     linha.add(resultado.getInt("count"));
                     retorno.put(resultado.getInt("ano"), linha);
                 }else{
-                    ArrayList linhaNova = retorno.get(resultado.getInt("ano"));
+                     ArrayList linhaNova = retorno.get(resultado.getInt("ano"));
                     linhaNova.add(resultado.getInt("mes"));
                     linhaNova.add(resultado.getInt("count"));
                 }

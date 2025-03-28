@@ -2,6 +2,7 @@ package edu.ifsc.fln.confortaid.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "cliente")
 @PrimaryKeyJoinColumn(name = "id_usuario")
+@EqualsAndHashCode(callSuper = true)
 public class Cliente extends Usuario {
     @Column(nullable = false, unique = true)
     private String cpf;

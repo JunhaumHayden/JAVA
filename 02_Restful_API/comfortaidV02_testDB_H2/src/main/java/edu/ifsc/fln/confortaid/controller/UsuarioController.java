@@ -1,5 +1,6 @@
 package edu.ifsc.fln.confortaid.controller;
 
+import edu.ifsc.fln.confortaid.DTO.UsuarioDTO;
 import edu.ifsc.fln.confortaid.model.Usuario;
 import edu.ifsc.fln.confortaid.service.UsuarioService;
 import edu.ifsc.fln.confortaid.repository.UsuarioRepository;
@@ -63,10 +64,16 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Usuario> login(@RequestBody Usuario usuario) {
+    public ResponseEntity<UsuarioDTO> login(@RequestBody Usuario usuario) {
         Usuario token = usuarioService.authenticateAndGetToken(usuario);
         if (token != null) {
-            return ResponseEntity.ok(token);
+            UsuarioDTO usuarioDTO = new UsuarioDTO();
+            usuarioDTO.setId(token.getId());
+            usuarioDTO.setNome(token.getNome());
+            usuarioDTO.setEmail(token.getEmail());
+            usuarioDTO.setTelefone(token.getTelefone());
+
+            return ResponseEntity.ok(usuarioDTO);
         } else {
             return ResponseEntity.status(401).build();
         }

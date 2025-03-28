@@ -29,6 +29,6 @@ public class Agendamento {
     private Agendamento.Status status= Status.PENDENTE; // Status inicial do agendamento: "Pendente".
 
     public enum Status {
-        CONFIRMADO, PENDENTE, CANCELADO
+        CONFIRMADO, PENDENTE, CANCELADO, ATENDIDO
     }
 }

@@ -1,29 +1,16 @@
--- -- Inserir dados na tabela Usuario
--- INSERT INTO cliente (nome, email, senha, telefone, cep, numero_endereco, complemento_endereco, cpf)
--- VALUES
---     ('Ana Amalia', 'ana@mail.com', 'senha1111', '(11) 99999-0001', '88111-111', '001', 'Apto 101', '11111111111'),
---     ('Bia Bernardes', 'Bia@mail.com', 'senha2222', '(21) 98888-0002', '88222-222', '002', 'Casa', '22222222222');
---
---
--- -- Inserir dados na tabela Profissional
--- INSERT INTO profissional (nome, email, senha, telefone, cep, numero_endereco, complemento_endereco, especialidade, registro_profissional)
--- VALUES
---     ('Dany Damaris', 'dany@mail.com', 'senha3333', '(31) 97777-0003', '88333-333', '003', 'Sala 3', 'Massoterapia', 'REG33333'),
---     ('Emy Esteves', 'emy@mail.com', 'senha4444', '(41) 96666-0004', '88333-444', '004', 'casa', 'Parteira', 'REG44444');;
-
 -- Inserir dados na tabela Usuario
-INSERT INTO usuario (nome, email, senha, telefone, cep, numero_endereco, complemento_endereco)
+INSERT INTO usuario (nome, email, senha, telefone, cep, numero_endereco, complemento_endereco, tipo)
 VALUES
-    ('Ana Amalia', 'ana@mail.com', 'senha', '(11) 99999-0001', '88111-111', '001', 'Apto 101'),
-    ('Bia Bernardes', 'Bia@mail.com', 'senha', '(21) 98888-0002', '88222-222', '002', 'Casa'),
-    ('Dany Damaris', 'dany@mail.com', 'senha', '(31) 97777-0003', '88333-333', '003', 'Sala 3'),
-    ('Emy Esteves', 'emy@mail.com', 'senha', '(41) 96666-0004', '88333-444', '004', 'casa');
+    ('Ana Amalia', 'ana@mail.com', 'senha', '(11) 99999-0001', '88111-111', '001', 'Apto 101', 'cliente'),
+    ('Bia Bernardes', 'Bia@mail.com', 'senha', '(21) 98888-0002', '88222-222', '002', 'Casa', 'cliente'),
+    ('Dany Damaris', 'dany@mail.com', 'senha', '(31) 97777-0003', '88333-333', '003', 'Sala 3', 'profissional'),
+    ('Emy Esteves', 'emy@mail.com', 'senha', '(41) 96666-0004', '88333-444', '004', 'casa', 'profissional');
 
 -- Inserir dados na tabela Cliente
-INSERT INTO cliente (id_usuario, cpf)
+INSERT INTO cliente (id_usuario, cpf, nascimento)
 VALUES
-    (1, '11111111111'),
-    (2, '22222222222');
+    (1, '11111111111', '1955-01-12'),
+    (2, '22222222222', '2000-05-05');
 
 -- Inserir dados na tabela Profissional
 INSERT INTO profissional (id_usuario, especialidade, registro_profissional)
@@ -41,12 +28,13 @@ VALUES
     ('Massagem Relaxante', 'Sessão de massagem para aliviar o estresse e tensões', 120.00, 60, 'ATIVO', 3,'2025-01-12');
 
 -- Inserir dados na tabela Agendamento
-INSERT INTO agendamento (cliente_id, servico_id, data_hora)
+INSERT INTO agendamento (cliente_id, servico_id, data_hora, status)
 VALUES
-    (1, 1, '2024-01-12 10:00:00'),
-    (2, 2, '2024-01-13 14:00:00'),
-    (1, 3, '2024-01-14 09:00:00'),
-    (2, 1, '2024-01-15 11:00:00');
+    (1, 1, '2024-01-12 10:00:00', 'CONFIRMADO'),
+    (2, 2, '2024-01-13 14:00:00', 'CONFIRMADO'),
+    (1, 3, '2024-01-14 09:00:00', 'CONFIRMADO'),
+    (1, 4, '2024-01-14 09:00:00', 'PENDENTE'),
+    (2, 1, '2024-01-15 11:00:00', 'CANCELADO');
 
 -- Inserir dados na tabela Avaliação
 INSERT INTO avaliacao (cliente_id, servico_id, data_hora, comentario, nota)
